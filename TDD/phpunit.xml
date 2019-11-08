@@ -5,7 +5,7 @@
 >
   <filter>
     <whitelist processUncoveredFilesFromWhitelist="true">
-        <directory suffix=".php">classes</directory>
+        <directory suffix=".php">src</directory>
     </whitelist>
   </filter>
   <logging>

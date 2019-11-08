@@ -1,5 +1,7 @@
 <?php
 
+include_once("../../src/controller/MainController.php");
+
 class MainControllerTest extends PHPUnit\Framework\TestCase {
     
     /** @test */
@@ -7,7 +9,7 @@ class MainControllerTest extends PHPUnit\Framework\TestCase {
         $app = new MainController();
         $actual = $app->run();
         $expected = "<p>Hello world</p>";
-        
+
         $this->assertEquals($actual, $expected);
     }
 }
