@@ -3,7 +3,11 @@
 class MainControllerTest extends PHPUnit\Framework\TestCase {
     
     /** @test */
-    function firstTest () {
-        $this->assertTrue(false);
+    function shouldInitializeApp () {
+        $app = new MainController();
+        $actual = $app->run();
+        $expected = "<p>Hello world</p>";
+        
+        $this->assertEquals($actual, $expected);
     }
 }
