@@ -76,5 +76,7 @@ $RECYCLE.BIN/
 *.lnk
 
 vendor/*
+vendor
+vendor/
 
 # End of https://www.gitignore.io/api/macos,windows,composer,visualstudiocode
