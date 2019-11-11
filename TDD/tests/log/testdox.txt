@@ -21,6 +21,9 @@ Instruction
  [x] Should have true boolean on changed state
  [x] Should have false boolean on changed state
 
+Instruction Collection
+ [ ] Should add instruction to collection
+
 Measurement
  [x] Should accept correct measurement
  [x] Should throw exception on invalid measurement
