@@ -13,3 +13,6 @@ class TooSmallAmountException extends Exception
 
 class TooLongIngredientException extends Exception
 { }
+
+class TooShortIngredientException extends Exception
+{ }
