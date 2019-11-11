@@ -42,4 +42,13 @@ class InstructionTest extends TestCase
         $input = str_pad('Instruction starts here...', 501);
         new Instruction($input);
     }
+
+    /** @test */
+    function shouldHaveFalseBooleanOnInstantiation()
+    {
+        $sut = new Instruction('My instruction');
+        $actual = $sut->getIsCompleted();
+
+        $this->assertFalse($actual);
+    }
 }
