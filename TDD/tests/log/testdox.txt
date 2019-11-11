@@ -22,7 +22,7 @@ Instruction
  [x] Should have false boolean on changed state
 
 Instruction Collection
- [ ] Should add instruction to collection
+ [x] Should add instruction to collection
 
 Measurement
  [x] Should accept correct measurement

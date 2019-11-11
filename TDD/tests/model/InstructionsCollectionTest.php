@@ -22,6 +22,7 @@ class InstructionCollectionTest extends TestCase
 
         $expected = array();
         $expected[] = 'Set oven to 200°';
+        var_dump($actual);
         $this->assertEquals($actual, $expected);
     }
 }
