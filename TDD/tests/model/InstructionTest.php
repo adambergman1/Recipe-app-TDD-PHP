@@ -15,4 +15,13 @@ class InstructionTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    function shouldThrowExceptionOnEmptyInstruction()
+    {
+        $this->expectException(Exception::class);
+
+        $input = '';
+        new Instruction($input);
+    }
 }
