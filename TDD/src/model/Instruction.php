@@ -2,7 +2,6 @@
 
 class Instruction
 {
-
     private $instruction;
 
     public function __construct(string $instruction)
@@ -10,7 +9,7 @@ class Instruction
         $this->instruction = $instruction;
     }
 
-    public function getInstruction()
+    public function getInstruction(): string
     {
         return $this->instruction;
     }
