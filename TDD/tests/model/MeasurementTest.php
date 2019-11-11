@@ -1,7 +1,5 @@
 <?php
 
-include_once("../../src/model/Measurement.php");
-
 class MeasurementTest extends PHPUnit\Framework\TestCase
 {
 

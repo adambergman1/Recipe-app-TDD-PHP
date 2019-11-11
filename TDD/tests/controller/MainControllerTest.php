@@ -1,7 +1,5 @@
 <?php
 
-include_once("../../src/controller/MainController.php");
-
 class MainControllerTest extends PHPUnit\Framework\TestCase
 {
 
