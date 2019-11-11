@@ -32,7 +32,7 @@ class Instruction
         return $this->instruction;
     }
 
-    public function isCompleted()
+    public function isCompleted(): bool
     {
         return $this->isCompleted;
     }
