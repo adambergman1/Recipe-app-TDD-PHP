@@ -25,4 +25,27 @@ class InstructionCollectionTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    public function shouldBeAbleToHold10Instructions()
+    {
+        $this->sut->addInstruction($this->instruction);
+        $this->sut->addInstruction(new Instruction("Peal Potatoes"));
+        $this->sut->addInstruction(new Instruction("Chop onions"));
+        $this->sut->addInstruction(new Instruction("Fry the fish"));
+        $this->sut->addInstruction(new Instruction("Rost onions"));
+        $this->sut->addInstruction(new Instruction("Chop salad"));
+        $this->sut->addInstruction(new Instruction("Heat garlic"));
+        $this->sut->addInstruction(new Instruction("Melt butter"));
+        $this->sut->addInstruction(new Instruction("Put potatoes in oven"));
+        $this->sut->addInstruction(new Instruction("Cook rice"));
+        $this->sut->addInstruction(new Instruction("Take out potatoes from oven"));
+
+
+        $actual = $this->sut->countInstructions();
+
+        $expected = 10;
+
+        $this->assertEquals($actual, $expected);
+    }
 }
