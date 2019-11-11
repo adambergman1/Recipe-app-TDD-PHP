@@ -51,4 +51,14 @@ class InstructionTest extends TestCase
 
         $this->assertFalse($actual);
     }
+
+    /** @test */
+    function shouldHaveTrueBooleanOnChangedState()
+    {
+        $sut = new Instruction('My instruction');
+        $input = true;
+        $actual = $sut->setCompleted($input);
+
+        $this->assertTrue($actual);
+    }
 }
