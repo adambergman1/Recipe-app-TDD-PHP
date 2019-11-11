@@ -21,8 +21,8 @@ class InstructionCollectionTest extends TestCase
         $actual = $this->sut->getInstructions();
 
         $expected = array();
-        $expected[] = 'Set oven to 200°';
-        var_dump($actual);
+        $expected[] = $this->instruction;
+
         $this->assertEquals($actual, $expected);
     }
 }

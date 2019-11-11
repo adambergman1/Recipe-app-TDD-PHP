@@ -6,7 +6,7 @@ class InstructionsCollection
 
     public function addInstruction(Instruction $toBeSaved): void
     {
-        $this->instructions[] = $toBeSaved->getInstruction();
+        $this->instructions[] = $toBeSaved;
     }
 
     public function getInstructions(): array
