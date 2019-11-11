@@ -4,6 +4,13 @@ use PHPUnit\Framework\TestCase;
 
 class InstructionTest extends TestCase
 {
+    protected $instruction;
+
+    protected function setUp(): void
+    {
+        $this->instruction = new Instruction("My instruction");
+    }
+
     /** @test */
     function shouldAcceptInstruction()
     {
@@ -46,8 +53,7 @@ class InstructionTest extends TestCase
     /** @test */
     function shouldHaveFalseBooleanOnInstantiation()
     {
-        $sut = new Instruction('My instruction');
-        $actual = $sut->isCompleted();
+        $actual = $this->instruction->isCompleted();
 
         $this->assertFalse($actual);
     }
@@ -55,10 +61,9 @@ class InstructionTest extends TestCase
     /** @test */
     function shouldHaveTrueBooleanOnChangedState()
     {
-        $sut = new Instruction('My instruction');
         $input = true;
-        $sut->setCompleted($input);
-        $actual = $sut->isCompleted($input);
+        $this->instruction->setCompleted($input);
+        $actual = $this->instruction->isCompleted($input);
 
         $this->assertTrue($actual);
     }
