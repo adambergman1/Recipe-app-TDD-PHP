@@ -15,4 +15,13 @@ class IngredientTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    function shouldThrowExceptionOnTooLongIngredient()
+    {
+        $this->expectException(Exception::class);
+
+        $input = 'This is my very looong ingredient';
+        new Ingredient($input);
+    }
 }
