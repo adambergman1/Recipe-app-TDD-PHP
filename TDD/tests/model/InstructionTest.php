@@ -24,4 +24,13 @@ class InstructionTest extends TestCase
         $input = '';
         new Instruction($input);
     }
+
+    /** @test */
+    function shouldThrowExceptionOnInstructionShorterThanTwoWords()
+    {
+        $this->expectException(Exception::class);
+
+        $input = 'Fry';
+        new Instruction($input);
+    }
 }
