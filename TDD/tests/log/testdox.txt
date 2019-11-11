@@ -7,7 +7,7 @@ Amount
  [x] Should throw exception on too small amount
 
 Ingredient
- [ ] Should accept ingredient
+ [x] Should accept ingredient
 
 Measurement
  [x] Should accept correct measurement
