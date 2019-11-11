@@ -39,7 +39,7 @@ class InstructionTest extends TestCase
     {
         $this->expectException(Exception::class);
 
-        $input = str_pad('Instruction', 500);
+        $input = str_pad('Instruction starts here...', 501);
         new Instruction($input);
     }
 }

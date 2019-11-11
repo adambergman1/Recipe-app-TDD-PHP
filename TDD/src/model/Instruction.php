@@ -14,6 +14,10 @@ class Instruction
             throw new InstructionContainsTooFewWordsException();
         }
 
+        if (strlen($instruction) > 500) {
+            throw new Exception();
+        }
+
         $this->instruction = $instruction;
     }
 
