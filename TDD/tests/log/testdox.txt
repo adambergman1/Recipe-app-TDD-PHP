@@ -16,6 +16,7 @@ Instruction
  [x] Should accept instruction
  [x] Should throw exception on empty instruction
  [x] Should throw exception on instruction shorter than two words
+ [ ] Should throw exception on instruction longer than 500 characters
 
 Measurement
  [x] Should accept correct measurement
