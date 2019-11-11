@@ -13,7 +13,8 @@ class Ingredient
     {
         if (strlen($ingredient) >= 60) {
             throw new TooLongIngredientException();
-        } else if (strlen($ingredient) <= 2) {
+        }
+        if (strlen($ingredient) <= 2) {
             throw new TooShortIngredientException();
         }
         $this->ingredient = $ingredient;

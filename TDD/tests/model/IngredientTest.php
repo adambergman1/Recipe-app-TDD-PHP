@@ -31,7 +31,7 @@ class IngredientTest extends TestCase
     {
         $this->expectException(TooShortIngredientException::class);
 
-        $input = 'Po';
+        $input = 'Pe';
         new Ingredient($input);
     }
 }
