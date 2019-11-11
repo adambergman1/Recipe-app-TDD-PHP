@@ -25,3 +25,6 @@ class EmptyInstructionException extends Exception
 
 class InstructionContainsTooFewWordsException extends Exception
 { }
+
+class InstructionContainsTooManyCharactersException extends Exception
+{ }

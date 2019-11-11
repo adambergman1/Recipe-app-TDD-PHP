@@ -37,7 +37,7 @@ class InstructionTest extends TestCase
     /** @test */
     function shouldThrowExceptionOnInstructionLongerThan500Characters()
     {
-        $this->expectException(Exception::class);
+        $this->expectException(InstructionContainsTooManyCharactersException::class);
 
         $input = str_pad('Instruction starts here...', 501);
         new Instruction($input);

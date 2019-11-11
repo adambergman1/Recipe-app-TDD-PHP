@@ -6,6 +6,11 @@ class Instruction
 
     public function __construct(string $instruction)
     {
+        $this->validateInstruction($instruction);
+    }
+
+    private function validateInstruction(string $instruction): void
+    {
         if (empty($instruction)) {
             throw new EmptyInstructionException();
         }
@@ -15,7 +20,7 @@ class Instruction
         }
 
         if (strlen($instruction) > 500) {
-            throw new Exception();
+            throw new InstructionContainsTooManyCharactersException();
         }
 
         $this->instruction = $instruction;
