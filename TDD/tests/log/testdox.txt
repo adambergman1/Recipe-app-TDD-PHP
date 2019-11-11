@@ -8,7 +8,7 @@ Amount
 
 Ingredient
  [x] Should accept ingredient
- [ ] Should throw exception on too long ingredient
+ [x] Should throw exception on ingredient longer than 20 characters
 
 Measurement
  [x] Should accept correct measurement

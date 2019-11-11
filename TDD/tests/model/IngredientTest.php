@@ -17,7 +17,7 @@ class IngredientTest extends TestCase
     }
 
     /** @test */
-    function shouldThrowExceptionOnTooLongIngredient()
+    function shouldThrowExceptionOnIngredientLongerThan20Characters()
     {
         $this->expectException(Exception::class);
 
