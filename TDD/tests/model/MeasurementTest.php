@@ -22,7 +22,7 @@ class MeasurementTest extends PHPUnit\Framework\TestCase
     {
         $this->expectException(NotAValidMeasurementException::class);
 
-        $input = 'hej';
+        $input = 'gallon';
         new Measurement($input);
     }
 }
