@@ -52,7 +52,6 @@ class InstructionCollectionTest extends TestCase
     {
         $this->expectException(TooManyInstructionsException::class);
 
-
         $maxInstructions = 51;
         for ($i = 0; $i <= $maxInstructions; $i++) {
             $randomWord = str_shuffle("This is a testing word");
