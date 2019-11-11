@@ -17,11 +17,11 @@ class IngredientTest extends TestCase
     }
 
     /** @test */
-    function shouldThrowExceptionOnIngredientLongerThan20Characters()
+    function shouldThrowExceptionOnIngredientLongerThan60Characters()
     {
         $this->expectException(Exception::class);
 
-        $input = 'This is my very looong ingredient';
+        $input = 'This is veeeeery long ingredient that is not acceptable to our system';
         new Ingredient($input);
     }
 }
