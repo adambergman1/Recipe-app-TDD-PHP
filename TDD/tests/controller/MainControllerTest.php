@@ -2,10 +2,12 @@
 
 include_once("../../src/controller/MainController.php");
 
-class MainControllerTest extends PHPUnit\Framework\TestCase {
-    
+class MainControllerTest extends PHPUnit\Framework\TestCase
+{
+
     /** @test */
-    function shouldInitializeApp () {
+    function shouldInitializeApp()
+    {
         $app = new MainController();
         $actual = $app->run();
         $expected = "<p>Hello world</p>";
