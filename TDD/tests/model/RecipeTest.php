@@ -58,7 +58,7 @@ class RecipeTest extends TestCase
     /** @test */
     public function test()
     {
-        // var_dump($this->instruction);
+        var_dump($this->instruction);
         foreach ($this->instructionsCollection->getInstructions() as $key) {
             echo $key->getInstruction();
             $this->assertFalse($key->isCompleted());
