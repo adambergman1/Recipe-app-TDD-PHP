@@ -9,6 +9,11 @@ class Instruction
         if (empty($instruction)) {
             throw new EmptyInstructionException();
         }
+
+        if (str_word_count($instruction) < 2) {
+            throw new Exception();
+        }
+
         $this->instruction = $instruction;
     }
 
