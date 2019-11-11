@@ -7,6 +7,11 @@ class Measurement
 
     public function __construct(string $measure)
     {
+        $this->validateMeasurement($measure);
+    }
+
+    private function validateMeasurement(string $measure)
+    {
         if (!in_array($measure, $this->measurementList)) {
             throw new NotAValidMeasurementException();
         } else {
