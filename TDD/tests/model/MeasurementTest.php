@@ -1,5 +1,7 @@
 <?php
 
+include_once("../../src/model/Measurement.php");
+
 class MeasurementTest extends PHPUnit\Framework\TestCase
 {
 
@@ -12,6 +14,6 @@ class MeasurementTest extends PHPUnit\Framework\TestCase
 
         $expected = 'dl';
 
-        assertEquals($actual, $expected);
+        $this->assertEquals($actual, $expected);
     }
 }

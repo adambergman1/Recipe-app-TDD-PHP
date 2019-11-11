@@ -2,5 +2,5 @@ Main Controller
  [x] Should initialize app
 
 Measurement
- [ ] Should accept correct measurement
+ [x] Should accept correct measurement
 
