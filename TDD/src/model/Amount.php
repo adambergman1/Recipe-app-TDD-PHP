@@ -8,6 +8,8 @@ class Amount
     {
         if ($amount >= 100) {
             throw new TooLargeAmountException();
+        } else if ($amount <= 0) {
+            throw new Exception();
         }
         $this->amount = $amount;
     }
