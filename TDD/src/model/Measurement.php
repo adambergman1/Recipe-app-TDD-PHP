@@ -2,7 +2,7 @@
 
 class Measurement
 {
-    private $measurementList = array('dl', 'kg', 'g', 'cl', 'tbsp', 'tsp', 'ml', 'l', 'hg');
+    private $measurementList = array('dl', 'kg', 'g', 'cl', 'tbsp', 'tsp', 'ml', 'l', 'hg', 'pcs');
     private $measurement;
 
     public function __construct(string $measure)
