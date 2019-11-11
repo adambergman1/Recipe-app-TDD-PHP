@@ -7,11 +7,8 @@ class InstructionsCollection
 
     public function addInstruction(Instruction $toBeSaved): void
     {
-
         $this->validateCollectionLength();
-        if (in_array($toBeSaved, $this->instructions)) {
-            throw new InstructionDuplicationException();
-        }
+        $this->validateCollectionDuplicate($toBeSaved);
         $this->instructions[] = $toBeSaved;
     }
 
@@ -20,10 +17,17 @@ class InstructionsCollection
         return $this->instructions;
     }
 
-    private function validateCollectionLength()
+    private function validateCollectionLength(): void
     {
         if (count($this->instructions) > $this->maxInstructions) {
             throw new TooManyInstructionsException();
+        }
+    }
+
+    private function validateCollectionDuplicate(Instruction $validate): void
+    {
+        if (in_array($validate, $this->instructions)) {
+            throw new InstructionDuplicationException();
         }
     }
 }
