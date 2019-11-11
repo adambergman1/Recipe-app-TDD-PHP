@@ -7,7 +7,7 @@ class Instruction
     public function __construct(string $instruction)
     {
         if (empty($instruction)) {
-            throw new Exception();
+            throw new EmptyInstructionException();
         }
         $this->instruction = $instruction;
     }

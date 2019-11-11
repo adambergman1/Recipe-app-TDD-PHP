@@ -19,7 +19,7 @@ class InstructionTest extends TestCase
     /** @test */
     function shouldThrowExceptionOnEmptyInstruction()
     {
-        $this->expectException(Exception::class);
+        $this->expectException(EmptyInstructionException::class);
 
         $input = '';
         new Instruction($input);
