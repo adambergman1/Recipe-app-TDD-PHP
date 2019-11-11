@@ -3,6 +3,7 @@
 class Instruction
 {
     private $instruction;
+    private $isCompleted = false;
 
     public function __construct(string $instruction)
     {
@@ -29,5 +30,10 @@ class Instruction
     public function getInstruction(): string
     {
         return $this->instruction;
+    }
+
+    public function isCompleted()
+    {
+        return $this->isCompleted;
     }
 }

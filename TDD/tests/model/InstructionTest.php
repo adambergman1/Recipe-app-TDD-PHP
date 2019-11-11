@@ -47,7 +47,7 @@ class InstructionTest extends TestCase
     function shouldHaveFalseBooleanOnInstantiation()
     {
         $sut = new Instruction('My instruction');
-        $actual = $sut->getIsCompleted();
+        $actual = $sut->isCompleted();
 
         $this->assertFalse($actual);
     }
