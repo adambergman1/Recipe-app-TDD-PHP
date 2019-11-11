@@ -1,7 +1,6 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use TheSeer\Tokenizer\Exception;
 
 class IngredientTest extends TestCase
 {
@@ -32,6 +31,15 @@ class IngredientTest extends TestCase
         $this->expectException(TooShortIngredientException::class);
 
         $input = 'Pe';
+        new Ingredient($input);
+    }
+
+    /** @test */
+    function shouldThrowExceptionOnIngredientIncludingNumbers()
+    {
+        $this->expectException(Exception::class);
+
+        $input = '2 mjölkprdukter';
         new Ingredient($input);
     }
 }
