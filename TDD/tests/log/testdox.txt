@@ -14,7 +14,7 @@ Ingredient
 
 Instruction
  [x] Should accept instruction
- [ ] Should throw exception on empty instruction
+ [x] Should throw exception on empty instruction
 
 Measurement
  [x] Should accept correct measurement
