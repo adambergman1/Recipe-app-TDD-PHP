@@ -39,7 +39,7 @@ class IngredientTest extends TestCase
     {
         $this->expectException(Exception::class);
 
-        $input = '2 mjölkprdukter';
+        $input = '3 milk products';
         new Ingredient($input);
     }
 }

@@ -6,6 +6,9 @@ class Ingredient
 
     public function __construct(string $ingredient)
     {
+        if (preg_match('~[0-9]~', $ingredient)) {
+            throw new Exception();
+        }
         $this->validateLength($ingredient);
     }
 
