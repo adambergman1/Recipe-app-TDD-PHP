@@ -1,6 +1,9 @@
 Main Controller
  [x] Should initialize app
 
+Amount
+ [ ] Should accept correct amount
+
 Measurement
  [x] Should accept correct measurement
  [x] Should throw exception on invalid measurement
