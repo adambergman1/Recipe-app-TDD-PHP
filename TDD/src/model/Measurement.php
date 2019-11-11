@@ -10,7 +10,7 @@ class Measurement
         $this->validateMeasurement($measure);
     }
 
-    private function validateMeasurement(string $measure)
+    private function validateMeasurement(string $measure): void
     {
         if (!in_array($measure, $this->measurementList)) {
             throw new NotAValidMeasurementException();
@@ -19,7 +19,7 @@ class Measurement
         }
     }
 
-    public function getMeasurement()
+    public function getMeasurement(): string
     {
         return $this->measurement;
     }
