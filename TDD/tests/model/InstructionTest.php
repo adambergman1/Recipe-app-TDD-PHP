@@ -63,8 +63,19 @@ class InstructionTest extends TestCase
     {
         $input = true;
         $this->instruction->setCompleted($input);
-        $actual = $this->instruction->isCompleted($input);
+        $actual = $this->instruction->isCompleted();
 
         $this->assertTrue($actual);
+    }
+
+    /** @test */
+    function shouldHaveFalseBooleanOnChangedState()
+    {
+        $input = true;
+        $this->instruction->setCompleted($input);
+
+        $actual = $this->instruction->isCompleted();
+
+        $this->assertFalse($actual);
     }
 }
