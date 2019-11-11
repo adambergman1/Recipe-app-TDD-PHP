@@ -28,3 +28,6 @@ class InstructionContainsTooFewWordsException extends Exception
 
 class InstructionContainsTooManyCharactersException extends Exception
 { }
+
+class TooManyInstructionsException extends Exception
+{ }

@@ -6,6 +6,10 @@ class InstructionsCollection
 
     public function addInstruction(Instruction $toBeSaved): void
     {
+        if (count($this->instructions) > 50) {
+            throw new TooManyInstructionsException();
+        }
+
         $this->instructions[] = $toBeSaved;
     }
 
