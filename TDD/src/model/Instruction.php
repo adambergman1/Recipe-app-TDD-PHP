@@ -36,4 +36,9 @@ class Instruction
     {
         return $this->isCompleted;
     }
+
+    public function setCompleted(bool $toBeSet)
+    {
+        $this->isCompleted = $toBeSet;
+    }
 }

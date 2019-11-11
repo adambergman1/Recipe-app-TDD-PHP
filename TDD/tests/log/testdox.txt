@@ -18,7 +18,7 @@ Instruction
  [x] Should throw exception on instruction shorter than two words
  [x] Should throw exception on instruction longer than 500 characters
  [x] Should have false boolean on instantiation
- [ ] Should have true boolean on changed state
+ [x] Should have true boolean on changed state
 
 Measurement
  [x] Should accept correct measurement

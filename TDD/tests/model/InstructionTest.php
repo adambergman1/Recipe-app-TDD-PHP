@@ -57,7 +57,8 @@ class InstructionTest extends TestCase
     {
         $sut = new Instruction('My instruction');
         $input = true;
-        $actual = $sut->setCompleted($input);
+        $sut->setCompleted($input);
+        $actual = $sut->isCompleted($input);
 
         $this->assertTrue($actual);
     }
