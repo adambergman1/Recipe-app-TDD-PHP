@@ -7,7 +7,7 @@ class Amount
     public function __construct(float $amount)
     {
         if ($amount >= 100 || $amount <= 0) {
-            throw new Exception();
+            throw new TooLargeAmountException();
         }
         $this->amount = $amount;
     }
