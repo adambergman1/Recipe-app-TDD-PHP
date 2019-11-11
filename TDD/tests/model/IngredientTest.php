@@ -25,4 +25,13 @@ class IngredientTest extends TestCase
         $input = 'This is a veeeeery long ingredient that is not acceptable to our system';
         new Ingredient($input);
     }
+
+    /** @test */
+    function shouldThrowExceptionOnIngredientShorterThan2Characters()
+    {
+        $this->expectException(TooShortIngredientException::class);
+
+        $input = 'Po';
+        new Ingredient($input);
+    }
 }
