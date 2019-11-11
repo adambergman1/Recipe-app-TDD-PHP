@@ -11,7 +11,7 @@ class Instruction
         }
 
         if (str_word_count($instruction) < 2) {
-            throw new Exception();
+            throw new InstructionContainsTooFewWordsException();
         }
 
         $this->instruction = $instruction;

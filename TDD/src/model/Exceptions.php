@@ -22,3 +22,6 @@ class IngredientContainsNumbersException extends Exception
 
 class EmptyInstructionException extends Exception
 { }
+
+class InstructionContainsTooFewWordsException extends Exception
+{ }
