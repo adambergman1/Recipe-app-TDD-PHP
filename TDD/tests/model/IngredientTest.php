@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use TheSeer\Tokenizer\Exception;
 
 class IngredientTest extends TestCase
 {
@@ -19,9 +20,9 @@ class IngredientTest extends TestCase
     /** @test */
     function shouldThrowExceptionOnIngredientLongerThan60Characters()
     {
-        $this->expectException(Exception::class);
+        $this->expectException(TooLongIngredientException::class);
 
-        $input = 'This is veeeeery long ingredient that is not acceptable to our system';
+        $input = 'This is a veeeeery long ingredient that is not acceptable to our system';
         new Ingredient($input);
     }
 }

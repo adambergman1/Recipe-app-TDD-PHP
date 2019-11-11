@@ -12,7 +12,7 @@ class Ingredient
     private function validateLength(string $ingredient): void
     {
         if (strlen($ingredient) >= 60) {
-            throw new Exception();
+            throw new TooLongIngredientException();
         }
         $this->ingredient = $ingredient;
     }
