@@ -3,4 +3,5 @@ Main Controller
 
 Measurement
  [x] Should accept correct measurement
+ [ ] Should throw exception on invalid measurement
 

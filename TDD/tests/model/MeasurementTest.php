@@ -16,4 +16,13 @@ class MeasurementTest extends PHPUnit\Framework\TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    function shouldThrowExceptionOnInvalidMeasurement()
+    {
+        $this->expectException(NotAValidMeasurementException::class);
+
+        $input = 'hej';
+        new Measurement($input);
+    }
 }
