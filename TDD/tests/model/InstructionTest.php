@@ -74,6 +74,9 @@ class InstructionTest extends TestCase
         $input = true;
         $this->instruction->setCompleted($input);
 
+        $input = false;
+        $this->instruction->setCompleted($input);
+
         $actual = $this->instruction->isCompleted();
 
         $this->assertFalse($actual);
