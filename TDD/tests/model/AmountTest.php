@@ -22,4 +22,12 @@ class AmountTest extends PHPUnit\Framework\TestCase
         $input = 101;
         new Amount($input);
     }
+
+    /** @test */
+    function shouldThrowExceptionOnTooSmallAmount()
+    {
+        $this->expectException(Exception::class);
+        $input = -1;
+        new Amount($input);
+    }
 }

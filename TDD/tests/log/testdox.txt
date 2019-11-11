@@ -4,6 +4,7 @@ Main Controller
 Amount
  [x] Should accept correct amount
  [x] Should throw exception on too large amount
+ [ ] Should throw exception on too small amount
 
 Measurement
  [x] Should accept correct measurement
