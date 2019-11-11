@@ -39,10 +39,8 @@ class InstructionCollectionTest extends TestCase
         $this->sut->addInstruction(new Instruction("Melt butter"));
         $this->sut->addInstruction(new Instruction("Put potatoes in oven"));
         $this->sut->addInstruction(new Instruction("Cook rice"));
-        $this->sut->addInstruction(new Instruction("Take out potatoes from oven"));
 
-
-        $actual = $this->sut->countInstructions();
+        $actual = count($this->sut->getInstructions());
 
         $expected = 10;
 
