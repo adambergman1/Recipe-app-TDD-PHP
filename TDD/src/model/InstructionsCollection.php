@@ -7,7 +7,11 @@ class InstructionsCollection
 
     public function addInstruction(Instruction $toBeSaved): void
     {
+
         $this->validateCollectionLength();
+        if (in_array($toBeSaved, $this->instructions)) {
+            throw new InstructionDuplicationException();
+        }
         $this->instructions[] = $toBeSaved;
     }
 

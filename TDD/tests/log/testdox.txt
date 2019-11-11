@@ -25,7 +25,7 @@ Instruction Collection
  [x] Should add instruction to collection
  [x] Should be able to hold 10 instructions
  [x] Collection should not hold more than 50 instructions
- [ ] Should throw expection on same instruction
+ [x] Should throw expection on same instruction
 
 Measurement
  [x] Should accept correct measurement

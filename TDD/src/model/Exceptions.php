@@ -31,3 +31,6 @@ class InstructionContainsTooManyCharactersException extends Exception
 
 class TooManyInstructionsException extends Exception
 { }
+
+class InstructionDuplicationException extends Exception
+{ }
