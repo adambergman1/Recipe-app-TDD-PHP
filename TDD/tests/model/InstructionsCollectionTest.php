@@ -59,4 +59,13 @@ class InstructionCollectionTest extends TestCase
             $this->sut->addInstruction(new Instruction($randomWord));
         }
     }
+
+    /** @test */
+    public function shouldThrowExpectionOnSameInstruction()
+    {
+        $this->expectException(InstructionDuplicationException::class);
+
+        $this->sut->addInstruction($this->instruction);
+        $this->sut->addInstruction($this->instruction);
+    }
 }
