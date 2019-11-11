@@ -24,6 +24,7 @@ Instruction
 Instruction Collection
  [x] Should add instruction to collection
  [x] Should be able to hold 10 instructions
+ [ ] Collection should not hold more than 50 instructions
 
 Measurement
  [x] Should accept correct measurement

@@ -46,4 +46,17 @@ class InstructionCollectionTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    public function collectionShouldNotHoldMoreThan50Instructions()
+    {
+        $this->expectException(TooManyInstructionsException::class);
+
+        $randomWord = str_shuffle("This is a testing word");
+
+        $maxInstructions = 51;
+        for ($i = 0; $i < $maxInstructions; $i++) {
+            $this->sut->addInstruction(new Instruction($randomWord));
+        }
+    }
 }
