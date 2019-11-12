@@ -4,6 +4,7 @@ class Recipe
 {
     private $title;
     private $ingredients = array();
+    private $servings;
 
     public function __construct(string $title)
     {
@@ -28,5 +29,15 @@ class Recipe
     public function getIngredients(): array
     {
         return $this->ingredients;
+    }
+
+    public function setServings(int $toBeSaved): void
+    {
+        $this->servings = $toBeSaved;
+    }
+
+    public function getServings(): int
+    {
+        return $this->servings;
     }
 }

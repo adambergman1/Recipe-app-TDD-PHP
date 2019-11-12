@@ -37,5 +37,5 @@ Recipe
  [x] Should set recipe title
  [x] Should set first title character to uppercase
  [x] Should add ingredient
- [ ] Should set number of servings
+ [x] Should set number of servings
 
