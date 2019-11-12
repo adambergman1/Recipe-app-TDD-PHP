@@ -42,4 +42,5 @@ Recipe
  [x] Should not be able to set incorrect tag
  [x] Should set instructions
  [x] Shouldbe able to set author
+ [ ] Should throw exception on author contains numbers
 

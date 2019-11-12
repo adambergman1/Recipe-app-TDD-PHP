@@ -136,4 +136,12 @@ class RecipeTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    public function shouldThrowExceptionOnAuthorContainsNumbers()
+    {
+        $this->expectException(Exception::class);
+        $input = "2 Morberg";
+        $this->sut->setAuthor($input);
+    }
 }
