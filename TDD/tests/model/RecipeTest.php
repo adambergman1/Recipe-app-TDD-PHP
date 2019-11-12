@@ -40,7 +40,6 @@ class RecipeTest extends TestCase
             ->willReturn(false);
 
         $this->instructionsCollection = $this->getMockBuilder("InstructionsCollection")
-            ->disableOriginalClone()
             ->setMethods(["getInstructions"])
             ->getMock();
 
@@ -117,7 +116,8 @@ class RecipeTest extends TestCase
     {
         $this->sut->addInstructions($this->instructionsCollection);
 
-        $ingredients = $this->sut->getInstructions();
+        $ingredientsCollection = $this->sut->getInstructions();
+        $ingredients = $ingredientsCollection->getInstructions();
         $actual = $ingredients[0]->getInstruction();
         $expected = "Cook fish";
 

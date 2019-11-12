@@ -4,6 +4,7 @@ class Recipe
 {
     private $title;
     private $ingredients = array();
+    private $instructions = array();
     private $servings;
     private $tag;
     private $validTags = array("Breakfast", "Lunch", "Dinner");
@@ -31,6 +32,16 @@ class Recipe
     public function getIngredients(): array
     {
         return $this->ingredients;
+    }
+
+    public function addInstructions(InstructionsCollection $toBeSaved)
+    {
+        $this->instructions = $toBeSaved;
+    }
+
+    public function getInstructions()
+    {
+        return $this->instructions;
     }
 
     public function setServings(int $toBeSaved): void
