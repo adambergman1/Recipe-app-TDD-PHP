@@ -5,6 +5,7 @@ class Recipe
     private $title;
     private $ingredients = array();
     private $servings;
+    private $tag;
 
     public function __construct(string $title)
     {
@@ -39,5 +40,15 @@ class Recipe
     public function getServings(): int
     {
         return $this->servings;
+    }
+
+    public function setTagName(string $toBeSaved): void
+    {
+        $this->tag = $toBeSaved;
+    }
+
+    public function getTagName(): string
+    {
+        return $this->tag;
     }
 }

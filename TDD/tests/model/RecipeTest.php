@@ -9,9 +9,12 @@ class RecipeTest extends TestCase
     protected $measurement;
     protected $instruction;
     protected $instructionsCollection;
+    protected $sut;
 
     public function setUp(): void
     {
+        $this->sut = new Recipe("My new recipe");
+
         $this->ingredient = $this->getMockBuilder("Ingredient")
             ->setConstructorArgs(["flour"])
             ->setMethods(["getName", "getAmount", "getMeasurement"])
@@ -48,9 +51,7 @@ class RecipeTest extends TestCase
     /** @test */
     public function shouldSetRecipeTitle()
     {
-        $input = "My new recipe";
-        $sut = new Recipe($input);
-        $actual = $sut->getTitle();
+        $actual = $this->sut->getTitle();
 
         $expected = "My new recipe";
 
@@ -72,10 +73,9 @@ class RecipeTest extends TestCase
     /** @test */
     public function shouldAddIngredient()
     {
-        $sut = new Recipe("My new recipe");
-        $sut->addIngredient($this->ingredient);
+        $this->sut->addIngredient($this->ingredient);
 
-        $actual = $sut->getIngredients();
+        $actual = $this->sut->getIngredients();
 
         $this->assertInstanceOf(Ingredient::class, $actual[0]);
     }
@@ -83,13 +83,23 @@ class RecipeTest extends TestCase
     /** @test */
     public function shouldSetNumberOfServings()
     {
-        $sut = new Recipe("My new recipe");
-
         $input = 4;
-        $sut->setServings($input);
+        $this->sut->setServings($input);
 
-        $actual = $sut->getServings();
+        $actual = $this->sut->getServings();
         $expected = 4;
+
+        $this->assertEquals($actual, $expected);
+    }
+
+    /** @test */
+    public function shouldSetTagName()
+    {
+        $input = "Lunch";
+        $this->sut->setTagName($input);
+
+        $actual = $this->sut->getTagName();
+        $expected = "Lunch";
 
         $this->assertEquals($actual, $expected);
     }
