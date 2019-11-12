@@ -140,7 +140,7 @@ class RecipeTest extends TestCase
     /** @test */
     public function shouldThrowExceptionOnAuthorContainsNumbers()
     {
-        $this->expectException(Exception::class);
+        $this->expectException(ContainsNumbersException::class);
         $input = "2 Morberg";
         $this->sut->setAuthor($input);
     }

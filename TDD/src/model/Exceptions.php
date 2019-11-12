@@ -17,7 +17,7 @@ class TooLongIngredientException extends Exception
 class TooShortIngredientException extends Exception
 { }
 
-class IngredientContainsNumbersException extends Exception
+class ContainsNumbersException extends Exception
 { }
 
 class EmptyInstructionException extends Exception

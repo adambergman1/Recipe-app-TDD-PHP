@@ -26,13 +26,17 @@ class Recipe
         return $this->title;
     }
 
-    public function setAuthor($toBeSaved): void
+    public function setAuthor(string $toBeSaved): void
     {
-        if (preg_match('~[0-9]~', $toBeSaved)) {
-            throw new Exception();
-        }
-
+        $this->validateStringContainingNumbers($toBeSaved);
         $this->author = $toBeSaved;
+    }
+
+    private function validateStringContainingNumbers(string $value): void
+    {
+        if (preg_match('~[0-9]~', $value)) {
+            throw new ContainsNumbersException();
+        }
     }
 
     public function getAuthor(): string

@@ -82,7 +82,7 @@ class IngredientTest extends TestCase
     /** @test */
     function shouldThrowExceptionOnIngredientIncludingNumbers()
     {
-        $this->expectException(IngredientContainsNumbersException::class);
+        $this->expectException(ContainsNumbersException::class);
 
         $input = '3 milk products';
         new Ingredient($input);

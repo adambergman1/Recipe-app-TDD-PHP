@@ -22,7 +22,7 @@ class Ingredient
             throw new TooShortIngredientException();
         }
         if (preg_match('~[0-9]~', $name)) {
-            throw new IngredientContainsNumbersException();
+            throw new ContainsNumbersException();
         }
         $this->name = $name;
     }
