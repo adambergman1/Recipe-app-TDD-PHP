@@ -66,4 +66,16 @@ class RecipeTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    public function shouldSetFirstTitleCharacterToUppercase()
+    {
+        $input = "my new title";
+        $sut = new Recipe($input);
+        $actual = $sut->getTitle();
+
+        $expected = "My new recipe";
+
+        $this->assertEquals($actual, $expected);
+    }
 }

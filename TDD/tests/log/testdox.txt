@@ -24,7 +24,7 @@ Instruction
 Instruction Collection
  [x] Should add instruction to collection
  [x] Should be able to hold 10 instructions
- [x] Collection should not hold more than 50 instructions
+ [ ] Collection should not hold more than 50 instructions
  [x] Should throw expection on same instruction
 
 Measurement
@@ -33,4 +33,5 @@ Measurement
 
 Recipe
  [x] Should set recipe title
+ [ ] Should set first title character to uppercase
 
