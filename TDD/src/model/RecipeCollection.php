@@ -8,4 +8,14 @@ class RecipeCollection
     {
         return count($this->recipes);
     }
+
+    public function addRecipe(Recipe $toBeSaved)
+    {
+        $this->recipes[] = $toBeSaved;
+    }
+
+    public function getRecipes(): array
+    {
+        return $this->recipes;
+    }
 }
