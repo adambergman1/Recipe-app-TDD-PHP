@@ -34,7 +34,7 @@ Measurement
  [x] Should throw exception on invalid measurement
 
 Recipe Collection
- [ ] Should return number of recipes
+ [x] Should return number of recipes
 
 Recipe
  [x] Should set recipe title

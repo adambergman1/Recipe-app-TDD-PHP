@@ -8,10 +8,10 @@ class RecipeCollectionTest extends TestCase
     public function shouldReturnNumberOfRecipes()
     {
         $sut = new RecipeCollection();
-        $actual = $sut->getNumRecipes();
+        $actual = $sut->getNumberOfRecipes();
 
         $expected = 0;
 
-        $this->assertCount($expected, $actual);
+        $this->assertEquals($expected, $actual);
     }
 }
