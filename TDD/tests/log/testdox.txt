@@ -9,7 +9,7 @@ Amount
 Ingredient
  [x] Should return name from ingredient
  [x] Should return amount from ingredient
- [ ] Should return measurement from ingredient
+ [x] Should return measurement from ingredient
  [x] Should throw exception on ingredient longer than 60 characters
  [x] Should throw exception on ingredient shorter than 2 characters
  [x] Should throw exception on ingredient including numbers

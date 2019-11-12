@@ -4,11 +4,13 @@ class Ingredient
 {
     private $name;
     private $amount;
+    private $measurement;
 
-    public function __construct(string $name, Amount $amount = null)
+    public function __construct(string $name, Amount $amount = null, Measurement $measure = null)
     {
         $this->validateName($name);
         $this->amount = $amount;
+        $this->measurement = $measure;
     }
 
     private function validateName(string $name): void
@@ -33,5 +35,10 @@ class Ingredient
     public function getAmount(): float
     {
         return $this->amount->getAmount();
+    }
+
+    public function getMeasurement(): string
+    {
+        return $this->measurement->getMeasurement();
     }
 }
