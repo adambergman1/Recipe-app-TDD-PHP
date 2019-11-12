@@ -2,36 +2,29 @@
 
 class Ingredient
 {
-    private $ingredient;
     private $name;
 
-    public function __construct(string $ingredient)
+    public function __construct(string $name)
     {
-        $this->validateIngredient($ingredient);
+        $this->validateName($name);
     }
 
-    private function validateIngredient(string $ingredient): void
+    private function validateName(string $name): void
     {
-        if (strlen($ingredient) >= 60) {
+        if (strlen($name) >= 60) {
             throw new TooLongIngredientException();
         }
-        if (strlen($ingredient) <= 2) {
+        if (strlen($name) <= 2) {
             throw new TooShortIngredientException();
         }
-        if (preg_match('~[0-9]~', $ingredient)) {
+        if (preg_match('~[0-9]~', $name)) {
             throw new IngredientContainsNumbersException();
         }
-        $this->ingredient = $ingredient;
-        $this->name = $ingredient;
+        $this->name = $name;
     }
 
     public function getName(): string
     {
         return $this->name;
-    }
-
-    public function getIngredient(): string
-    {
-        return $this->ingredient;
     }
 }
