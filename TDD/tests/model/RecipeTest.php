@@ -12,29 +12,35 @@ class RecipeTest extends TestCase
 
     public function setUp(): void
     {
-        $this->amount = $this->getMockBuilder("Amount")
-            ->setConstructorArgs([2.3])
-            ->setMethods(["getAmount"])
-            ->getMock();
+        // $this->amount = $this->getMockBuilder("Amount")
+        //     ->setConstructorArgs([2.3])
+        //     ->setMethods(["getAmount"])
+        //     ->getMock();
 
-        $this->amount->method("getAmount")
-            ->willReturn(2.3);
+        // $this->amount->method("getAmount")
+        //    ->willReturn(2.3);
 
         $this->ingredient = $this->getMockBuilder("Ingredient")
             ->setConstructorArgs(["flour"])
-            ->setMethods(["getIngredient"])
+            ->setMethods(["getName", "getAmount", "getMeasurement"])
             ->getMock();
 
-        $this->ingredient->method("getIngredient")
+        $this->ingredient->method("getName")
             ->willReturn("flour");
 
-        $this->measurement = $this->getMockBuilder("Measurement")
-            ->setConstructorArgs(["dl"])
-            ->setMethods(["getMeasurement"])
-            ->getMock();
+        $this->ingredient->method("getAmount")
+            ->willReturn(2.3);
 
-        $this->measurement->method("getMeasurement")
+        $this->ingredient->method("getMeasurement")
             ->willReturn("dl");
+
+        // $this->measurement = $this->getMockBuilder("Measurement")
+        //     ->setConstructorArgs(["dl"])
+        //     ->setMethods(["getMeasurement"])
+        //     ->getMock();
+
+        // $this->measurement->method("getMeasurement")
+        //    ->willReturn("dl");
 
         $this->instruction = $this->getMockBuilder("Instruction")
             ->setConstructorArgs(["Cook fish"])
@@ -96,5 +102,16 @@ class RecipeTest extends TestCase
 
         $this->assertContains($expectedAmount, $actual[0]);
         $this->assertContains($expectedMeasurement, $actual[0]);
+    }
+
+    /** @test */
+    public function shouldHaveIngredientAsKey()
+    {
+        $sut = new Recipe("My new recipe");
+        $sut->addIngredient($this->ingredient);
+
+        $actual = $sut->getIngredients();
+
+        $this->assertInstanceOf(Ingredient::class, $actual[0]);
     }
 }
