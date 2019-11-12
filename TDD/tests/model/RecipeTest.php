@@ -74,7 +74,7 @@ class RecipeTest extends TestCase
         $sut = new Recipe($input);
         $actual = $sut->getTitle();
 
-        $expected = "My new recipe";
+        $expected = "My new title";
 
         $this->assertEquals($actual, $expected);
     }
