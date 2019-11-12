@@ -32,9 +32,6 @@ class RecipeCollectionTest extends TestCase
         $this->assertInstanceOf(Recipe::class, $actual);
     }
 
-    // Get all recipe titles
-
-    // Filtrera tags
     /** @test */
     public function shouldFilterRecipesByTag()
     {
@@ -55,5 +52,25 @@ class RecipeCollectionTest extends TestCase
 
         $this->assertContains($recipeMock, $actual);
         $this->assertNotContains($recipeMock2, $actual);
+    }
+
+    /** @test */
+    public function shouldReturnAllRecipeTitles()
+    {
+        $recipeMock = $this->createMock(Recipe::class);
+        $recipeMock->method('getTitle')
+            ->willReturn('First recipe');
+
+        $recipeMock2 = $this->createMock(Recipe::class);
+        $recipeMock2->method('getTitle')
+            ->willReturn('Second recipe');
+
+        $this->sut->addRecipe($recipeMock);
+        $this->sut->addRecipe($recipeMock2);
+
+        $actual = $this->sut->getAllRecipeTitles();
+        $expected = ["First recipe", "Second recipe"];
+
+        $this->assertEquals($actual, $expected);
     }
 }

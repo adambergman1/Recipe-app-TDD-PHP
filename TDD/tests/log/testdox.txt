@@ -37,6 +37,7 @@ Recipe Collection
  [x] Should return number of recipes
  [x] Should add recipe
  [x] Should filter recipes by tag
+ [ ] Should return all recipe titles
 
 Recipe
  [x] Should set recipe title
