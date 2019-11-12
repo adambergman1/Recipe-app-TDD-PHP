@@ -6,7 +6,12 @@ class Recipe
 
     public function __construct(string $title)
     {
-        $this->title = ucfirst($title);
+        $this->title = $this->setFirstCharacterToUppercase($title);
+    }
+
+    private function setFirstCharacterToUppercase(string $title): string
+    {
+        return ucfirst($title);
     }
 
     public function getTitle(): string
