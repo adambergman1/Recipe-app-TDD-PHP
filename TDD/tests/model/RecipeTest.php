@@ -86,26 +86,7 @@ class RecipeTest extends TestCase
     }
 
     /** @test */
-    // public function shouldAddIngredient()
-    // {
-    //     $sut = new Recipe("My new recipe");
-    //     $sut->addIngredient($this->amount, $this->measurement, $this->ingredient);
-
-    //     $actual = $sut->getIngredients();
-
-    //     $expectedAmount = 2.3;
-    //     $expectedMeasurement = "dl";
-
-    //     $this->assertArrayHasKey('amount', $actual[0]);
-    //     $this->assertArrayHasKey('measurement', $actual[0]);
-    //     $this->assertArrayHasKey('ingredient', $actual[0]);
-
-    //     $this->assertContains($expectedAmount, $actual[0]);
-    //     $this->assertContains($expectedMeasurement, $actual[0]);
-    // }
-
-    /** @test */
-    public function shouldHaveIngredientAsKey()
+    public function shouldAddIngredient()
     {
         $sut = new Recipe("My new recipe");
         $sut->addIngredient($this->ingredient);

@@ -22,7 +22,6 @@ class Recipe
 
     public function addIngredient(Ingredient $ingredient): void
     {
-        // $this->ingredients[] = (object) ['amount' => $amount, 'measurement' => $measure, 'ingredient' => $ingredient];
         $this->ingredients[] = $ingredient;
     }
 
