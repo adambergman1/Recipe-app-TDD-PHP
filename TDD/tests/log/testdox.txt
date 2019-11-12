@@ -40,4 +40,5 @@ Recipe
  [x] Should set number of servings
  [x] Should set tag name
  [x] Should not be able to set incorrect tag
+ [ ] Should set instructions
 

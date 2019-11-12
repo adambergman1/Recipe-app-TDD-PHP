@@ -111,4 +111,16 @@ class RecipeTest extends TestCase
         $input = "Fika";
         $this->sut->setTagName($input);
     }
+
+    /** @test */
+    public function shouldSetInstructions()
+    {
+        $this->sut->addInstructions($this->instructionsCollection);
+
+        $ingredients = $this->sut->getInstructions();
+        $actual = $ingredients[0]->getInstruction();
+        $expected = "Cook fish";
+
+        $this->assertEquals($expected, $actual);
+    }
 }
