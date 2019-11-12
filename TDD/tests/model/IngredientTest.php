@@ -50,6 +50,18 @@ class IngredientTest extends TestCase
     }
 
     /** @test */
+    function shouldReturnMeasurementFromIngredient()
+    {
+        $name = 'Juice';
+
+        $sut = new Ingredient($name, $this->amount, $this->measurement);
+        $actual = $sut->getMeasurement();
+
+        $expected = "dl";
+        $this->assertEquals($actual, $expected);
+    }
+
+    /** @test */
     function shouldThrowExceptionOnIngredientLongerThan60Characters()
     {
         $this->expectException(TooLongIngredientException::class);
