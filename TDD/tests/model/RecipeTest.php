@@ -13,12 +13,12 @@ class RecipeTest extends TestCase
     public function setUp(): void
     {
         $this->amount = $this->getMockBuilder("Amount")
-            ->setConstructorArgs([2.0])
+            ->setConstructorArgs([2.3])
             ->setMethods(["getAmount"])
             ->getMock();
 
         $this->amount->method("getAmount")
-            ->willReturn(2.0);
+            ->willReturn(2.3);
 
         $this->ingredient = $this->getMockBuilder("Ingredient")
             ->setConstructorArgs(["flour"])
@@ -87,8 +87,14 @@ class RecipeTest extends TestCase
 
         $actual = $sut->getIngredients();
 
-        $this->assertContains($this->amount, $actual);
-        $this->assertContains($this->measurement, $actual);
-        $this->assertContains($this->ingredient, $actual);
+        $expectedAmount = 2.3;
+        $expectedMeasurement = "dl";
+
+        $this->assertArrayHasKey('amount', $actual[0]);
+        $this->assertArrayHasKey('measurement', $actual[0]);
+        $this->assertArrayHasKey('ingredient', $actual[0]);
+
+        $this->assertContains($expectedAmount, $actual[0]);
+        $this->assertContains($expectedMeasurement, $actual[0]);
     }
 }
