@@ -3,6 +3,7 @@
 class Recipe
 {
     private $title;
+    private $author;
     private $ingredients = array();
     private $instructions;
     private $servings;
@@ -23,6 +24,16 @@ class Recipe
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+    public function setAuthor($toBeSaved)
+    {
+        $this->author = $toBeSaved;
+    }
+
+    public function getAuthor()
+    {
+        return $this->author;
     }
 
     public function addIngredient(Ingredient $ingredient): void

@@ -41,5 +41,5 @@ Recipe
  [x] Should set tag name
  [x] Should not be able to set incorrect tag
  [x] Should set instructions
- [ ] Shouldbe able to set author
+ [x] Shouldbe able to set author
 
