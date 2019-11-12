@@ -7,7 +7,7 @@ Amount
  [x] Should throw exception on too small amount
 
 Ingredient
- [ ] Should accept ingredient with amount and measurement
+ [x] Should accept ingredient with amount and measurement
  [x] Should accept ingredient
  [x] Should throw exception on ingredient longer than 60 characters
  [x] Should throw exception on ingredient shorter than 2 characters

@@ -3,6 +3,7 @@
 class Ingredient
 {
     private $ingredient;
+    private $name;
 
     public function __construct(string $ingredient)
     {
@@ -21,6 +22,12 @@ class Ingredient
             throw new IngredientContainsNumbersException();
         }
         $this->ingredient = $ingredient;
+        $this->name = $ingredient;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     public function getIngredient(): string
