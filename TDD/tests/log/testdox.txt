@@ -32,5 +32,5 @@ Measurement
  [x] Should throw exception on invalid measurement
 
 Recipe
- [ ] Should set recipe title
+ [x] Should set recipe title
 
