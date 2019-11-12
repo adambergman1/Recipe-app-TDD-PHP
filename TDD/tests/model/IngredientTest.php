@@ -27,7 +27,7 @@ class IngredientTest extends TestCase
     }
 
     /** @test */
-    function shouldAcceptIngredientWithOnlyName()
+    function shouldReturnNameFromIngredient()
     {
         $input = 'Potatoes';
 
@@ -38,7 +38,7 @@ class IngredientTest extends TestCase
     }
 
     /** @test */
-    function shouldAcceptIngredientWithNameAndAmount()
+    function shouldReturnAmountFromIngredient()
     {
         $name = 'Cranberry';
 
