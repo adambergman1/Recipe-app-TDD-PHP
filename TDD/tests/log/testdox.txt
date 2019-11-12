@@ -39,5 +39,5 @@ Recipe
  [x] Should add ingredient
  [x] Should set number of servings
  [x] Should set tag name
- [ ] Should not be able to set incorrect tag
+ [x] Should not be able to set incorrect tag
 

@@ -6,6 +6,7 @@ class Recipe
     private $ingredients = array();
     private $servings;
     private $tag;
+    private $validTags = array("Breakfast", "Lunch", "Dinner");
 
     public function __construct(string $title)
     {
@@ -44,6 +45,10 @@ class Recipe
 
     public function setTagName(string $toBeSaved): void
     {
+        if (!in_array($toBeSaved, $this->validTags)) {
+            throw new Exception();
+        }
+
         $this->tag = $toBeSaved;
     }
 
