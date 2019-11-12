@@ -103,4 +103,12 @@ class RecipeTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    public function shouldNotBeAbleToSetIncorrectTag()
+    {
+        $this->expectException(Exception::class);
+        $input = "Fika";
+        $this->sut->setTagName($input);
+    }
 }
