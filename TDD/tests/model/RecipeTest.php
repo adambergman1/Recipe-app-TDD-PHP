@@ -95,4 +95,18 @@ class RecipeTest extends TestCase
 
         $this->assertInstanceOf(Ingredient::class, $actual[0]);
     }
+
+    /** @test */
+    public function shouldSetNumberOfServings()
+    {
+        $sut = new Recipe("My new recipe");
+
+        $input = 4;
+        $sut->setServings($input);
+
+        $actual = $sut->getServings();
+        $expected = 4;
+
+        $this->assertEquals($actual, $expected);
+    }
 }
