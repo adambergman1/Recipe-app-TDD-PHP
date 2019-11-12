@@ -34,4 +34,5 @@ Measurement
 Recipe
  [x] Should set recipe title
  [x] Should set first title character to uppercase
+ [ ] Should add ingredient
 

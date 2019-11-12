@@ -78,4 +78,17 @@ class RecipeTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    public function shouldAddIngredient()
+    {
+        $sut = new Recipe("My new recipe");
+        $sut->addIngredient($this->amount, $this->measurement, $this->ingredient);
+
+        $actual = $sut->getIngredients();
+
+        $this->assertContains($this->amount, $actual);
+        $this->assertContains($this->measurement, $actual);
+        $this->assertContains($this->ingredient, $actual);
+    }
 }
