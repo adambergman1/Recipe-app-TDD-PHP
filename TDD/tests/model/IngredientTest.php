@@ -27,13 +27,25 @@ class IngredientTest extends TestCase
     }
 
     /** @test */
-    function shouldAcceptIngredientWithAmountAndMeasurement()
+    function shouldAcceptIngredientWithOnlyName()
     {
         $input = 'Potatoes';
 
         $sut = new Ingredient($input);
         $actual = $sut->getName();
         $expected = 'Potatoes';
+        $this->assertEquals($actual, $expected);
+    }
+
+    /** @test */
+    function shouldAcceptIngredientWithNameAndAmount()
+    {
+        $name = 'Cranberry';
+
+        $sut = new Ingredient($name, $this->amount);
+        $actual = $sut->getAmount();
+
+        $expected = 2.3;
         $this->assertEquals($actual, $expected);
     }
 
