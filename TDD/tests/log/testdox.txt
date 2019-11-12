@@ -33,6 +33,9 @@ Measurement
  [x] Should accept correct measurement
  [x] Should throw exception on invalid measurement
 
+Recipe Collection
+ [ ] Should return number of recipes
+
 Recipe
  [x] Should set recipe title
  [x] Should set first title character to uppercase
