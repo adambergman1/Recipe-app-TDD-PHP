@@ -19,7 +19,7 @@ class RecipeCollection
         return $this->recipes;
     }
 
-    public function filterByTag(string $tag)
+    public function filterByTag(string $tag): array
     {
         $recipes = array();
 

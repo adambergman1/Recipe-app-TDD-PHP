@@ -23,7 +23,7 @@ class RecipeCollectionTest extends TestCase
     /** @test */
     public function shouldAddRecipe()
     {
-        $recipeMock = $this->createMock("Recipe");
+        $recipeMock = $this->createMock(Recipe::class);
 
         $this->sut->addRecipe($recipeMock);
         $recipes = $this->sut->getRecipes();
