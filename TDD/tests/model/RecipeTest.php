@@ -132,7 +132,6 @@ class RecipeTest extends TestCase
         $this->sut->setAuthor($input);
 
         $actual = $this->sut->getAuthor();
-
         $expected = "Per Morberg";
 
         $this->assertEquals($actual, $expected);

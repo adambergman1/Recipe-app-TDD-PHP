@@ -26,12 +26,12 @@ class Recipe
         return $this->title;
     }
 
-    public function setAuthor($toBeSaved)
+    public function setAuthor($toBeSaved): void
     {
         $this->author = $toBeSaved;
     }
 
-    public function getAuthor()
+    public function getAuthor(): string
     {
         return $this->author;
     }
@@ -46,7 +46,7 @@ class Recipe
         return $this->ingredients;
     }
 
-    public function addInstructions(InstructionsCollection $toBeSaved)
+    public function addInstructions(InstructionsCollection $toBeSaved): void
     {
         $this->instructions = $toBeSaved;
     }
