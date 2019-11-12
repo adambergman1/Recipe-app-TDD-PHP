@@ -124,4 +124,17 @@ class RecipeTest extends TestCase
 
         $this->assertEquals($expected, $actual);
     }
+
+    /** @test */
+    public function shouldbeAbleToSetAuthor()
+    {
+        $input = "Per Morberg";
+        $this->sut->setAuthor($input);
+
+        $actual = $this->sut->getAuthor();
+
+        $expected = "Per Morberg";
+
+        $this->assertEquals($actual, $expected);
+    }
 }

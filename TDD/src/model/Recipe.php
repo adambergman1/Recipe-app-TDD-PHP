@@ -7,6 +7,7 @@ class Recipe
     private $instructions;
     private $servings;
     private $tag;
+
     private $validTags = array("Breakfast", "Lunch", "Dinner");
 
     public function __construct(string $title)
