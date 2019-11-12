@@ -46,7 +46,7 @@ class Recipe
     public function setTagName(string $toBeSaved): void
     {
         if (!in_array($toBeSaved, $this->validTags)) {
-            throw new Exception();
+            throw new IncorrectTagException();
         }
 
         $this->tag = $toBeSaved;

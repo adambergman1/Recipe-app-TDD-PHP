@@ -107,7 +107,7 @@ class RecipeTest extends TestCase
     /** @test */
     public function shouldNotBeAbleToSetIncorrectTag()
     {
-        $this->expectException(Exception::class);
+        $this->expectException(IncorrectTagException::class);
         $input = "Fika";
         $this->sut->setTagName($input);
     }

@@ -34,3 +34,6 @@ class TooManyInstructionsException extends Exception
 
 class InstructionDuplicationException extends Exception
 { }
+
+class IncorrectTagException extends Exception
+{ }
