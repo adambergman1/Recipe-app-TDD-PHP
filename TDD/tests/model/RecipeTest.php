@@ -119,6 +119,7 @@ class RecipeTest extends TestCase
         $ingredientsCollection = $this->sut->getInstructions();
         $ingredients = $ingredientsCollection->getInstructions();
         $actual = $ingredients[0]->getInstruction();
+
         $expected = "Cook fish";
 
         $this->assertEquals($expected, $actual);
