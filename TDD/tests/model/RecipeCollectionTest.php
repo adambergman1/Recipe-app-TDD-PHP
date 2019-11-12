@@ -19,4 +19,16 @@ class RecipeCollectionTest extends TestCase
 
         $this->assertEquals($expected, $actual);
     }
+
+    /** @test */
+    public function shouldAddRecipe()
+    {
+        $recipeMock = $this->createMock("Recipe");
+
+        $this->sut->addRecipe($recipeMock);
+
+        $actual = $this->sut->getRecipes();
+
+        $this->assertInstanceOf(Recipe::class, $actual[0]);
+    }
 }

@@ -35,6 +35,7 @@ Measurement
 
 Recipe Collection
  [x] Should return number of recipes
+ [ ] Should add recipe
 
 Recipe
  [x] Should set recipe title
