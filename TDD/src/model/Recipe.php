@@ -28,6 +28,10 @@ class Recipe
 
     public function setAuthor($toBeSaved): void
     {
+        if (preg_match('~[0-9]~', $toBeSaved)) {
+            throw new Exception();
+        }
+
         $this->author = $toBeSaved;
     }
 
