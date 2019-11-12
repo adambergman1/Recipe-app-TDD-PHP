@@ -12,14 +12,6 @@ class RecipeTest extends TestCase
 
     public function setUp(): void
     {
-        // $this->amount = $this->getMockBuilder("Amount")
-        //     ->setConstructorArgs([2.3])
-        //     ->setMethods(["getAmount"])
-        //     ->getMock();
-
-        // $this->amount->method("getAmount")
-        //    ->willReturn(2.3);
-
         $this->ingredient = $this->getMockBuilder("Ingredient")
             ->setConstructorArgs(["flour"])
             ->setMethods(["getName", "getAmount", "getMeasurement"])
@@ -33,14 +25,6 @@ class RecipeTest extends TestCase
 
         $this->ingredient->method("getMeasurement")
             ->willReturn("dl");
-
-        // $this->measurement = $this->getMockBuilder("Measurement")
-        //     ->setConstructorArgs(["dl"])
-        //     ->setMethods(["getMeasurement"])
-        //     ->getMock();
-
-        // $this->measurement->method("getMeasurement")
-        //    ->willReturn("dl");
 
         $this->instruction = $this->getMockBuilder("Instruction")
             ->setConstructorArgs(["Cook fish"])
