@@ -20,14 +20,10 @@ class Recipe
         return $this->title;
     }
 
-    public function addIngredient(Amount $amount, Measurement $measure, Ingredient $ingredient): void
+    public function addIngredient(Ingredient $ingredient): void
     {
         // $this->ingredients[] = (object) ['amount' => $amount, 'measurement' => $measure, 'ingredient' => $ingredient];
-        $this->ingredients[] = array(
-            "amount" => $amount->getAmount(),
-            "measurement" => $measure->getMeasurement(),
-            "ingredient" => $ingredient
-        );
+        $this->ingredients[] = $ingredient;
     }
 
     public function getIngredients(): array
