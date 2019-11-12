@@ -26,9 +26,9 @@ class RecipeCollectionTest extends TestCase
         $recipeMock = $this->createMock("Recipe");
 
         $this->sut->addRecipe($recipeMock);
+        $recipes = $this->sut->getRecipes();
+        $actual = $recipes[0];
 
-        $actual = $this->sut->getRecipes();
-
-        $this->assertInstanceOf(Recipe::class, $actual[0]);
+        $this->assertInstanceOf(Recipe::class, $actual);
     }
 }
