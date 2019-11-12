@@ -32,7 +32,7 @@ class RecipeCollection
         return $recipes;
     }
 
-    public function getAllRecipeTitles()
+    public function getAllRecipeTitles(): array
     {
         $titles = array();
 

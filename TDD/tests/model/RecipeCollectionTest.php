@@ -23,7 +23,7 @@ class RecipeCollectionTest extends TestCase
     /** @test */
     public function shouldAddRecipe()
     {
-        $recipeMock = $this->createMock(Recipe::class);
+        $recipeMock = $this->getRecipeStub();
 
         $this->sut->addRecipe($recipeMock);
         $recipes = $this->sut->getRecipes();
@@ -35,11 +35,11 @@ class RecipeCollectionTest extends TestCase
     /** @test */
     public function shouldFilterRecipesByTag()
     {
-        $recipeMock = $this->createMock(Recipe::class);
+        $recipeMock = $this->getRecipeStub();
         $recipeMock->method('getTagName')
             ->willReturn('Lunch');
 
-        $recipeMock2 = $this->createMock(Recipe::class);
+        $recipeMock2 = $this->getRecipeStub();
         $recipeMock2->method('getTagName')
             ->willReturn('Dinner');
 
@@ -57,11 +57,11 @@ class RecipeCollectionTest extends TestCase
     /** @test */
     public function shouldReturnAllRecipeTitles()
     {
-        $recipeMock = $this->createMock(Recipe::class);
+        $recipeMock = $this->getRecipeStub();
         $recipeMock->method('getTitle')
             ->willReturn('First recipe');
 
-        $recipeMock2 = $this->createMock(Recipe::class);
+        $recipeMock2 = $this->getRecipeStub();
         $recipeMock2->method('getTitle')
             ->willReturn('Second recipe');
 
@@ -72,5 +72,10 @@ class RecipeCollectionTest extends TestCase
         $expected = ["First recipe", "Second recipe"];
 
         $this->assertEquals($actual, $expected);
+    }
+
+    private function getRecipeStub()
+    {
+        return $this->createMock(Recipe::class);
     }
 }
