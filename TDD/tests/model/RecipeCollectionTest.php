@@ -46,9 +46,14 @@ class RecipeCollectionTest extends TestCase
         $recipeMock2->method('getTagName')
             ->willReturn('Dinner');
 
+        $this->sut->addRecipe($recipeMock);
+        $this->sut->addRecipe($recipeMock2);
+
         $input = "Lunch";
+
         $actual = $this->sut->filterByTag($input);
 
         $this->assertContains($recipeMock, $actual);
+        $this->assertNotContains($recipeMock2, $actual);
     }
 }

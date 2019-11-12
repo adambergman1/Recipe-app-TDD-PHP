@@ -18,4 +18,17 @@ class RecipeCollection
     {
         return $this->recipes;
     }
+
+    public function filterByTag(string $tag)
+    {
+        $recipes = array();
+
+        foreach ($this->recipes as $recipe) {
+            if ($recipe->getTagName() == $tag) {
+                $recipes[] = $recipe;
+            }
+        }
+
+        return $recipes;
+    }
 }
