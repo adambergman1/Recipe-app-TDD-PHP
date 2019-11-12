@@ -3,10 +3,12 @@
 class Ingredient
 {
     private $name;
+    private $amount;
 
-    public function __construct(string $name)
+    public function __construct(string $name, Amount $amount = null)
     {
         $this->validateName($name);
+        $this->amount = $amount;
     }
 
     private function validateName(string $name): void
@@ -26,5 +28,10 @@ class Ingredient
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getAmount(): float
+    {
+        return $this->amount->getAmount();
     }
 }
