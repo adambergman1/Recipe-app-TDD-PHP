@@ -9,7 +9,7 @@ class InstructionCollectionTest extends TestCase
 
     public function setUp(): void
     {
-        $this->instruction = new Instruction('Set oven to 200°');
+        $this->instruction = $this->createMock(Instruction::class);
         $this->sut = new InstructionsCollection();
     }
 
@@ -30,21 +30,35 @@ class InstructionCollectionTest extends TestCase
     public function shouldBeAbleToHold10Instructions()
     {
         $this->sut->addInstruction($this->instruction);
-        $this->sut->addInstruction(new Instruction("Peal Potatoes"));
-        $this->sut->addInstruction(new Instruction("Chop onions"));
-        $this->sut->addInstruction(new Instruction("Fry the fish"));
-        $this->sut->addInstruction(new Instruction("Rost onions"));
-        $this->sut->addInstruction(new Instruction("Chop salad"));
-        $this->sut->addInstruction(new Instruction("Heat garlic"));
-        $this->sut->addInstruction(new Instruction("Melt butter"));
-        $this->sut->addInstruction(new Instruction("Put potatoes in oven"));
-        $this->sut->addInstruction(new Instruction("Cook rice"));
+        $this->sut->addInstruction($this->getInstructionMockWithRandomTitle());
+        $this->sut->addInstruction($this->getInstructionMockWithRandomTitle());
+        $this->sut->addInstruction($this->getInstructionMockWithRandomTitle());
+        $this->sut->addInstruction($this->getInstructionMockWithRandomTitle());
+        $this->sut->addInstruction($this->getInstructionMockWithRandomTitle());
+        $this->sut->addInstruction($this->getInstructionMockWithRandomTitle());
+        $this->sut->addInstruction($this->getInstructionMockWithRandomTitle());
+        $this->sut->addInstruction($this->getInstructionMockWithRandomTitle());
+        $this->sut->addInstruction($this->getInstructionMockWithRandomTitle());
 
         $actual = count($this->sut->getInstructions());
 
         $expected = 10;
 
         $this->assertEquals($actual, $expected);
+    }
+
+    private function getInstructionMockWithRandomTitle()
+    {
+        $randomWord = str_shuffle("This is an instruction that should be unique since it is random");
+        $mock = $this->getMockBuilder(Instruction::class)
+            ->setConstructorArgs([$randomWord])
+            ->setMethods(["getInstruction"])
+            ->getMock();
+
+        $mock->method("getInstruction")
+            ->willReturn($randomWord);
+
+        return $mock;
     }
 
     /** @test */
@@ -54,8 +68,7 @@ class InstructionCollectionTest extends TestCase
 
         $maxInstructions = 51;
         for ($i = 0; $i <= $maxInstructions; $i++) {
-            $randomWord = str_shuffle("This is a testing word");
-            $this->sut->addInstruction(new Instruction($randomWord));
+            $this->sut->addInstruction($this->getInstructionMockWithRandomTitle());
         }
     }
 
