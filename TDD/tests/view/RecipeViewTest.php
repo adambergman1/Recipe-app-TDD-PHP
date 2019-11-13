@@ -104,4 +104,12 @@ class RecipeViewTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    public function shouldHaveTitleAsInputFieldInGenerateOutput()
+    {
+        $actual = $this->sut->generateOutput();
+        $expected = '<input type="text" name="title" placeholder="Title"/>';
+        $this->assertContains($actual, $expected);
+    }
 }
