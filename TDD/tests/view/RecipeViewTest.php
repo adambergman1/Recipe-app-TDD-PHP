@@ -150,4 +150,11 @@ class RecipeViewTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    public function shouldRespondIfUserWantsToAddIngredient()
+    {
+        $actual = $this->sut->userWantsToAddIngredient();
+        $this->assertTrue($actual);
+    }
 }
