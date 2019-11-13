@@ -60,7 +60,7 @@ class RecipeView
         ';
     }
 
-    public function generateFormStart()
+    public function generateFormStart(): string
     {
         return '
             <form method="get" class="add-recipe-form">
