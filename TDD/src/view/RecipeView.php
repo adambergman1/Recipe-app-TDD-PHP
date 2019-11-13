@@ -67,6 +67,11 @@ class RecipeView
         ';
     }
 
+    public function generateAddIngredientButton()
+    {
+        return '<input type="button" value="+"/>';
+    }
+
     public function generateInstructionInput(): string
     {
         return '
