@@ -7,7 +7,7 @@ class RecipeView
         return "<h1>Cook book</h1>";
     }
 
-    public function generateFirstRecipeSection()
+    public function generateFirstRecipeSection(): string
     {
         return '
         <input type="text" name="title" placeholder="Title"/>
@@ -32,11 +32,11 @@ class RecipeView
         ';
     }
 
-    public function generateIngredientInput()
+    public function generateIngredientInput(): string
     {
         return '
-            <input type="text" name="ingredient" placeholder="Ingredient" value="" />
-            <input type="number" name="amount" placeholder="Amount" value="" />
+            <input type="text" name="ingredient" placeholder="Ingredient" />
+            <input type="number" name="amount" placeholder="Amount" />
 
             <select name="measurement" id="measurement">
                 <option value="dl">dl</option>

@@ -50,8 +50,8 @@ class RecipeViewTest extends TestCase
         $sut = new RecipeView();
         $actual = $sut->generateIngredientInput();
         $expected = '
-            <input type="text" name="ingredient" placeholder="Ingredient" value="" />
-            <input type="number" name="amount" placeholder="Amount" value="" />
+            <input type="text" name="ingredient" placeholder="Ingredient" />
+            <input type="number" name="amount" placeholder="Amount" />
 
             <select name="measurement" id="measurement">
                 <option value="dl">dl</option>
