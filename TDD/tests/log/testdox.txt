@@ -54,5 +54,5 @@ Recipe View
  [x] Should generate html title
  [x] Should generate first recipe section
  [x] Should generate ingredient input
- [ ] Should generate instruction input
+ [x] Should generate instruction input
 

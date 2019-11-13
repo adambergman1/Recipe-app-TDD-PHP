@@ -52,4 +52,11 @@ class RecipeView
             </select>
         ';
     }
+
+    public function generateInstructionInput()
+    {
+        return '
+            <textarea name="instruction" id="instruction" placeholder="Write instructions, for example: Set the oven to 200 degrees" rows="3"></textarea>
+        ';
+    }
 }
