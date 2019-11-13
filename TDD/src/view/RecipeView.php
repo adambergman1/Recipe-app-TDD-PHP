@@ -59,4 +59,11 @@ class RecipeView
             <textarea name="instruction" id="instruction" placeholder="Write instructions, for example: Set the oven to 200 degrees" rows="3"></textarea>
         ';
     }
+
+    public function generateFormStart()
+    {
+        return '
+            <form method="get" class="add-recipe-form">
+        ';
+    }
 }
