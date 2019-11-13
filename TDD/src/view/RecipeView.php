@@ -11,6 +11,7 @@ class RecipeView
         $ret .= $this->generateIngredientInput();
         $ret .= $this->generateInstructionInput();
         $ret .= $this->generateFormEnd();
+
         echo $ret;
     }
 

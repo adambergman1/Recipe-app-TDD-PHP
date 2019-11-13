@@ -127,4 +127,13 @@ class RecipeViewTest extends TestCase
 
         $mock->generateOutput();
     }
+
+    /** @test */
+    public function shouldGenerateAddRecipeButton()
+    {
+        $actual = $this->sut->generateAddRecipeButton();
+        $expected = '<input type="submit" name="submit" value="Submit"/>';
+
+        $this->assertEquals($actual, $expected);
+    }
 }
