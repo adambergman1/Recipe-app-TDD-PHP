@@ -106,10 +106,13 @@ class RecipeViewTest extends TestCase
     }
 
     /** @test */
-    public function shouldHaveTitleAsInputFieldInGenerateOutput()
+    public function shouldCallGeneratefirstrecipesectionInsideGenerateoutput()
     {
-        $actual = $this->sut->generateOutput();
-        $expected = '<input type="text" name="title" placeholder="Title"/>';
-        $this->assertContains($actual, $expected);
+        $mock = $this->getMockBuilder(RecipeView::class)
+            ->setMethods(['generateFirstRecipeSection'])
+            ->getMock();
+        $mock->expects($this->once())->method('generateFirstRecipeSection');
+
+        $mock->generateOutput();
     }
 }
