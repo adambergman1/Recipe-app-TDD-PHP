@@ -95,4 +95,13 @@ class RecipeViewTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    public function shouldGenerateFormEnd()
+    {
+        $actual = $this->sut->generateFormEnd();
+        $expected = '</form>';
+
+        $this->assertEquals($actual, $expected);
+    }
 }
