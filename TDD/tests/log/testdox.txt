@@ -51,5 +51,6 @@ Recipe
  [x] Should throw exception on author contains numbers
 
 Recipe View
- [x] Generate html title should return title
+ [x] Should generate html title
+ [ ] Should generate first recipe section
 
