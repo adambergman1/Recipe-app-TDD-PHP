@@ -4,11 +4,17 @@ use PHPUnit\Framework\TestCase;
 
 class RecipeViewTest extends TestCase
 {
+    protected $sut;
+
+    public function setUp(): void
+    {
+        $this->sut = new RecipeView();
+    }
+
     /** @test */
     public function shouldGenerateHtmlTitle()
     {
-        $sut = new RecipeView();
-        $actual =   $sut->generateHTMLTitle();
+        $actual =   $this->sut->generateHTMLTitle();
         $expected = "<h1>Cook book</h1>";
 
         $this->assertEquals($actual, $expected);
@@ -17,8 +23,7 @@ class RecipeViewTest extends TestCase
     /** @test */
     public function shouldGenerateFirstRecipeSection()
     {
-        $sut = new RecipeView();
-        $actual = $sut->generateFirstRecipeSection();
+        $actual = $this->sut->generateFirstRecipeSection();
         $expected = '
         <input type="text" name="title" placeholder="Title"/>
         <input type="text" name="author" placeholder="Author"/>
@@ -47,8 +52,7 @@ class RecipeViewTest extends TestCase
     /** @test */
     public function shouldGenerateIngredientInput()
     {
-        $sut = new RecipeView();
-        $actual = $sut->generateIngredientInput();
+        $actual = $this->sut->generateIngredientInput();
         $expected = '
             <input type="text" name="ingredient" placeholder="Ingredient" />
             <input type="number" name="amount" placeholder="Amount" />
@@ -73,8 +77,7 @@ class RecipeViewTest extends TestCase
     /** @test */
     public function shouldGenerateInstructionInput()
     {
-        $sut = new RecipeView();
-        $actual = $sut->generateInstructionInput();
+        $actual = $this->sut->generateInstructionInput();
         $expected = '
             <textarea name="instruction" id="instruction" placeholder="Write instructions, for example: Set the oven to 200 degrees" rows="3"></textarea>
         ';
