@@ -84,4 +84,9 @@ class RecipeView
     {
         return '</form>';
     }
+
+    public function generateAddRecipeButton()
+    {
+        return '<input type="submit" name="submit" value="Submit"/>';
+    }
 }
