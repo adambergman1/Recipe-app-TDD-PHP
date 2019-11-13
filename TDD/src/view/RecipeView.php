@@ -96,4 +96,9 @@ class RecipeView
     {
         return '<input type="submit" name="submit" value="Add recipe"/>';
     }
+
+    public function userWantsToAddIngredient()
+    {
+        return isset($_GET["?addIngredient"]);
+    }
 }

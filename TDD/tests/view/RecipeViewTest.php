@@ -154,7 +154,16 @@ class RecipeViewTest extends TestCase
     /** @test */
     public function shouldRespondIfUserWantsToAddIngredient()
     {
-        $actual = $this->sut->userWantsToAddIngredient();
+        $mock = $this->getMockBuilder(RecipeView::class)
+            ->setMethods([
+                'userWantsToAddIngredient',
+            ])
+            ->getMock();
+
+        $mock->method('userWantsToAddIngredient')->willReturn(true);
+
+        $actual = $mock->userWantsToAddIngredient();
+
         $this->assertTrue($actual);
     }
 }

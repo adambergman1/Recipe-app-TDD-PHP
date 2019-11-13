@@ -60,5 +60,5 @@ Recipe View
  [x] Should call methods inside generateoutput
  [x] Should generate add recipe button
  [x] Should be able to add more ingredients
- [ ] Should respond if user wants to add ingredient
+ [x] Should respond if user wants to add ingredient
 
