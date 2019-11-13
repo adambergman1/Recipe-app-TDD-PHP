@@ -56,5 +56,5 @@ Recipe View
  [x] Should generate ingredient input
  [x] Should generate instruction input
  [x] Should generate form start
- [ ] Should generate form end
+ [x] Should generate form end
 

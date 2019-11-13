@@ -66,4 +66,9 @@ class RecipeView
             <form method="get" class="add-recipe-form">
         ';
     }
+
+    public function generateFormEnd()
+    {
+        return '</form>';
+    }
 }
