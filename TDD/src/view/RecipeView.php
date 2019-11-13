@@ -10,8 +10,8 @@ class RecipeView
     public function generateFirstRecipeSection()
     {
         return '
-        <input type="text" name="title" placeholder="Title" value=""/>
-        <input type="text" name="author" placeholder="Author" value=""/>
+        <input type="text" name="title" placeholder="Title"/>
+        <input type="text" name="author" placeholder="Author"/>
 
         <label for="servings">Servings:</label>
         <select id="servings">
