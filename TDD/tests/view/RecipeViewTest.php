@@ -9,7 +9,7 @@ class RecipeViewTest extends TestCase
     {
         $sut = new RecipeView();
         $actual =   $sut->generateHTMLTitle();
-        $expected = "<h1>Hello world!</h1>";
+        $expected = "<h1>Cook book</h1>";
 
         $this->assertEquals($actual, $expected);
     }
