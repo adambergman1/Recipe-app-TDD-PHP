@@ -51,5 +51,5 @@ Recipe
  [x] Should throw exception on author contains numbers
 
 Recipe View
- [ ] Echo h t m l should render input
+ [x] Generate html title should return title
 
