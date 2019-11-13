@@ -67,7 +67,7 @@ class RecipeView
         ';
     }
 
-    public function generateFormEnd()
+    public function generateFormEnd(): string
     {
         return '</form>';
     }
