@@ -3,9 +3,10 @@
 class RecipeView
 {
 
-    public function generateOutput()
+    public function generateOutput(): void
     {
-        echo $this->generateFirstRecipeSection();
+        $ret = $this->generateFirstRecipeSection();
+        echo $ret;
     }
 
     public function generateHTMLTitle(): string
