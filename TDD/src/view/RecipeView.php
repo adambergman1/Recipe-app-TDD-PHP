@@ -70,7 +70,7 @@ class RecipeView
 
     public function generateAddIngredientButton(): string
     {
-        return '<input class="add-ingredient-btn" type="button" value="+"/>';
+        return '<a href="?addIngredient" class="add-ingredient-btn"><input class="add-ingredient-btn" type="button" value="+"/></a>';
     }
 
     public function generateInstructionInput(): string
@@ -92,12 +92,12 @@ class RecipeView
         return '</form>';
     }
 
-    public function generateAddRecipeButton()
+    public function generateAddRecipeButton(): string
     {
         return '<input type="submit" name="submit" value="Add recipe"/>';
     }
 
-    public function userWantsToAddIngredient()
+    public function userWantsToAddIngredient(): bool
     {
         return isset($_GET["?addIngredient"]);
     }

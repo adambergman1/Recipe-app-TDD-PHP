@@ -146,7 +146,7 @@ class RecipeViewTest extends TestCase
     public function shouldBeAbleToAddMoreIngredients()
     {
         $actual = $this->sut->generateAddIngredientButton();
-        $expected = '<input class="add-ingredient-btn" type="button" value="+"/>';
+        $expected = '<a href="?addIngredient" class="add-ingredient-btn"><input class="add-ingredient-btn" type="button" value="+"/></a>';
 
         $this->assertEquals($actual, $expected);
     }
