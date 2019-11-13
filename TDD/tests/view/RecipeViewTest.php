@@ -139,4 +139,13 @@ class RecipeViewTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    public function shouldBeAbleToAddMoreIngredients()
+    {
+        $actual = $this->sut->generateAddIngredientButton();
+        $expected = '<input type="button" value="+"/>';
+
+        $this->assertEquals($actual, $expected);
+    }
 }

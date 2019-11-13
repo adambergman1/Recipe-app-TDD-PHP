@@ -59,4 +59,5 @@ Recipe View
  [x] Should generate form end
  [x] Should call methods inside generateoutput
  [x] Should generate add recipe button
+ [ ] Should be able to add more ingredients
 
