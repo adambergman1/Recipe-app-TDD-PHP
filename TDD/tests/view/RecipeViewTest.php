@@ -43,4 +43,30 @@ class RecipeViewTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    public function shouldGenerateIngredientInput()
+    {
+        $sut = new RecipeView();
+        $actual = $sut->generateIngredientInput();
+        $expected = '
+            <input type="text" name="ingredient" placeholder="Ingredient" value="" />
+            <input type="number" name="amount" placeholder="Amount" value="" />
+
+            <select name="measurement" id="measurement">
+                <option value="dl">dl</option>
+                <option value="kg">kg</option>
+                <option value="g">g</option>
+                <option value="cl">cl</option>
+                <option value="tbsp">tbsp</option>
+                <option value="tsp">tsp</option>
+                <option value="ml">ml</option>
+                <option value="l">l</option>
+                <option value="hg">hg</option>
+                <option value="pcs">pcs</option>
+            </select>
+        ';
+
+        $this->assertEquals($actual, $expected);
+    }
 }
