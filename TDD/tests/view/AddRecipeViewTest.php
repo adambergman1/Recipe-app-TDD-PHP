@@ -2,13 +2,13 @@
 
 use PHPUnit\Framework\TestCase;
 
-class RecipeViewTest extends TestCase
+class AddRecipeViewTest extends TestCase
 {
     protected $sut;
 
     public function setUp(): void
     {
-        $this->sut = new RecipeView();
+        $this->sut = new AddRecipeView();
     }
 
     /** @test */
@@ -108,7 +108,7 @@ class RecipeViewTest extends TestCase
     /** @test */
     public function shouldCallMethodsInsideGenerateoutput()
     {
-        $mock = $this->getMockBuilder(RecipeView::class)
+        $mock = $this->getMockBuilder(AddRecipeView::class)
             ->setMethods([
                 'generateHTMLTitle',
                 'generateFormStart',
@@ -154,7 +154,7 @@ class RecipeViewTest extends TestCase
     /** @test */
     public function shouldRespondIfUserWantsToAddIngredient()
     {
-        $mock = $this->getMockBuilder(RecipeView::class)
+        $mock = $this->getMockBuilder(AddRecipeView::class)
             ->setMethods([
                 'userWantsToAddIngredient',
             ])

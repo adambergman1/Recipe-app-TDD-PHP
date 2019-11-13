@@ -1,6 +1,6 @@
 <?php
 
-class RecipeView
+class AddRecipeView
 {
 
     public function generateOutput(): void
@@ -99,6 +99,6 @@ class RecipeView
 
     public function userWantsToAddIngredient(): bool
     {
-        return isset($_GET["?addIngredient"]);
+        return isset($_GET["addIngredient"]);
     }
 }
