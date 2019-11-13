@@ -10,6 +10,7 @@ class RecipeView
         $ret .= $this->generateFirstRecipeSection();
         $ret .= $this->generateIngredientInput();
         $ret .= $this->generateInstructionInput();
+        $ret .= $this->generateAddRecipeButton();
         $ret .= $this->generateFormEnd();
 
         echo $ret;
@@ -87,6 +88,6 @@ class RecipeView
 
     public function generateAddRecipeButton()
     {
-        return '<input type="submit" name="submit" value="Submit"/>';
+        return '<input type="submit" name="submit" value="Add recipe"/>';
     }
 }
