@@ -109,7 +109,14 @@ class RecipeViewTest extends TestCase
     public function shouldCallMethodsInsideGenerateoutput()
     {
         $mock = $this->getMockBuilder(RecipeView::class)
-            ->setMethods(['generateFirstRecipeSection'])
+            ->setMethods([
+                'generateHTMLTitle',
+                'generateFormStart',
+                'generateFirstRecipeSection',
+                'generateIngredientInput',
+                'generateInstructionInput',
+                'generateFormEnd'
+            ])
             ->getMock();
         $mock->expects($this->once())->method('generateHTMLTitle');
         $mock->expects($this->once())->method('generateFormStart');

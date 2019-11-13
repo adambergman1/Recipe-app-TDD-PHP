@@ -5,7 +5,12 @@ class RecipeView
 
     public function generateOutput(): void
     {
-        $ret = $this->generateFirstRecipeSection();
+        $ret = $this->generateHTMLTitle();
+        $ret .= $this->generateFormStart();
+        $ret .= $this->generateFirstRecipeSection();
+        $ret .= $this->generateIngredientInput();
+        $ret .= $this->generateInstructionInput();
+        $ret .= $this->generateFormEnd();
         echo $ret;
     }
 
