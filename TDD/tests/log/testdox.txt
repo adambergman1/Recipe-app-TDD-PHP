@@ -52,5 +52,5 @@ Recipe
 
 Recipe View
  [x] Should generate html title
- [ ] Should generate first recipe section
+ [x] Should generate first recipe section
 
