@@ -15,7 +15,7 @@ class RecipeViewTest extends TestCase
     public function shouldGenerateHtmlTitle()
     {
         $actual =   $this->sut->generateHTMLTitle();
-        $expected = "<h1>Cook book</h1>";
+        $expected = "<h2>Add recipe</h2>";
 
         $this->assertEquals($actual, $expected);
     }
@@ -119,6 +119,7 @@ class RecipeViewTest extends TestCase
                 'generateFormEnd'
             ])
             ->getMock();
+
         $mock->expects($this->once())->method('generateHTMLTitle');
         $mock->expects($this->once())->method('generateFormStart');
         $mock->expects($this->once())->method('generateFirstRecipeSection');

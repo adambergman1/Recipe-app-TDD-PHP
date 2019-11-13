@@ -18,7 +18,7 @@ class RecipeView
 
     public function generateHTMLTitle(): string
     {
-        return "<h1>Cook book</h1>";
+        return "<h2>Add recipe</h2>";
     }
 
     public function generateFirstRecipeSection(): string
