@@ -57,5 +57,5 @@ Recipe View
  [x] Should generate instruction input
  [x] Should generate form start
  [x] Should generate form end
- [x] Should call generatefirstrecipesection inside generateoutput
+ [ ] Should call methods inside generateoutput
 
