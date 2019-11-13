@@ -114,6 +114,7 @@ class RecipeViewTest extends TestCase
                 'generateFormStart',
                 'generateFirstRecipeSection',
                 'generateIngredientInput',
+                'generateAddIngredientButton',
                 'generateInstructionInput',
                 'generateAddRecipeButton',
                 'generateFormEnd'
@@ -124,6 +125,7 @@ class RecipeViewTest extends TestCase
         $mock->expects($this->once())->method('generateFormStart');
         $mock->expects($this->once())->method('generateFirstRecipeSection');
         $mock->expects($this->once())->method('generateIngredientInput');
+        $mock->expects($this->once())->method('generateAddIngredientButton');
         $mock->expects($this->once())->method('generateInstructionInput');
         $mock->expects($this->once())->method('generateAddRecipeButton');
         $mock->expects($this->once())->method('generateFormEnd');
@@ -144,7 +146,7 @@ class RecipeViewTest extends TestCase
     public function shouldBeAbleToAddMoreIngredients()
     {
         $actual = $this->sut->generateAddIngredientButton();
-        $expected = '<input type="button" value="+"/>';
+        $expected = '<input class="add-ingredient-btn" type="button" value="+"/>';
 
         $this->assertEquals($actual, $expected);
     }
