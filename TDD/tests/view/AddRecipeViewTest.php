@@ -122,4 +122,17 @@ class AddRecipeViewTest extends TestCase
         $this->expectException(AuthorMissingException::class);
         $this->sut->addAuthor();
     }
+
+    /** @test */
+    public function shouldAddServings()
+    {
+        $_GET["servings"] = 4;
+
+        $actual = $this->sut->addServings();
+        $expected = 4;
+
+        $this->assertEquals($actual, $expected);
+
+        $_GET["servings"] = "";
+    }
 }
