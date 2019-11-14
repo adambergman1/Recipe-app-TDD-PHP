@@ -73,4 +73,13 @@ class AddRecipeView
             throw new TagMissingException();
         }
     }
+
+    public function addIngredient(): Ingredient
+    {
+        $name = $_GET["ingredient-name1"];
+        $amount = new Amount((float) $_GET["ingredient-amount1"]);
+        $measure = new Measurement($_GET["measurement"]);
+
+        return new Ingredient($name, $amount, $measure);
+    }
 }
