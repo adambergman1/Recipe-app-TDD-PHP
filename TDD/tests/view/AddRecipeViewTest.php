@@ -41,4 +41,20 @@ class AddRecipeViewTest extends TestCase
         $this->expectOutputRegex('/form method="POST"/');
         $this->sut->generateOutput();
     }
+
+    /** @test */
+    public function shouldCallOnRenderAddRecipe()
+    {
+        $mock = $this->getMockBuilder(AddRecipeView::class)
+            ->setMethods([
+                'userWantsToAddRecipe',
+                'generateOutput',
+                'renderAddRecipe'
+            ])
+            ->getMock();
+
+        $mock->method('userWantsToAddRecipe')->willReturn(true);
+        $mock->expects($this->once())->method('renderAddRecipe');
+        $mock->generateOutput();
+    }
 }
