@@ -164,4 +164,20 @@ class AddRecipeViewTest extends TestCase
         $this->expectException(TagMissingException::class);
         $this->sut->addTag();
     }
+
+    /** @test */
+    public function shouldAddIngredient()
+    {
+        $_GET["ingredient-name1"] = "Potatoes";
+        $_GET["ingredient-amount1"] = 2;
+        $_GET["measurement"] = "dl";
+
+        $actual = $this->sut->addIngredient();
+
+        $this->assertInstanceOf(Ingredient::class, $actual);
+
+        $_GET["ingredient-name1"] = "";
+        $_GET["ingredient-amount1"] = "";
+        $_GET["measurement"] = "";
+    }
 }
