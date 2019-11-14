@@ -4,11 +4,17 @@
     <script>
         $(document).ready(function() {
             let count = 1;
-            $("#addIngredientBtn").click(function() {
+            $("#addIngredientBtn").click(() => {
                 $("#ingredient-amount" + count++).parent("div").after(
                     '<div class="ingredient"><input placeholder="Ingredient" id="ingredient-name' +
                     count + '"/><input placeholder="Amount" id="ingredient-amount' + count + '"/> <select><option value="dl">dl</option><option value="kg">kg</option><option value="g">g</option><option value="cl">cl</option><option value="tbsp">tbsp</option><option value="tsp">tsp</option><option value="ml">ml</option><option value="l">l</option><option value="hg">hg</option><option value="pcs">pcs</option></select></div>');
             });
+            let instructionCount = 1;
+            $("#addInstructionBtn").click(() => {
+                $("#instruction" + instructionCount++).parent("div").after(
+                    '<div class="instruction"><textarea name="instruction' + instructionCount + '" id="instruction' + instructionCount + '" placeholder="Write instructions, for example: Set the oven to 200 degrees" cols="50" rows="3"></textarea></div>'
+                )
+            })
         })
     </script>
 </head>
@@ -59,7 +65,12 @@
     <br>
     <!-- Instructions -->
     <h3>Instructions</h3>
-    <textarea name="instruction" id="instruction" placeholder="Write instructions, for example: Set the oven to 200 degrees" cols="50" rows="3"></textarea>
+    <div class="instruction">
+        <textarea name="instruction1" id="instruction1" placeholder="Write instructions, for example: Set the oven to 200 degrees" cols="50" rows="3"></textarea>
+    </div>
+    <div class="add-instruction">
+        <button type="button" id="addInstructionBtn" class="btn btn-success">+</button>
+    </div>
     <br>
     <input type="submit" name="submit" value="Add recipe" />
 </form>

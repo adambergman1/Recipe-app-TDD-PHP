@@ -4,10 +4,13 @@
         printerClass="Codedungeon\PHPUnitPrettyResultPrinter\Printer"
 >
   <filter>
-    <whitelist processUncoveredFilesFromWhitelist="true">
-        <directory suffix=".php">src</directory>
-    </whitelist>
-  </filter>
+  <whitelist processUncoveredFilesFromWhitelist="true">
+    <directory suffix=".php">src</directory>
+    <exclude>
+      <directory suffix=".php">src/view/partials</directory>
+    </exclude>
+  </whitelist>
+</filter>
   <logging>
     <log type="coverage-html" target="tests/log/report" lowUpperBound="35"
       highLowerBound="70"/>

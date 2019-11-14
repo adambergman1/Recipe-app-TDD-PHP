@@ -6,13 +6,11 @@ class AddRecipeView
 
     public function generateOutput(): void
     {
-        $ret = $this->generateAddRecipeBtnForm();
-
         if ($this->userWantsToAddRecipe()) {
             $this->renderAddRecipe();
+        } else {
+            echo $this->generateAddRecipeBtnForm();
         }
-
-        echo $ret;
     }
 
     public function userWantsToAddRecipe(): bool
