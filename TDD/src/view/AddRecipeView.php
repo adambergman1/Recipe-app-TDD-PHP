@@ -7,6 +7,7 @@ class AddRecipeView
     public function generateOutput(): void
     {
         $ret = '';
+
         echo $ret;
     }
 

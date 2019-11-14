@@ -26,4 +26,11 @@ class AddRecipeViewTest extends TestCase
 
         $this->assertTrue($actual);
     }
+
+    /** @test */
+    public function shouldIncludeForm()
+    {
+        $this->expectOutputRegex('/form method="POST"/');
+        $this->sut->generateOutput();
+    }
 }
