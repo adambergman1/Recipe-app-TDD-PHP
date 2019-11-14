@@ -28,6 +28,14 @@ class AddRecipeViewTest extends TestCase
     }
 
     /** @test */
+    public function shouldRespondFalseOnEmptyPost()
+    {
+        $actual = $this->sut->userWantsToAddRecipe();
+
+        $this->assertFalse($actual);
+    }
+
+    /** @test */
     public function shouldIncludeForm()
     {
         $this->expectOutputRegex('/form method="POST"/');

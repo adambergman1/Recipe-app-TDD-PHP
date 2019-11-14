@@ -52,5 +52,6 @@ Recipe
 
 Add Recipe View
  [x] Should respond if user wants to add recipe
+ [x] Should respond false on empty post
  [x] Should include form
 
