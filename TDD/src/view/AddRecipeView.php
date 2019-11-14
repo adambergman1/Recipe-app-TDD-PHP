@@ -8,6 +8,10 @@ class AddRecipeView
     {
         $ret = $this->generateAddRecipeBtnForm();
 
+        if ($this->userWantsToAddRecipe()) {
+            $this->renderAddRecipe();
+        }
+
         echo $ret;
     }
 
@@ -23,5 +27,10 @@ class AddRecipeView
             <input type="submit" name="' . self::$addRecipe . '" value="Add Recipe!" />
         </form>
         ';
+    }
+
+    protected function renderAddRecipe(): void
+    {
+        include_once("partials/addRecipeForm.php");
     }
 }

@@ -54,5 +54,5 @@ Add Recipe View
  [x] Should respond if user wants to add recipe
  [x] Should respond false on empty post
  [x] Should include form
- [ ] Should call on render add recipe
+ [x] Should call on render add recipe
 

@@ -48,13 +48,14 @@ class AddRecipeViewTest extends TestCase
         $mock = $this->getMockBuilder(AddRecipeView::class)
             ->setMethods([
                 'userWantsToAddRecipe',
-                'generateOutput',
                 'renderAddRecipe'
             ])
             ->getMock();
 
         $mock->method('userWantsToAddRecipe')->willReturn(true);
+
         $mock->expects($this->once())->method('renderAddRecipe');
+
         $mock->generateOutput();
     }
 }
