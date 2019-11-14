@@ -57,5 +57,5 @@ Add Recipe View
  [x] Should call on render add recipe
  [x] Should not call on render add recipe
  [x] Should call on include once
- [ ] Should return recipe
+ [x] Should return recipe
 

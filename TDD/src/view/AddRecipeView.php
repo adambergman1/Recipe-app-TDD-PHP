@@ -3,6 +3,7 @@
 class AddRecipeView
 {
     private static $addRecipe = __CLASS__  . 'addRecipe';
+    private $title = "";
 
     public function generateOutput(): void
     {
@@ -30,5 +31,15 @@ class AddRecipeView
     public function renderAddRecipe(): bool
     {
         return include_once("partials/addRecipeForm.php");
+    }
+
+    public function addRecipe(): Recipe
+    {
+        if (!empty($_GET["title"])) {
+            $this->title = $_GET["title"];
+        } else {
+            $this->title = "none";
+        }
+        return new Recipe($this->title);
     }
 }
