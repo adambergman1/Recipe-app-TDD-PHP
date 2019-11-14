@@ -143,4 +143,17 @@ class AddRecipeViewTest extends TestCase
         $this->expectException(ServingsMissingException::class);
         $this->sut->addServings();
     }
+
+    /** @test */
+    public function shouldAddTagLunch()
+    {
+        $_GET["tag"] = "Lunch";
+
+        $actual = $this->sut->addTag();
+        $expected = "Lunch";
+
+        $this->assertEquals($actual, $expected);
+
+        $_GET["tag"] = "";
+    }
 }
