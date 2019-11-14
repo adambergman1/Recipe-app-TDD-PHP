@@ -60,4 +60,5 @@ Add Recipe View
  [x] Should return recipe with title hello
  [x] Should throw exception title is empty
  [x] Should add author
+ [x] Should throw exception author is empty
 

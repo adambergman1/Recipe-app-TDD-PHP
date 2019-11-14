@@ -49,6 +49,10 @@ class AddRecipeView
 
     public function addAuthor(): string
     {
-        return $_GET["author"];
+        if (isset($_GET["author"]) && !empty($_GET["author"])) {
+            return $_GET["author"];
+        } else {
+            throw new AuthorMissingException();
+        }
     }
 }

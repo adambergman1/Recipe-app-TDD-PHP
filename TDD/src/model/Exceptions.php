@@ -40,3 +40,6 @@ class IncorrectTagException extends Exception
 
 class RecipeTitleMissingException extends Exception
 { }
+
+class AuthorMissingException extends Exception
+{ }

@@ -114,4 +114,12 @@ class AddRecipeViewTest extends TestCase
 
         $_GET["author"] = "";
     }
+
+    /** @test */
+    public function shouldThrowExceptionAuthorIsEmpty()
+    {
+        $_GET["author"] = "";
+        $this->expectException(AuthorMissingException::class);
+        $this->sut->addAuthor();
+    }
 }
