@@ -56,5 +56,5 @@ Add Recipe View
  [x] Should include form
  [x] Should call on render add recipe
  [x] Should not call on render add recipe
- [ ] Should call on include once
+ [x] Should call on include once
 

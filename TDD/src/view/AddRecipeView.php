@@ -27,8 +27,8 @@ class AddRecipeView
         ';
     }
 
-    public function renderAddRecipe(): void
+    public function renderAddRecipe(): bool
     {
-        include_once("partials/addRecipeForm.php");
+        return include_once("partials/addRecipeForm.php");
     }
 }
