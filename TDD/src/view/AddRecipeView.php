@@ -46,4 +46,9 @@ class AddRecipeView
             throw new RecipeTitleMissingException();
         }
     }
+
+    public function addAuthor(): string
+    {
+        return $_GET["author"];
+    }
 }
