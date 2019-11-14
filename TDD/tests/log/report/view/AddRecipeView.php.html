@@ -59,7 +59,7 @@
        </div>
 </td>
        <td class="success small"><div align="right">100.00%</div></td>
-       <td class="success small"><div align="right">7&nbsp;/&nbsp;7</div></td>
+       <td class="success small"><div align="right">8&nbsp;/&nbsp;8</div></td>
        <td class="success small"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></td>
        <td class="success big">       <div class="progress">
          <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100.00" aria-valuemin="0" aria-valuemax="100" style="width: 100.00%">
@@ -68,7 +68,7 @@
        </div>
 </td>
        <td class="success small"><div align="right">100.00%</div></td>
-       <td class="success small"><div align="right">15&nbsp;/&nbsp;15</div></td>
+       <td class="success small"><div align="right">16&nbsp;/&nbsp;16</div></td>
       </tr>
 
       <tr>
@@ -88,8 +88,8 @@
        </div>
 </td>
        <td class="success small"><div align="right">100.00%</div></td>
-       <td class="success small"><div align="right">7&nbsp;/&nbsp;7</div></td>
-       <td class="success small">12</td>
+       <td class="success small"><div align="right">8&nbsp;/&nbsp;8</div></td>
+       <td class="success small">13</td>
        <td class="success big">       <div class="progress">
          <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100.00" aria-valuemin="0" aria-valuemax="100" style="width: 100.00%">
            <span class="sr-only">100.00% covered (success)</span>
@@ -97,7 +97,7 @@
        </div>
 </td>
        <td class="success small"><div align="right">100.00%</div></td>
-       <td class="success small"><div align="right">15&nbsp;/&nbsp;15</div></td>
+       <td class="success small"><div align="right">16&nbsp;/&nbsp;16</div></td>
       </tr>
 
       <tr>
@@ -247,6 +247,27 @@
        <td class="success small"><div align="right">3&nbsp;/&nbsp;3</div></td>
       </tr>
 
+      <tr>
+       <td class="success" colspan="4">&nbsp;<a href="#59"><abbr title="addServings(): int">addServings</abbr></a></td>
+       <td class="success big">       <div class="progress">
+         <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100.00" aria-valuemin="0" aria-valuemax="100" style="width: 100.00%">
+           <span class="sr-only">100.00% covered (success)</span>
+         </div>
+       </div>
+</td>
+       <td class="success small"><div align="right">100.00%</div></td>
+       <td class="success small"><div align="right">1&nbsp;/&nbsp;1</div></td>
+       <td class="success small">1</td>
+       <td class="success big">       <div class="progress">
+         <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100.00" aria-valuemin="0" aria-valuemax="100" style="width: 100.00%">
+           <span class="sr-only">100.00% covered (success)</span>
+         </div>
+       </div>
+</td>
+       <td class="success small"><div align="right">100.00%</div></td>
+       <td class="success small"><div align="right">1&nbsp;/&nbsp;1</div></td>
+      </tr>
+
 
      </tbody>
     </table>
@@ -310,7 +331,12 @@
      <tr class="covered-by-large-tests popin"><td data-title="1 test covers line 55" data-content="&lt;ul&gt;&lt;li class=&quot;covered-by-large-tests&quot;&gt;AddRecipeViewTest::shouldThrowExceptionAuthorIsEmpty&lt;/li&gt;&lt;/ul&gt;" data-placement="top" data-html="true"><div align="right"><a name="55"></a><a href="#55">55</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">throw</span><span class="default">&nbsp;</span><span class="keyword">new</span><span class="default">&nbsp;</span><span class="default">AuthorMissingException</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
      <tr><td><div align="right"><a name="56"></a><a href="#56">56</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
      <tr class="warning"><td><div align="right"><a name="57"></a><a href="#57">57</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
-     <tr><td><div align="right"><a name="58"></a><a href="#58">58</a></div></td><td class="codeLine"><span class="keyword">}</span></td></tr>
+     <tr><td><div align="right"><a name="58"></a><a href="#58">58</a></div></td><td class="codeLine"></td></tr>
+     <tr><td><div align="right"><a name="59"></a><a href="#59">59</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">addServings</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">:</span><span class="default">&nbsp;</span><span class="default">int</span></td></tr>
+     <tr><td><div align="right"><a name="60"></a><a href="#60">60</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">{</span></td></tr>
+     <tr class="covered-by-large-tests popin"><td data-title="1 test covers line 61" data-content="&lt;ul&gt;&lt;li class=&quot;covered-by-large-tests&quot;&gt;AddRecipeViewTest::shouldAddServings&lt;/li&gt;&lt;/ul&gt;" data-placement="top" data-html="true"><div align="right"><a name="61"></a><a href="#61">61</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">return</span><span class="default">&nbsp;</span><span class="default">$_GET</span><span class="keyword">[</span><span class="default">&quot;servings&quot;</span><span class="keyword">]</span><span class="keyword">;</span></td></tr>
+     <tr class="warning"><td><div align="right"><a name="62"></a><a href="#62">62</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
+     <tr><td><div align="right"><a name="63"></a><a href="#63">63</a></div></td><td class="codeLine"><span class="keyword">}</span></td></tr>
 
     </tbody>
    </table>
@@ -323,7 +349,7 @@
      <span class="warning"><strong>Dead Code</strong></span>
     </p>
     <p>
-     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 7.0.8</a> using <a href="https://secure.php.net/" target="_top">PHP 7.3.8</a> with <a href="https://xdebug.org/">Xdebug 2.7.2</a> and <a href="https://phpunit.de/">PHPUnit 8.4.3</a> at Thu Nov 14 17:42:10 CET 2019.</small>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 7.0.8</a> using <a href="https://secure.php.net/" target="_top">PHP 7.3.8</a> with <a href="https://xdebug.org/">Xdebug 2.7.2</a> and <a href="https://phpunit.de/">PHPUnit 8.4.3</a> at Thu Nov 14 17:42:41 CET 2019.</small>
     </p>
     <a title="Back to the top" id="toplink" href="#">
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M12 11L6 5l-6 6h12z"/></svg>

@@ -55,4 +55,9 @@ class AddRecipeView
             throw new AuthorMissingException();
         }
     }
+
+    public function addServings(): int
+    {
+        return $_GET["servings"];
+    }
 }
