@@ -58,6 +58,10 @@ class AddRecipeView
 
     public function addServings(): int
     {
-        return $_GET["servings"];
+        if (isset($_GET["servings"]) && !empty($_GET["servings"])) {
+            return $_GET["servings"];
+        } else {
+            throw new ServingsMissingException();
+        }
     }
 }

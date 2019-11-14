@@ -43,3 +43,6 @@ class RecipeTitleMissingException extends Exception
 
 class AuthorMissingException extends Exception
 { }
+
+class ServingsMissingException extends Exception
+{ }

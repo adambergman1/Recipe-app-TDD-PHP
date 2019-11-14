@@ -62,4 +62,5 @@ Add Recipe View
  [x] Should add author
  [x] Should throw exception author is empty
  [x] Should add servings
+ [x] Should throw exception servings missing
 

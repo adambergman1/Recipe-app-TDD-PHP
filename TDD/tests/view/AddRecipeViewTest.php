@@ -126,7 +126,7 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldAddServings()
     {
-        $_GET["servings"] = 4;
+        $_GET["servings"] = "4";
 
         $actual = $this->sut->addServings();
         $expected = 4;
@@ -134,5 +134,13 @@ class AddRecipeViewTest extends TestCase
         $this->assertEquals($actual, $expected);
 
         $_GET["servings"] = "";
+    }
+
+    /** @test */
+    public function shouldThrowExceptionServingsMissing()
+    {
+        $_GET["servings"] = "";
+        $this->expectException(ServingsMissingException::class);
+        $this->sut->addServings();
     }
 }

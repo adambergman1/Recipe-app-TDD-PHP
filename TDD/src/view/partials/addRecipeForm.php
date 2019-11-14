@@ -25,13 +25,13 @@
     <input type="text" name="author" placeholder="Author" />
 
     <label for="servings">Servings:</label>
-    <select id="servings">
-        <option value="two">2</option>
-        <option value="four">4</option>
-        <option value="six">6</option>
-        <option value="eight">8</option>
-        <option value="ten">10</option>
-        <option value="twelve">12</option>
+    <select name="servings" id="servings">
+        <option value="2">2</option>
+        <option value="4">4</option>
+        <option value="6">6</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12">12</option>
     </select>
     <label for="tag">Tag</label>
     <select id="tag">
