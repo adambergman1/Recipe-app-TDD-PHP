@@ -27,7 +27,7 @@ class AddRecipeView
         ';
     }
 
-    protected function renderAddRecipe(): void
+    public function renderAddRecipe(): void
     {
         include_once("partials/addRecipeForm.php");
     }

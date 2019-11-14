@@ -58,4 +58,30 @@ class AddRecipeViewTest extends TestCase
 
         $mock->generateOutput();
     }
+
+    /** @test */
+    public function shouldNotCallOnRenderAddRecipe()
+    {
+        $mock = $this->getMockBuilder(AddRecipeView::class)
+            ->setMethods([
+                'userWantsToAddRecipe',
+                'renderAddRecipe'
+            ])
+            ->getMock();
+
+        $mock->method('userWantsToAddRecipe')->willReturn(false);
+
+        $mock->expects($this->never())->method('renderAddRecipe');
+
+        $mock->generateOutput();
+    }
+
+    /** @test */
+    public function shouldCallOnIncludeOnce()
+    {
+        $actual = $this->sut->renderAddRecipe();
+        $expected = true;
+
+        $this->assertEquals($actual, $expected);
+    }
 }
