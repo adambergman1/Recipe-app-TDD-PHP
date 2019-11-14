@@ -84,4 +84,13 @@ class AddRecipeViewTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    public function shouldReturnRecipe()
+    {
+        $actual = $this->sut->addRecipe();
+        $expected = $this->createMock(Recipe::class);
+
+        $this->assertEquals($actual, $expected);
+    }
 }
