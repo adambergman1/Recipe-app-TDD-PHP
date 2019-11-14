@@ -97,7 +97,21 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldThrowExceptionTitleIsEmpty()
     {
+        $_GET["title"] = "";
         $this->expectException(RecipeTitleMissingException::class);
         $this->sut->addRecipe();
+    }
+
+    /** @test */
+    public function shouldAddAuthor()
+    {
+        $_GET["author"] = "Per Morberg";
+
+        $actual = $this->sut->addAuthor();
+        $expected = "Per Morberg";
+
+        $this->assertEquals($actual, $expected);
+
+        $_GET["author"] = "";
     }
 }
