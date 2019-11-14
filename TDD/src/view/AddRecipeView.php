@@ -64,4 +64,9 @@ class AddRecipeView
             throw new ServingsMissingException();
         }
     }
+
+    public function addTag(): string
+    {
+        return $_GET["tag"];
+    }
 }
