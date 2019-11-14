@@ -6,7 +6,11 @@ class AddRecipeView
 
     public function generateOutput(): void
     {
-        $ret = '';
+        $ret = '
+        <form method="POST">
+            <input type="submit" name="' . self::$addRecipe . '" value="Add Recipe!" />
+        </form>
+        ';
 
         echo $ret;
     }
