@@ -37,3 +37,6 @@ class InstructionDuplicationException extends Exception
 
 class IncorrectTagException extends Exception
 { }
+
+class RecipeTitleMissingException extends Exception
+{ }

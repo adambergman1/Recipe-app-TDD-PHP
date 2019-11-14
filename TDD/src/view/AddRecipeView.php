@@ -2,8 +2,7 @@
 
 class AddRecipeView
 {
-    private static $addRecipe = __CLASS__  . 'addRecipe';
-    private $title = "";
+    protected static $addRecipe = __CLASS__  . 'addRecipe';
 
     public function generateOutput(): void
     {
@@ -35,11 +34,16 @@ class AddRecipeView
 
     public function addRecipe(): Recipe
     {
-        if (!empty($_GET["title"])) {
-            $this->title = $_GET["title"];
+        $title = $this->getTitle();
+        return new Recipe($title);
+    }
+
+    private function getTitle()
+    {
+        if (isset($_GET["title"]) && !empty($_GET["title"])) {
+            return $_GET["title"];
         } else {
-            $this->title = "none";
+            throw new RecipeTitleMissingException();
         }
-        return new Recipe($this->title);
     }
 }

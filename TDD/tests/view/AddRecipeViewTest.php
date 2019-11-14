@@ -86,9 +86,18 @@ class AddRecipeViewTest extends TestCase
     }
 
     /** @test */
-    public function shouldReturnRecipe()
+    public function shouldReturnRecipeWithTitleHello()
     {
+        $_GET["title"] = 'Hello';
         $actual = $this->sut->addRecipe();
         $this->assertInstanceOf(Recipe::class, $actual);
+        $_GET["title"] = "";
+    }
+
+    /** @test */
+    public function shouldThrowExceptionTitleIsEmpty()
+    {
+        $this->expectException(RecipeTitleMissingException::class);
+        $this->sut->addRecipe();
     }
 }
