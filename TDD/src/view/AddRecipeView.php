@@ -67,6 +67,10 @@ class AddRecipeView
 
     public function addTag(): string
     {
-        return $_GET["tag"];
+        if (isset($_GET["tag"]) && !empty($_GET["tag"])) {
+            return $_GET["tag"];
+        } else {
+            throw new TagMissingException();
+        }
     }
 }

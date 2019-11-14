@@ -64,4 +64,5 @@ Add Recipe View
  [x] Should add servings
  [x] Should throw exception servings missing
  [x] Should add tag lunch
+ [x] Should throw exception tag missing
 

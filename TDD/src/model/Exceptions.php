@@ -46,3 +46,6 @@ class AuthorMissingException extends Exception
 
 class ServingsMissingException extends Exception
 { }
+
+class TagMissingException extends Exception
+{ }

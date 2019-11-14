@@ -156,4 +156,12 @@ class AddRecipeViewTest extends TestCase
 
         $_GET["tag"] = "";
     }
+
+    /** @test */
+    public function shouldThrowExceptionTagMissing()
+    {
+        $_GET["tag"] = "";
+        $this->expectException(TagMissingException::class);
+        $this->sut->addTag();
+    }
 }
