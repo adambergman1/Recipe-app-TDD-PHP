@@ -50,9 +50,14 @@
        <td class=" small"><div align="right">n/a</div></td>
        <td class=" small"><div align="right">0&nbsp;/&nbsp;0</div></td>
        <td class=" small"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></td>
-       <td class=" big"></td>
-       <td class=" small"><div align="right">n/a</div></td>
-       <td class=" small"><div align="right">0&nbsp;/&nbsp;0</div></td>
+       <td class="danger big">       <div class="progress">
+         <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="0.00" aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
+           <span class="sr-only">0.00% covered (danger)</span>
+         </div>
+       </div>
+</td>
+       <td class="danger small"><div align="right">0.00%</div></td>
+       <td class="danger small"><div align="right">0&nbsp;/&nbsp;10</div></td>
       </tr>
 
 
@@ -62,6 +67,19 @@
    <table id="code" class="table table-borderless table-condensed">
     <tbody>
      <tr><td><div align="right"><a name="1"></a><a href="#1">1</a></div></td><td class="codeLine"><span class="default">&lt;?php</span></td></tr>
+     <tr class="danger"><td><div align="right"><a name="2"></a><a href="#2">2</a></div></td><td class="codeLine"><span class="default">error_reporting</span><span class="keyword">(</span><span class="default">E_ALL</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+     <tr class="danger"><td><div align="right"><a name="3"></a><a href="#3">3</a></div></td><td class="codeLine"><span class="default">ini_set</span><span class="keyword">(</span><span class="default">'display_errors'</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">'On'</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+     <tr class="danger"><td><div align="right"><a name="4"></a><a href="#4">4</a></div></td><td class="codeLine"><span class="default">ini_set</span><span class="keyword">(</span><span class="default">'display_startup_errors'</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">'On'</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+     <tr><td><div align="right"><a name="5"></a><a href="#5">5</a></div></td><td class="codeLine"></td></tr>
+     <tr class="danger"><td><div align="right"><a name="6"></a><a href="#6">6</a></div></td><td class="codeLine"><span class="keyword">require_once</span><span class="keyword">(</span><span class="default">&quot;view/AddRecipeView.php&quot;</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+     <tr class="danger"><td><div align="right"><a name="7"></a><a href="#7">7</a></div></td><td class="codeLine"><span class="default">ob_start</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+     <tr class="danger"><td><div align="right"><a name="8"></a><a href="#8">8</a></div></td><td class="codeLine"><span class="default">$view</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="keyword">new</span><span class="default">&nbsp;</span><span class="default">AddRecipeView</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+     <tr class="danger"><td><div align="right"><a name="9"></a><a href="#9">9</a></div></td><td class="codeLine"><span class="default">$view</span><span class="default">-&gt;</span><span class="default">generateOutput</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+     <tr class="danger"><td><div align="right"><a name="10"></a><a href="#10">10</a></div></td><td class="codeLine"><span class="default">$content</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">ob_get_contents</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+     <tr class="danger"><td><div align="right"><a name="11"></a><a href="#11">11</a></div></td><td class="codeLine"><span class="default">ob_end_flush</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+     <tr><td><div align="right"><a name="12"></a><a href="#12">12</a></div></td><td class="codeLine"></td></tr>
+     <tr class="danger"><td><div align="right"><a name="13"></a><a href="#13">13</a></div></td><td class="codeLine"><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$content</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+     <tr><td><div align="right"><a name="14"></a><a href="#14">14</a></div></td><td class="codeLine"><span class="comment">//&nbsp;var_dump($view-&gt;userWantsToAddIngredient());</span></td></tr>
 
     </tbody>
    </table>
@@ -74,7 +92,7 @@
      <span class="warning"><strong>Dead Code</strong></span>
     </p>
     <p>
-     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 7.0.8</a> using <a href="https://secure.php.net/" target="_top">PHP 7.3.8</a> with <a href="https://xdebug.org/">Xdebug 2.7.2</a> and <a href="https://phpunit.de/">PHPUnit 8.4.3</a> at Wed Nov 13 19:53:48 CET 2019.</small>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 7.0.8</a> using <a href="https://secure.php.net/" target="_top">PHP 7.3.8</a> with <a href="https://xdebug.org/">Xdebug 2.7.2</a> and <a href="https://phpunit.de/">PHPUnit 8.4.3</a> at Thu Nov 14 10:58:54 CET 2019.</small>
     </p>
     <a title="Back to the top" id="toplink" href="#">
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M12 11L6 5l-6 6h12z"/></svg>

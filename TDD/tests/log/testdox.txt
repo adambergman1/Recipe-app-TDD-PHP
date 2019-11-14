@@ -51,14 +51,5 @@ Recipe
  [x] Should throw exception on author contains numbers
 
 Add Recipe View
- [x] Should generate html title
- [x] Should generate first recipe section
- [x] Should generate ingredient input
- [x] Should generate instruction input
- [x] Should generate form start
- [x] Should generate form end
- [x] Should call methods inside generateoutput
- [x] Should generate add recipe button
- [x] Should be able to add more ingredients
- [x] Should respond if user wants to add ingredient
+ [x] Should respond if user wants to add recipe
 

@@ -2,12 +2,12 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for /Users/adambergman/Github/2dv610/TDD/src/model</title>
+  <title>Dashboard for /Users/adambergman/Github/2dv610/TDD/src/view/partials</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="../_css/nv.d3.min.css" rel="stylesheet" type="text/css">
-  <link href="../_css/style.css" rel="stylesheet" type="text/css">
-  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
+  <link href="../../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../../_css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../../_css/style.css" rel="stylesheet" type="text/css">
+  <link href="../../_css/custom.css" rel="stylesheet" type="text/css">
  </head>
  <body>
   <header>
@@ -16,8 +16,9 @@
      <div class="col-md-12">
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
-         <li class="breadcrumb-item"><a href="../index.html">/Users/adambergman/Github/2dv610/TDD/src</a></li>
-         <li class="breadcrumb-item"><a href="index.html">model</a></li>
+         <li class="breadcrumb-item"><a href="../../index.html">/Users/adambergman/Github/2dv610/TDD/src</a></li>
+         <li class="breadcrumb-item"><a href="../index.html">view</a></li>
+         <li class="breadcrumb-item"><a href="index.html">partials</a></li>
          <li class="breadcrumb-item active">(Dashboard)</li>
 
        </ol>
@@ -140,9 +141,9 @@
     </p>
    </footer>
   </div>
-  <script src="../_js/jquery.min.js" type="text/javascript"></script>
-  <script src="../_js/d3.min.js" type="text/javascript"></script>
-  <script src="../_js/nv.d3.min.js" type="text/javascript"></script>
+  <script src="../../_js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../_js/d3.min.js" type="text/javascript"></script>
+  <script src="../../_js/nv.d3.min.js" type="text/javascript"></script>
   <script type="text/javascript">
 $(document).ready(function() {
   nv.addGraph(function() {
@@ -155,7 +156,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,19], "Class Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -173,7 +174,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,39], "Method Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -223,7 +224,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[100,5,"<a href=\"Amount.php.html#3\">Amount<\/a>"],[100,0,"<a href=\"Exceptions.php.html#5\">NotAValidMeasurementException<\/a>"],[100,0,"<a href=\"Exceptions.php.html#8\">TooLargeAmountException<\/a>"],[100,0,"<a href=\"Exceptions.php.html#11\">TooSmallAmountException<\/a>"],[100,0,"<a href=\"Exceptions.php.html#14\">TooLongIngredientException<\/a>"],[100,0,"<a href=\"Exceptions.php.html#17\">TooShortIngredientException<\/a>"],[100,0,"<a href=\"Exceptions.php.html#20\">ContainsNumbersException<\/a>"],[100,0,"<a href=\"Exceptions.php.html#23\">EmptyInstructionException<\/a>"],[100,0,"<a href=\"Exceptions.php.html#26\">InstructionContainsTooFewWordsException<\/a>"],[100,0,"<a href=\"Exceptions.php.html#29\">InstructionContainsTooManyCharactersException<\/a>"],[100,0,"<a href=\"Exceptions.php.html#32\">TooManyInstructionsException<\/a>"],[100,0,"<a href=\"Exceptions.php.html#35\">InstructionDuplicationException<\/a>"],[100,0,"<a href=\"Exceptions.php.html#38\">IncorrectTagException<\/a>"],[100,8,"<a href=\"Ingredient.php.html#3\">Ingredient<\/a>"],[100,8,"<a href=\"Instruction.php.html#3\">Instruction<\/a>"],[100,6,"<a href=\"InstructionsCollection.php.html#3\">InstructionsCollection<\/a>"],[100,4,"<a href=\"Measurement.php.html#3\">Measurement<\/a>"],[100,16,"<a href=\"Recipe.php.html#3\">Recipe<\/a>"],[100,8,"<a href=\"RecipeCollection.php.html#3\">RecipeCollection<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -247,7 +248,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[100,1,"<a href=\"Amount.php.html#7\">Amount::__construct<\/a>"],[100,3,"<a href=\"Amount.php.html#12\">Amount::validateAmount<\/a>"],[100,1,"<a href=\"Amount.php.html#22\">Amount::getAmount<\/a>"],[100,1,"<a href=\"Ingredient.php.html#9\">Ingredient::__construct<\/a>"],[100,4,"<a href=\"Ingredient.php.html#16\">Ingredient::validateName<\/a>"],[100,1,"<a href=\"Ingredient.php.html#30\">Ingredient::getName<\/a>"],[100,1,"<a href=\"Ingredient.php.html#35\">Ingredient::getAmount<\/a>"],[100,1,"<a href=\"Ingredient.php.html#40\">Ingredient::getMeasurement<\/a>"],[100,1,"<a href=\"Instruction.php.html#8\">Instruction::__construct<\/a>"],[100,4,"<a href=\"Instruction.php.html#13\">Instruction::validateInstruction<\/a>"],[100,1,"<a href=\"Instruction.php.html#30\">Instruction::getInstruction<\/a>"],[100,1,"<a href=\"Instruction.php.html#35\">Instruction::isCompleted<\/a>"],[100,1,"<a href=\"Instruction.php.html#40\">Instruction::setCompleted<\/a>"],[100,1,"<a href=\"InstructionsCollection.php.html#8\">InstructionsCollection::addInstruction<\/a>"],[100,1,"<a href=\"InstructionsCollection.php.html#15\">InstructionsCollection::getInstructions<\/a>"],[100,2,"<a href=\"InstructionsCollection.php.html#20\">InstructionsCollection::validateCollectionLength<\/a>"],[100,2,"<a href=\"InstructionsCollection.php.html#27\">InstructionsCollection::validateCollectionDuplicate<\/a>"],[100,1,"<a href=\"Measurement.php.html#8\">Measurement::__construct<\/a>"],[100,2,"<a href=\"Measurement.php.html#13\">Measurement::validateMeasurement<\/a>"],[100,1,"<a href=\"Measurement.php.html#22\">Measurement::getMeasurement<\/a>"],[100,1,"<a href=\"Recipe.php.html#14\">Recipe::__construct<\/a>"],[100,1,"<a href=\"Recipe.php.html#19\">Recipe::setFirstCharacterToUppercase<\/a>"],[100,1,"<a href=\"Recipe.php.html#24\">Recipe::getTitle<\/a>"],[100,1,"<a href=\"Recipe.php.html#29\">Recipe::setAuthor<\/a>"],[100,2,"<a href=\"Recipe.php.html#35\">Recipe::validateStringContainingNumbers<\/a>"],[100,1,"<a href=\"Recipe.php.html#42\">Recipe::getAuthor<\/a>"],[100,1,"<a href=\"Recipe.php.html#47\">Recipe::addIngredient<\/a>"],[100,1,"<a href=\"Recipe.php.html#52\">Recipe::getIngredients<\/a>"],[100,1,"<a href=\"Recipe.php.html#57\">Recipe::addInstructions<\/a>"],[100,1,"<a href=\"Recipe.php.html#62\">Recipe::getInstructions<\/a>"],[100,1,"<a href=\"Recipe.php.html#67\">Recipe::setServings<\/a>"],[100,1,"<a href=\"Recipe.php.html#72\">Recipe::getServings<\/a>"],[100,2,"<a href=\"Recipe.php.html#77\">Recipe::setTagName<\/a>"],[100,1,"<a href=\"Recipe.php.html#86\">Recipe::getTagName<\/a>"],[100,1,"<a href=\"RecipeCollection.php.html#7\">RecipeCollection::getNumberOfRecipes<\/a>"],[100,1,"<a href=\"RecipeCollection.php.html#12\">RecipeCollection::addRecipe<\/a>"],[100,1,"<a href=\"RecipeCollection.php.html#17\">RecipeCollection::getRecipes<\/a>"],[100,3,"<a href=\"RecipeCollection.php.html#22\">RecipeCollection::filterByTag<\/a>"],[100,2,"<a href=\"RecipeCollection.php.html#35\">RecipeCollection::getAllRecipeTitles<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);
