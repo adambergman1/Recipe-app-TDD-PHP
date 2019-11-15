@@ -87,6 +87,8 @@ class AddRecipeView
     {
         if (isset($_GET["ingredient-name1"]) && !empty($_GET["ingredient-name1"])) {
             return $_GET["ingredient-name1"];
+        } else {
+            throw new IngredientNameMissingException();
         }
     }
 

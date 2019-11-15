@@ -49,3 +49,6 @@ class ServingsMissingException extends Exception
 
 class TagMissingException extends Exception
 { }
+
+class IngredientNameMissingException extends Exception
+{ }
