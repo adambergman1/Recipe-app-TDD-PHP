@@ -97,6 +97,8 @@ class AddRecipeView
         if (isset($_GET["ingredient-amount1"]) && !empty($_GET["ingredient-amount1"])) {
             $amount = (float) $_GET["ingredient-amount1"];
             return new Amount($amount);
+        } else {
+            throw new IngredientAmountMissingException();
         }
     }
 

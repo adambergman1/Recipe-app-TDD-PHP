@@ -52,3 +52,6 @@ class TagMissingException extends Exception
 
 class IngredientNameMissingException extends Exception
 { }
+
+class IngredientAmountMissingException extends Exception
+{ }
