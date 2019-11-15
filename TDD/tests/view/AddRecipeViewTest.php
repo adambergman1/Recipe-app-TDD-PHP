@@ -216,6 +216,16 @@ class AddRecipeViewTest extends TestCase
         $this->sut->addIngredient();
     }
 
+    /** @test */
+    public function shouldAddInstruction()
+    {
+        $this->setGETRequestTo("instruction1", "This is the first instruction");
+
+        $actual = $this->sut->addInstruction();
+
+        $this->assertInstanceOf(Instruction::class, $actual);
+    }
+
 
     private function setGETRequestTo(string $request, $value = null)
     {

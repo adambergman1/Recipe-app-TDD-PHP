@@ -69,4 +69,5 @@ Add Recipe View
  [x] Should throw exception on empty ingredient name
  [x] Should throw exception on empty ingredient amount
  [x] Should throw exception on empty ingredient measurement
+ [ ] Should add instruction
 
