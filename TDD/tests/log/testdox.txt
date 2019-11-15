@@ -66,4 +66,5 @@ Add Recipe View
  [x] Should add tag lunch
  [x] Should throw exception tag missing
  [x] Should add ingredient
+ [ ] Should throw exception on empty ingredient name
 
