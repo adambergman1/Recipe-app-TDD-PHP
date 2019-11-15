@@ -107,6 +107,8 @@ class AddRecipeView
         if (isset($_GET["measurement"]) && !empty($_GET["measurement"])) {
             $measure = $_GET["measurement"];
             return new Measurement($measure);
+        } else {
+            throw new IngredientMeasurementMissingException();
         }
     }
 }

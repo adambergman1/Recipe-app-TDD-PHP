@@ -55,3 +55,6 @@ class IngredientNameMissingException extends Exception
 
 class IngredientAmountMissingException extends Exception
 { }
+
+class IngredientMeasurementMissingException extends Exception
+{ }
