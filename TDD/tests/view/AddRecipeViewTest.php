@@ -11,6 +11,12 @@ class AddRecipeViewTest extends TestCase
         $this->sut = new AddRecipeView();
     }
 
+    /** @after */
+    public function unsetGETRequest()
+    {
+        unset($_GET);
+    }
+
     /** @test */
     public function shouldRespondIfUserWantsToAddRecipe()
     {
@@ -88,16 +94,17 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldReturnRecipeWithTitleHello()
     {
-        $_GET["title"] = 'Hello';
+        $this->setGETRequestTo("title", "Hello");
+
         $actual = $this->sut->addRecipe();
         $this->assertInstanceOf(Recipe::class, $actual);
-        $_GET["title"] = "";
     }
 
     /** @test */
     public function shouldThrowExceptionTitleIsEmpty()
     {
-        $_GET["title"] = "";
+        $this->setGETRequestTo("title");
+
         $this->expectException(RecipeTitleMissingException::class);
         $this->sut->addRecipe();
     }
@@ -105,20 +112,19 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldAddAuthor()
     {
-        $_GET["author"] = "Per Morberg";
+        $this->setGETRequestTo("author", "Per Morberg");
 
         $actual = $this->sut->addAuthor();
         $expected = "Per Morberg";
 
         $this->assertEquals($actual, $expected);
-
-        $_GET["author"] = "";
     }
 
     /** @test */
     public function shouldThrowExceptionAuthorIsEmpty()
     {
-        $_GET["author"] = "";
+        $this->setGETRequestTo("author");
+
         $this->expectException(AuthorMissingException::class);
         $this->sut->addAuthor();
     }
@@ -126,20 +132,19 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldAddServings()
     {
-        $_GET["servings"] = "4";
+        $this->setGETRequestTo("servings", "4");
 
         $actual = $this->sut->addServings();
         $expected = 4;
 
         $this->assertEquals($actual, $expected);
-
-        $_GET["servings"] = "";
     }
 
     /** @test */
     public function shouldThrowExceptionServingsMissing()
     {
-        $_GET["servings"] = "";
+        $this->setGETRequestTo("servings");
+
         $this->expectException(ServingsMissingException::class);
         $this->sut->addServings();
     }
@@ -147,20 +152,19 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldAddTagLunch()
     {
-        $_GET["tag"] = "Lunch";
+        $this->setGETRequestTo("tag", "Lunch");
 
         $actual = $this->sut->addTag();
         $expected = "Lunch";
 
         $this->assertEquals($actual, $expected);
-
-        $_GET["tag"] = "";
     }
 
     /** @test */
     public function shouldThrowExceptionTagMissing()
     {
-        $_GET["tag"] = "";
+        $this->setGETRequestTo("tag");
+
         $this->expectException(TagMissingException::class);
         $this->sut->addTag();
     }
@@ -168,59 +172,53 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldAddIngredient()
     {
-        $_GET["ingredient-name1"] = "Potatoes";
-        $_GET["ingredient-amount1"] = 2.0;
-        $_GET["measurement"] = "dl";
+        $this->setGETRequestTo("ingredient-name1", "Potatoes");
+        $this->setGETRequestTo("ingredient-amount1", 2);
+        $this->setGETRequestTo("measurement", "dl");
 
         $actual = $this->sut->addIngredient();
 
         $this->assertInstanceOf(Ingredient::class, $actual);
-
-        $_GET["ingredient-name1"] = "";
-        $_GET["ingredient-amount1"] = "";
-        $_GET["measurement"] = "";
     }
 
     /** @test */
     public function shouldThrowExceptionOnEmptyIngredientName()
     {
         $this->expectException(IngredientNameMissingException::class);
-        $_GET["ingredient-name1"] = "";
-        $_GET["ingredient-amount1"] = 2;
-        $_GET["measurement"] = "dl";
+
+        $this->setGETRequestTo("ingredient-name1");
+        $this->setGETRequestTo("ingredient-amount1", 2);
+        $this->setGETRequestTo("measurement", "dl");
 
         $this->sut->addIngredient();
-
-        $_GET["ingredient-amount1"] = "";
-        $_GET["measurement"] = "";
     }
 
     /** @test */
     public function shouldThrowExceptionOnEmptyIngredientAmount()
     {
         $this->expectException(IngredientAmountMissingException::class);
-        $_GET["ingredient-name1"] = "Potatoes";
-        $_GET["ingredient-amount1"] = "";
-        $_GET["measurement"] = "dl";
+
+        $this->setGETRequestTo("ingredient-name1", "Potatoes");
+        $this->setGETRequestTo("ingredient-amount1");
+        $this->setGETRequestTo("measurement", "dl");
 
         $this->sut->addIngredient();
-
-        $_GET["ingredient-name1"] = "";
-        $_GET["measurement"] = "";
     }
 
     /** @test */
     public function shouldThrowExceptionOnEmptyIngredientMeasurement()
     {
         $this->expectException(IngredientMeasurementMissingException::class);
-        $_GET["ingredient-name1"] = "Potatoes";
-        $_GET["ingredient-amount1"] = 2;
-        $_GET["measurement"] = "";
+        $this->setGETRequestTo("ingredient-name1", "Potatoes");
+        $this->setGETRequestTo("ingredient-amount1", 2);
+        $this->setGETRequestTo("measurement");
 
         $this->sut->addIngredient();
+    }
 
-        $_GET["ingredient-name1"] = "";
-        $_GET["ingredient-amount1"] = "";
-        $_GET["measurement"] = "";
+
+    private function setGETRequestTo(string $request, $value = null)
+    {
+        $_GET[$request] = $value;
     }
 }

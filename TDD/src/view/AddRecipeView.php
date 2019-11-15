@@ -38,7 +38,7 @@ class AddRecipeView
         return new Recipe($title);
     }
 
-    private function getTitle()
+    private function getTitle(): string
     {
         if (isset($_GET["title"]) && !empty($_GET["title"])) {
             return $_GET["title"];
