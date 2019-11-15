@@ -194,4 +194,18 @@ class AddRecipeViewTest extends TestCase
         $_GET["ingredient-amount1"] = "";
         $_GET["measurement"] = "";
     }
+
+    /** @test */
+    public function shouldThrowExceptionOnEmptyIngredientAmount()
+    {
+        $this->expectException(IngredientAmountMissingException::class);
+        $_GET["ingredient-name1"] = "Potatoes";
+        $_GET["ingredient-amount1"] = "";
+        $_GET["measurement"] = "dl";
+
+        $this->sut->addIngredient();
+
+        $_GET["ingredient-name1"] = "";
+        $_GET["measurement"] = "";
+    }
 }
