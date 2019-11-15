@@ -169,7 +169,7 @@ class AddRecipeViewTest extends TestCase
     public function shouldAddIngredient()
     {
         $_GET["ingredient-name1"] = "Potatoes";
-        $_GET["ingredient-amount1"] = 2;
+        $_GET["ingredient-amount1"] = 2.0;
         $_GET["measurement"] = "dl";
 
         $actual = $this->sut->addIngredient();

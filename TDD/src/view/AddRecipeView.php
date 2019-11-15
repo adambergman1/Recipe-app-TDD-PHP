@@ -76,10 +76,33 @@ class AddRecipeView
 
     public function addIngredient(): Ingredient
     {
-        $name = $_GET["ingredient-name1"];
-        $amount = new Amount((float) $_GET["ingredient-amount1"]);
-        $measure = new Measurement($_GET["measurement"]);
+        $name = $this->getIngredientName();
+        $amount = $this->getIngredientAmount();
+        $measure = $this->getMeasurement();
 
         return new Ingredient($name, $amount, $measure);
+    }
+
+    private function getIngredientName(): string
+    {
+        if (isset($_GET["ingredient-name1"]) && !empty($_GET["ingredient-name1"])) {
+            return $_GET["ingredient-name1"];
+        }
+    }
+
+    private function getIngredientAmount(): Amount
+    {
+        if (isset($_GET["ingredient-amount1"]) && !empty($_GET["ingredient-amount1"])) {
+            $amount = (float) $_GET["ingredient-amount1"];
+            return new Amount($amount);
+        }
+    }
+
+    private function getMeasurement(): Measurement
+    {
+        if (isset($_GET["measurement"]) && !empty($_GET["measurement"])) {
+            $measure = $_GET["measurement"];
+            return new Measurement($measure);
+        }
     }
 }
