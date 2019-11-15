@@ -191,7 +191,6 @@ class AddRecipeViewTest extends TestCase
 
         $this->sut->addIngredient();
 
-        $_GET["ingredient-name1"] = "";
         $_GET["ingredient-amount1"] = "";
         $_GET["measurement"] = "";
     }
