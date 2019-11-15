@@ -5,10 +5,15 @@ use PHPUnit\Framework\TestCase;
 class AddRecipeViewTest extends TestCase
 {
     protected $sut;
+    protected $factoryMock;
 
     public function setUp(): void
     {
-        $this->sut = new AddRecipeView();
+        $this->factoryMock = $this->getMockBuilder(RecipeFactory::class)
+            ->setMethods(['instanciateInstruction', 'instanciateRecipe', 'instanciateIngredient'])
+            ->getMock();
+
+        $this->sut = new AddRecipeView($this->factoryMock);
     }
 
     /** @after */
@@ -21,6 +26,7 @@ class AddRecipeViewTest extends TestCase
     public function shouldRespondIfUserWantsToAddRecipe()
     {
         $mock = $this->getMockBuilder(AddRecipeView::class)
+            ->disableOriginalConstructor()
             ->setMethods([
                 'userWantsToAddRecipe',
             ])
@@ -52,6 +58,7 @@ class AddRecipeViewTest extends TestCase
     public function shouldCallOnRenderAddRecipe()
     {
         $mock = $this->getMockBuilder(AddRecipeView::class)
+            ->disableOriginalConstructor()
             ->setMethods([
                 'userWantsToAddRecipe',
                 'renderAddRecipe'
@@ -69,6 +76,7 @@ class AddRecipeViewTest extends TestCase
     public function shouldNotCallOnRenderAddRecipe()
     {
         $mock = $this->getMockBuilder(AddRecipeView::class)
+            ->disableOriginalConstructor()
             ->setMethods([
                 'userWantsToAddRecipe',
                 'renderAddRecipe'
@@ -94,6 +102,9 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldReturnRecipeWithTitleHello()
     {
+        $recipe = $this->createMock(Recipe::class);
+        $this->factoryMock->method('instanciateRecipe')->willReturn($recipe);
+
         $this->setGETRequestTo("title", "Hello");
 
         $actual = $this->sut->addRecipe();
@@ -172,6 +183,9 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldAddIngredient()
     {
+        $ingredient = $this->createMock(Ingredient::class);
+        $this->factoryMock->method('instanciateIngredient')->willReturn($ingredient);
+
         $this->setGETRequestTo("ingredient-name1", "Potatoes");
         $this->setGETRequestTo("ingredient-amount1", 2);
         $this->setGETRequestTo("measurement", "dl");
@@ -219,6 +233,10 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldAddInstruction()
     {
+        $instruct = $this->createMock(Instruction::class);
+        $this->factoryMock->method('instanciateInstruction')->willReturn($instruct);
+
+
         $this->setGETRequestTo("instruction1", "This is the first instruction");
 
         $actual = $this->sut->addInstruction();
@@ -226,6 +244,14 @@ class AddRecipeViewTest extends TestCase
         $this->assertInstanceOf(Instruction::class, $actual);
     }
 
+    /** @test */
+    public function shouldThrowExceptionOnEmptyInstruction()
+    {
+        $this->expectException(InstructionMissingException::class);
+        $this->setGETRequestTo("instruction1");
+
+        $this->sut->addInstruction();
+    }
 
     private function setGETRequestTo(string $request, $value = null)
     {

@@ -1,7 +1,5 @@
 <?php
 
-use PHPUnit\Framework\Exception;
-
 class NotAValidMeasurementException extends Exception
 { }
 
@@ -57,4 +55,7 @@ class IngredientAmountMissingException extends Exception
 { }
 
 class IngredientMeasurementMissingException extends Exception
+{ }
+
+class InstructionMissingException extends Exception
 { }

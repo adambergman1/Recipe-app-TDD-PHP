@@ -39,6 +39,13 @@ Recipe Collection
  [x] Should filter recipes by tag
  [x] Should return all recipe titles
 
+Recipe Factory
+ [x] Should instanciate instruction
+ [x] Should instanciate recipe
+ [x] Should instanciate amount
+ [x] Should instanciate measurement
+ [x] Should instanciate ingredient
+
 Recipe
  [x] Should set recipe title
  [x] Should set first title character to uppercase
@@ -70,4 +77,5 @@ Add Recipe View
  [x] Should throw exception on empty ingredient amount
  [x] Should throw exception on empty ingredient measurement
  [x] Should add instruction
+ [x] Should throw exception on empty instruction
 

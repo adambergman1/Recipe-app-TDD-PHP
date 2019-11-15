@@ -3,6 +3,12 @@
 class AddRecipeView
 {
     protected static $addRecipe = __CLASS__  . 'addRecipe';
+    private $factory;
+
+    public function __construct($factory)
+    {
+        $this->factory = $factory;
+    }
 
     public function generateOutput(): void
     {
@@ -35,7 +41,8 @@ class AddRecipeView
     public function addRecipe(): Recipe
     {
         $title = $this->getTitle();
-        return new Recipe($title);
+        return $this->factory->instanciateRecipe($title);
+        // return new Recipe($title);
     }
 
     private function getTitle(): string
@@ -80,7 +87,8 @@ class AddRecipeView
         $amount = $this->getIngredientAmount();
         $measure = $this->getMeasurement();
 
-        return new Ingredient($name, $amount, $measure);
+        // return new Ingredient($name, $amount, $measure);
+        return $this->factory->instanciateIngredient($name, $amount, $measure);
     }
 
     private function getIngredientName(): string
@@ -96,7 +104,8 @@ class AddRecipeView
     {
         if (isset($_GET["ingredient-amount1"]) && !empty($_GET["ingredient-amount1"])) {
             $amount = (float) $_GET["ingredient-amount1"];
-            return new Amount($amount);
+            return $this->factory->instanciateAmount($amount);
+            // return new Amount($amount);
         } else {
             throw new IngredientAmountMissingException();
         }
@@ -106,7 +115,8 @@ class AddRecipeView
     {
         if (isset($_GET["measurement"]) && !empty($_GET["measurement"])) {
             $measure = $_GET["measurement"];
-            return new Measurement($measure);
+            return $this->factory->instanciateMeasurement($measure);
+            // return new Measurement($measure);
         } else {
             throw new IngredientMeasurementMissingException();
         }
@@ -114,6 +124,12 @@ class AddRecipeView
 
     public function addInstruction()
     {
-        return new Instruction($_GET["instruction1"]);
+        if (isset($_GET["instruction1"]) && !empty($_GET["instruction1"])) {
+            $instruction = $_GET["instruction1"];
+            // return new Instruction($instruction);
+            return $this->factory->instanciateInstruction($instruction);
+        } else {
+            throw new InstructionMissingException();
+        }
     }
 }
