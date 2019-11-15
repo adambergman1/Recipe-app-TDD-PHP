@@ -111,4 +111,9 @@ class AddRecipeView
             throw new IngredientMeasurementMissingException();
         }
     }
+
+    public function addInstruction()
+    {
+        return new Instruction($_GET["instruction1"]);
+    }
 }
