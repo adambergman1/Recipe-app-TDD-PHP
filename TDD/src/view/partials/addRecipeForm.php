@@ -34,7 +34,7 @@
         <option value="12">12</option>
     </select>
     <label for="tag">Tag</label>
-    <select id="tag">
+    <select id="tag" name="tag">
         <option value="breakfast">Breakfast</option>
         <option value="lunch">Lunch</option>
         <option value="dinner">Dinner</option>
@@ -44,8 +44,8 @@
     <!-- Add Ingredient -->
     <h3>Ingredients</h3>
     <div class="ingredient">
-        <input type="text" id="ingredient-name1" placeholder="Ingredient" />
-        <input type="text" id="ingredient-amount1" placeholder="Amount" />
+        <input type="text" id="ingredient-name1" name="ingredient-name1" placeholder="Ingredient" />
+        <input type="text" id="ingredient-amount1" name="ingredient-amount1" placeholder="Amount" />
         <select name="measurement" id="measurement">
             <option value="dl">dl</option>
             <option value="kg">kg</option>
@@ -72,5 +72,5 @@
         <button type="button" id="addInstructionBtn" class="btn btn-success">+</button>
     </div>
     <br>
-    <input type="submit" name="submit" value="Add recipe" />
+    <input type="submit" name="submitRecipe" value="Add recipe" />
 </form>

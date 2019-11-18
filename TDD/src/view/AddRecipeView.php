@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../model/Exceptions.php';
+
 class AddRecipeView
 {
     protected static $addRecipe = __CLASS__  . 'addRecipe';
@@ -16,6 +18,11 @@ class AddRecipeView
             $this->renderAddRecipe();
         } else {
             echo $this->generateAddRecipeBtnForm();
+        }
+
+        if (isset($_GET["submitRecipe"])) {
+            echo "Submit isset";
+            $this->addRecipe();
         }
     }
 
@@ -41,7 +48,19 @@ class AddRecipeView
     public function addRecipe(): Recipe
     {
         $title = $this->getTitle();
-        return $this->factory->instanciateRecipe($title);
+        $recipe = $this->factory->instanciateRecipe($title);
+
+        $author = $this->addAuthor();
+        $servings = $this->addServings();
+        $tag = $this->addTag();
+        $ingredient = $this->addIngredient();
+
+        $recipe->setAuthor($author);
+        $recipe->setServings($servings);
+        $recipe->setTagName($tag);
+        $recipe->addIngredient($ingredient);
+
+        return $recipe;
         // return new Recipe($title);
     }
 
@@ -75,6 +94,7 @@ class AddRecipeView
     public function addTag(): string
     {
         if (isset($_GET["tag"]) && !empty($_GET["tag"])) {
+            echo $_GET["tag"];
             return $_GET["tag"];
         } else {
             throw new TagMissingException();

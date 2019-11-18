@@ -253,6 +253,15 @@ class AddRecipeViewTest extends TestCase
         $this->sut->addInstruction();
     }
 
+    /** @test */
+    public function shouldReturnTrueWhenSubmitRecipeIsSet()
+    {
+        $actual = $this->sut->userWantsToSubmitRecipe();
+        $expected = true;
+
+        $this->assertEquals($actual, $expected);
+    }
+
     private function setGETRequestTo(string $request, $value = null)
     {
         $_GET[$request] = $value;

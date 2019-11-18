@@ -76,6 +76,7 @@ class Recipe
 
     public function setTagName(string $toBeSaved): void
     {
+        $toBeSaved = $this->setFirstCharacterToUppercase($toBeSaved);
         if (!in_array($toBeSaved, $this->validTags)) {
             throw new IncorrectTagException();
         }

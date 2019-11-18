@@ -64,7 +64,7 @@ Add Recipe View
  [x] Should call on render add recipe
  [x] Should not call on render add recipe
  [x] Should call on include once
- [x] Should return recipe with title hello
+ [ ] Should return recipe with title hello
  [x] Should throw exception title is empty
  [x] Should add author
  [x] Should throw exception author is empty
@@ -78,4 +78,5 @@ Add Recipe View
  [x] Should throw exception on empty ingredient measurement
  [x] Should add instruction
  [x] Should throw exception on empty instruction
+ [ ] Should return true when submit recipe is set
 
