@@ -12,6 +12,3 @@ require_once("controller/MainController.php");
 
 $app = new MainController();
 echo $app->run();
-
-
-// $view->addRecipe();
