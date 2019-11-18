@@ -18,10 +18,12 @@ class MainViewTest extends TestCase
     /** @test */
     public function shouldCallOnGenerateMainTitle()
     {
-        $viewMock = $this->createMock(MainView::class);
+        $viewMock = $this->getMockBuilder(MainView::class)
+            ->setMethods(['generateMainTitle'])
+            ->getMock();
 
-        // $title = '<h1>My Cook Book</h1>';
-        // $viewMock->method('generateMainTitle')->willReturn($title);
+        $title = '<h1>My Cook Book</h1>';
+        $viewMock->method('generateMainTitle')->willReturn($title);
 
         $viewMock->expects($this->once())->method('generateMainTitle');
 
