@@ -1,6 +1,5 @@
 Main Controller
- [x] Should initialize app
- [ ] Should return main view
+ [x] Should return main view render
 
 Amount
  [x] Should accept correct amount

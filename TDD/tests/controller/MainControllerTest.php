@@ -2,22 +2,12 @@
 
 class MainControllerTest extends PHPUnit\Framework\TestCase
 {
-
     /** @test */
-    function shouldInitializeApp()
-    {
-        $app = new MainController();
-        $actual = $app->run();
-        $expected = "<p>Hello world</p>";
-
-        $this->assertEquals($actual, $expected);
-    }
-    /** @test */
-    function shouldReturnMainView()
+    function shouldReturnMainViewRender()
     {
         $app = new MainController();
         $actual = $app->run();
 
-        $this->assertInstanceOf(MainView::class, $actual);
+        $this->assertStringContainsString('DOCTYPE html', $actual);
     }
 }
