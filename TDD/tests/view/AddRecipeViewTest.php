@@ -97,7 +97,6 @@ class AddRecipeViewTest extends TestCase
     {
         $actual = $this->sut->renderAddRecipe();
 
-
         $this->assertStringContainsString('Add recipe', $actual);
     }
 

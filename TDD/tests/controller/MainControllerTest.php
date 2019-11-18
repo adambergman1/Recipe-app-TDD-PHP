@@ -12,4 +12,12 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
 
         $this->assertEquals($actual, $expected);
     }
+    /** @test */
+    function shouldReturnMainView()
+    {
+        $app = new MainController();
+        $actual = $app->run();
+
+        $this->assertInstanceOf(MainView::class, $actual);
+    }
 }
