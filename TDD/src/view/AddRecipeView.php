@@ -20,9 +20,7 @@ class AddRecipeView
             echo $this->generateAddRecipeBtnForm();
         }
 
-        if (isset($_GET["submitRecipe"])) {
-            $this->addRecipeValues();
-        }
+        if ($this->userWantsToSubmitRecipe()) { }
     }
 
     public function userWantsToAddRecipe(): bool
@@ -48,23 +46,6 @@ class AddRecipeView
     {
         $title = $this->getTitle();
         $recipe = $this->factory->instanciateRecipe($title);
-
-        return $recipe;
-    }
-
-    public function addRecipeValues(): Recipe
-    {
-        $recipe = $this->createRecipe();
-
-        $author = $this->addAuthor();
-        $servings = $this->addServings();
-        $tag = $this->addTag();
-        $ingredient = $this->addIngredient();
-
-        $recipe->setAuthor($author);
-        $recipe->setServings($servings);
-        $recipe->setTagName($tag);
-        $recipe->addIngredient($ingredient);
 
         return $recipe;
     }
@@ -112,7 +93,6 @@ class AddRecipeView
         $amount = $this->getIngredientAmount();
         $measure = $this->getMeasurement();
 
-        // return new Ingredient($name, $amount, $measure);
         return $this->factory->instanciateIngredient($name, $amount, $measure);
     }
 
@@ -130,7 +110,6 @@ class AddRecipeView
         if (isset($_GET["ingredient-amount1"]) && !empty($_GET["ingredient-amount1"])) {
             $amount = (float) $_GET["ingredient-amount1"];
             return $this->factory->instanciateAmount($amount);
-            // return new Amount($amount);
         } else {
             throw new IngredientAmountMissingException();
         }
@@ -141,24 +120,22 @@ class AddRecipeView
         if (isset($_GET["measurement"]) && !empty($_GET["measurement"])) {
             $measure = $_GET["measurement"];
             return $this->factory->instanciateMeasurement($measure);
-            // return new Measurement($measure);
         } else {
             throw new IngredientMeasurementMissingException();
         }
     }
 
-    public function addInstruction()
+    public function addInstruction(): Instruction
     {
         if (isset($_GET["instruction1"]) && !empty($_GET["instruction1"])) {
             $instruction = $_GET["instruction1"];
-            // return new Instruction($instruction);
             return $this->factory->instanciateInstruction($instruction);
         } else {
             throw new InstructionMissingException();
         }
     }
 
-    public function userWantsToSubmitRecipe()
+    public function userWantsToSubmitRecipe(): bool
     {
         return isset($_GET["submitRecipe"]);
     }
