@@ -23,17 +23,19 @@ class AddRecipeView
         $this->factory = $factory;
     }
 
-    public function generateOutput(): void
+    public function generateOutput()
     {
+        $response = "";
         if ($this->userWantsToAddRecipe()) {
-            $this->renderAddRecipe();
+            $response .= $this->renderAddRecipe();
         } else {
-            echo $this->generateAddRecipeBtnForm();
+            $response .= $this->generateAddRecipeBtnForm();
         }
 
         if ($this->userWantsToSubmitRecipe()) {
             $this->addRecipeValues();
         }
+        return $response;
     }
 
     public function userWantsToAddRecipe(): bool
@@ -41,7 +43,7 @@ class AddRecipeView
         return isset($_POST[self::$addRecipe]);
     }
 
-    private function generateAddRecipeBtnForm(): string
+    public function generateAddRecipeBtnForm(): string
     {
         return '
         <form method="POST">
@@ -50,9 +52,9 @@ class AddRecipeView
         ';
     }
 
-    public function renderAddRecipe(): bool
+    public function renderAddRecipe(): string
     {
-        return include_once("partials/addRecipeForm.php");
+        return file_get_contents(__DIR__ . "/partials/addRecipeForm.php");
     }
 
     public function createRecipe(): Recipe

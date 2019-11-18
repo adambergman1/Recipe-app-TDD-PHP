@@ -8,10 +8,12 @@ require_once("view/AddRecipeView.php");
 
 require_once("model/RecipeFactory.php");
 
-$MainView = new MainView();
-echo $MainView->generateMainTitle();
+require_once("controller/MainController.php");
 
-$view = new AddRecipeView(new RecipeFactory());
-$view->generateOutput();
+// $app = new MainController();
+// echo $app->run();
+
+$view = new MainView();
+$view->render();
 
 // $view->addRecipe();

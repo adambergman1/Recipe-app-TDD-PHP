@@ -22,9 +22,6 @@ class MainViewTest extends TestCase
             ->setMethods(['generateMainTitle'])
             ->getMock();
 
-        $title = '<h1>My Cook Book</h1>';
-        $viewMock->method('generateMainTitle')->willReturn($title);
-
         $viewMock->expects($this->once())->method('generateMainTitle');
 
         $viewMock->render();

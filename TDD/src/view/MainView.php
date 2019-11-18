@@ -9,6 +9,18 @@ class MainView
 
     public function render()
     {
-        return $this->generateMainTitle();
+        return '<!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <title>Cook Book</title>
+          </head>
+          <body>
+            ' . $this->generateMainTitle() . '
+            <div class="container">
+            </div>
+           </body>
+        </html>
+      ';
     }
 }

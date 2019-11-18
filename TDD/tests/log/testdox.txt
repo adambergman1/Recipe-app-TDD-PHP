@@ -63,7 +63,7 @@ Add Recipe View
  [x] Should include form
  [x] Should call on render add recipe
  [x] Should not call on render add recipe
- [x] Should call on include once
+ [x] Should render add recipe form
  [x] Should return recipe with title hello
  [x] Should throw exception title is empty
  [x] Should add author

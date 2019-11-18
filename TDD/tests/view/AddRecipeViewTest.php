@@ -50,8 +50,10 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldIncludeForm()
     {
-        $this->expectOutputRegex('/form method="POST"/');
         $actual = $this->sut->generateOutput();
+
+        $this->assertStringContainsString('form method="POST', $actual);
+        // $this->expectOutputRegex('/form method="POST"/');
     }
 
     /** @test */
@@ -91,12 +93,12 @@ class AddRecipeViewTest extends TestCase
     }
 
     /** @test */
-    public function shouldCallOnIncludeOnce()
+    public function shouldRenderAddRecipeForm()
     {
         $actual = $this->sut->renderAddRecipe();
-        $expected = true;
 
-        $this->assertEquals($actual, $expected);
+
+        $this->assertStringContainsString('Add recipe', $actual);
     }
 
     /** @test */
