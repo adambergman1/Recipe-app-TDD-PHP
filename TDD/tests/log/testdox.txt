@@ -79,4 +79,5 @@ Add Recipe View
  [x] Should add instruction
  [x] Should throw exception on empty instruction
  [x] Should return true when submit recipe is set
+ [ ] Should return a complete recipe
 

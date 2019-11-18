@@ -263,6 +263,26 @@ class AddRecipeViewTest extends TestCase
         $this->assertEquals($actual, $expected);
     }
 
+    /** @test */
+    public function shouldReturnACompleteRecipe()
+    {
+        $this->setGETRequestTo("title", "My new recipe");
+        $this->setGETRequestTo("Author", "Wilhelm Moberg");
+        $this->setGETRequestTo("Servings", "2");
+        $this->setGETRequestTo("Tag", "breakfast");
+        $this->setGETRequestTo("ingredient-name1", "Potatoes");
+        $this->setGETRequestTo("ingredient-amount1", "9");
+        $this->setGETRequestTo("measurement", "pcs");
+        $this->setGETRequestTo("instruction1", "This is the first instruction...");
+
+        $recipe = $this->createMock(Recipe::class);
+        $this->factoryMock->method('instanciateRecipe')->willReturn($recipe);
+
+        $actual = $this->sut->addRecipeValues();
+
+        $this->assertInstanceOf(Recipe::class, $actual);
+    }
+
     private function setGETRequestTo(string $request, $value = null)
     {
         $_GET[$request] = $value;
