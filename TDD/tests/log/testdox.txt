@@ -82,3 +82,6 @@ Add Recipe View
  [x] Should return a complete recipe
  [x] Should call on add recipe values
 
+Main View
+ [ ] Should generate main title
+
