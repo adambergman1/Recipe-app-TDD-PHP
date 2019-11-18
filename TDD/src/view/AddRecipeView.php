@@ -21,8 +21,7 @@ class AddRecipeView
         }
 
         if (isset($_GET["submitRecipe"])) {
-            echo "Submit isset";
-            $this->addRecipe();
+            $this->addRecipeValues();
         }
     }
 
@@ -45,10 +44,17 @@ class AddRecipeView
         return include_once("partials/addRecipeForm.php");
     }
 
-    public function addRecipe(): Recipe
+    public function createRecipe(): Recipe
     {
         $title = $this->getTitle();
         $recipe = $this->factory->instanciateRecipe($title);
+
+        return $recipe;
+    }
+
+    public function addRecipeValues(): Recipe
+    {
+        $recipe = $this->createRecipe();
 
         $author = $this->addAuthor();
         $servings = $this->addServings();
@@ -61,7 +67,6 @@ class AddRecipeView
         $recipe->addIngredient($ingredient);
 
         return $recipe;
-        // return new Recipe($title);
     }
 
     private function getTitle(): string
@@ -151,5 +156,10 @@ class AddRecipeView
         } else {
             throw new InstructionMissingException();
         }
+    }
+
+    public function userWantsToSubmitRecipe()
+    {
+        return isset($_GET["submitRecipe"]);
     }
 }

@@ -107,7 +107,7 @@ class AddRecipeViewTest extends TestCase
 
         $this->setGETRequestTo("title", "Hello");
 
-        $actual = $this->sut->addRecipe();
+        $actual = $this->sut->createRecipe();
         $this->assertInstanceOf(Recipe::class, $actual);
     }
 
@@ -117,7 +117,7 @@ class AddRecipeViewTest extends TestCase
         $this->setGETRequestTo("title");
 
         $this->expectException(RecipeTitleMissingException::class);
-        $this->sut->addRecipe();
+        $this->sut->createRecipe();
     }
 
     /** @test */
@@ -256,6 +256,7 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldReturnTrueWhenSubmitRecipeIsSet()
     {
+        $this->setGETRequestTo("submitRecipe", "");
         $actual = $this->sut->userWantsToSubmitRecipe();
         $expected = true;
 
