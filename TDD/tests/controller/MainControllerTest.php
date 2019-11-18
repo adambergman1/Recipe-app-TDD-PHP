@@ -3,18 +3,27 @@
 class MainControllerTest extends PHPUnit\Framework\TestCase
 {
     /** @test */
-    function shouldReturnMainViewRender()
+    function shouldCallOnMainViewRender()
     {
-        $app = new MainController();
-        $actual = $app->run();
+        $recipeViewMock = $this->getMockBuilder(AddRecipeView::class)
+            ->disableOriginalConstructor()
+            ->getMock();
 
-        $this->assertStringContainsString('DOCTYPE html', $actual);
+        $mainViewMock = $this->getMockBuilder(MainView::class)
+            ->setMethods(['render'])
+            ->getMock();
+
+        $app = new MainController($mainViewMock, $recipeViewMock);
+
+        $mainViewMock->expects($this->once())->method('render');
+        $app->run();
     }
 
     /** @test */
     function shouldCallOnRenderAddRecipeWhenUserWantsToAddRecipe()
     {
-        $controller = new MainController();
+        $mainViewMock = $this->getMockBuilder(MainView::class)
+            ->getMock();
 
         $recipeViewMock = $this->getMockBuilder(AddRecipeView::class)
             ->disableOriginalConstructor()
@@ -22,7 +31,9 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
             ->getMock();
 
         $recipeViewMock->method('userWantsToAddRecipe')->willReturn(true);
-        $recipeViewMock->expects($this->once()->method('renderAddRecipe'));
+        $recipeViewMock->expects($this->once())->method('renderAddRecipe');
+
+        $controller = new MainController($mainViewMock, $recipeViewMock);
 
         $controller->run();
     }

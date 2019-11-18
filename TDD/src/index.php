@@ -10,5 +10,9 @@ require_once("model/RecipeFactory.php");
 
 require_once("controller/MainController.php");
 
-$app = new MainController();
+$factory = new RecipeFactory();
+$mainView = new MainView();
+$recipeView = new AddRecipeView($this->factory);
+
+$app = new MainController($mainView, $recipeView);
 echo $app->run();

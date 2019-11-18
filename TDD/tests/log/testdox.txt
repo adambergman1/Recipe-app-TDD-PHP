@@ -1,6 +1,6 @@
 Main Controller
- [x] Should return main view render
- [ ] Should call on render add recipe when user wants to add recipe
+ [x] Should call on main view render
+ [x] Should call on render add recipe when user wants to add recipe
 
 Amount
  [x] Should accept correct amount

@@ -4,19 +4,21 @@ require_once(__DIR__ . '/../view/MainView.php');
 
 class MainController
 {
-    private $factory;
     private $mainView;
     private $recipeView;
 
-    public function __construct()
+    public function __construct($mainView, $recipeView)
     {
-        $this->factory = new RecipeFactory();
-        $this->mainView = new MainView();
-        $this->recipeView = new AddRecipeView($this->factory);
+        $this->mainView = $mainView;
+        $this->recipeView = $recipeView;
     }
 
     public function run()
     {
+        if ($this->recipeView->userWantsToAddRecipe()) {
+            $this->recipeView->renderAddRecipe();
+        }
+
         return $this->mainView->render($this->recipeView);
     }
 }
