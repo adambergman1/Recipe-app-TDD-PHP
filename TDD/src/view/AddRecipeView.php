@@ -30,6 +30,10 @@ class AddRecipeView
         } else {
             echo $this->generateAddRecipeBtnForm();
         }
+
+        if ($this->userWantsToSubmitRecipe()) {
+            $this->addRecipeValues();
+        }
     }
 
     public function userWantsToAddRecipe(): bool

@@ -266,14 +266,7 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldReturnACompleteRecipe()
     {
-        $this->setGETRequestTo("title", "My new recipe");
-        $this->setGETRequestTo("author", "Wilhelm Moberg");
-        $this->setGETRequestTo("servings", "2");
-        $this->setGETRequestTo("tag", "breakfast");
-        $this->setGETRequestTo("ingredient-name1", "Potatoes");
-        $this->setGETRequestTo("ingredient-amount1", "9");
-        $this->setGETRequestTo("measurement", "pcs");
-        $this->setGETRequestTo("instruction1", "This is the first instruction...");
+        $this->setRecipeValues();
 
         $recipe = $this->createMock(Recipe::class);
         $this->factoryMock->method('instanciateRecipe')->willReturn($recipe);
@@ -289,6 +282,8 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     public function shouldCallOnAddRecipeValues()
     {
+        $this->setRecipeValues();
+
         $mock = $this->getMockBuilder(AddRecipeView::class)
             ->disableOriginalConstructor()
             ->setMethods([
@@ -307,5 +302,17 @@ class AddRecipeViewTest extends TestCase
     private function setGETRequestTo(string $request, $value = null)
     {
         $_GET[$request] = $value;
+    }
+
+    private function setRecipeValues()
+    {
+        $this->setGETRequestTo("title", "My new recipe");
+        $this->setGETRequestTo("author", "Wilhelm Moberg");
+        $this->setGETRequestTo("servings", "2");
+        $this->setGETRequestTo("tag", "breakfast");
+        $this->setGETRequestTo("ingredient-name1", "Potatoes");
+        $this->setGETRequestTo("ingredient-amount1", "9");
+        $this->setGETRequestTo("measurement", "pcs");
+        $this->setGETRequestTo("instruction1", "This is the first instruction...");
     }
 }
