@@ -85,4 +85,5 @@ Add Recipe View
 Main View
  [x] Should generate main title
  [x] Should call on generate main title
+ [ ] Should call on add recipe method generate output
 

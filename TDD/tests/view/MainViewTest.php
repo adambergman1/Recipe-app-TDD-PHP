@@ -26,4 +26,18 @@ class MainViewTest extends TestCase
 
         $viewMock->render();
     }
+    /** @test */
+
+    public function shouldCallOnAddRecipeMethodGenerateOutput()
+    {
+        $viewMock = $this->getMockBuilder(AddRecipeView::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['generateOutput'])
+            ->getMock();
+
+        $viewMock->expects($this->once())->method('generateOutput');
+        $mainView = new MainView();
+
+        $mainView->render($viewMock);
+    }
 }
