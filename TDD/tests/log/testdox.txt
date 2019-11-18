@@ -84,4 +84,5 @@ Add Recipe View
 
 Main View
  [x] Should generate main title
+ [ ] Should call on generate main title
 
