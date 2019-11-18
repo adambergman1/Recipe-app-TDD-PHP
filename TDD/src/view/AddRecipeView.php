@@ -5,6 +5,17 @@ require_once __DIR__ . '/../model/Exceptions.php';
 class AddRecipeView
 {
     protected static $addRecipe = __CLASS__  . 'addRecipe';
+
+    private static $title = "title";
+    private static $author = "author";
+    private static $servings = "servings";
+    private static $tag = "tag";
+    private static $ingredientName = "ingredient-name1";
+    private static $ingredientAmount = "ingredient-amount1";
+    private static $measurement = "measurement";
+    private static $instruction = "instruction1";
+    private static $submitRecipe = "submitRecipe";
+
     private $factory;
 
     public function __construct($factory)
@@ -19,8 +30,6 @@ class AddRecipeView
         } else {
             echo $this->generateAddRecipeBtnForm();
         }
-
-        if ($this->userWantsToSubmitRecipe()) { }
     }
 
     public function userWantsToAddRecipe(): bool
@@ -66,8 +75,8 @@ class AddRecipeView
 
     private function getTitle(): string
     {
-        if (isset($_GET["title"]) && !empty($_GET["title"])) {
-            return $_GET["title"];
+        if (isset($_GET[self::$title]) && !empty($_GET[self::$title])) {
+            return $_GET[self::$title];
         } else {
             throw new RecipeTitleMissingException();
         }
@@ -75,8 +84,8 @@ class AddRecipeView
 
     public function addAuthor(): string
     {
-        if (isset($_GET["author"]) && !empty($_GET["author"])) {
-            return $_GET["author"];
+        if (isset($_GET[self::$author]) && !empty($_GET[self::$author])) {
+            return $_GET[self::$author];
         } else {
             throw new AuthorMissingException();
         }
@@ -84,8 +93,8 @@ class AddRecipeView
 
     public function addServings(): int
     {
-        if (isset($_GET["servings"]) && !empty($_GET["servings"])) {
-            return $_GET["servings"];
+        if (isset($_GET[self::$servings]) && !empty($_GET[self::$servings])) {
+            return $_GET[self::$servings];
         } else {
             throw new ServingsMissingException();
         }
@@ -93,9 +102,8 @@ class AddRecipeView
 
     public function addTag(): string
     {
-        if (isset($_GET["tag"]) && !empty($_GET["tag"])) {
-            echo $_GET["tag"];
-            return $_GET["tag"];
+        if (isset($_GET[self::$tag]) && !empty($_GET[self::$tag])) {
+            return $_GET[self::$tag];
         } else {
             throw new TagMissingException();
         }
@@ -112,8 +120,8 @@ class AddRecipeView
 
     private function getIngredientName(): string
     {
-        if (isset($_GET["ingredient-name1"]) && !empty($_GET["ingredient-name1"])) {
-            return $_GET["ingredient-name1"];
+        if (isset($_GET[self::$ingredientName]) && !empty($_GET[self::$ingredientName])) {
+            return $_GET[self::$ingredientName];
         } else {
             throw new IngredientNameMissingException();
         }
@@ -121,8 +129,8 @@ class AddRecipeView
 
     private function getIngredientAmount(): Amount
     {
-        if (isset($_GET["ingredient-amount1"]) && !empty($_GET["ingredient-amount1"])) {
-            $amount = (float) $_GET["ingredient-amount1"];
+        if (isset($_GET[self::$ingredientAmount]) && !empty($_GET[self::$ingredientAmount])) {
+            $amount = (float) $_GET[self::$ingredientAmount];
             return $this->factory->instanciateAmount($amount);
         } else {
             throw new IngredientAmountMissingException();
@@ -131,8 +139,8 @@ class AddRecipeView
 
     private function getMeasurement(): Measurement
     {
-        if (isset($_GET["measurement"]) && !empty($_GET["measurement"])) {
-            $measure = $_GET["measurement"];
+        if (isset($_GET[self::$measurement]) && !empty($_GET[self::$measurement])) {
+            $measure = $_GET[self::$measurement];
             return $this->factory->instanciateMeasurement($measure);
         } else {
             throw new IngredientMeasurementMissingException();
@@ -141,8 +149,8 @@ class AddRecipeView
 
     public function addInstruction(): Instruction
     {
-        if (isset($_GET["instruction1"]) && !empty($_GET["instruction1"])) {
-            $instruction = $_GET["instruction1"];
+        if (isset($_GET[self::$instruction]) && !empty($_GET[self::$instruction])) {
+            $instruction = $_GET[self::$instruction];
             return $this->factory->instanciateInstruction($instruction);
         } else {
             throw new InstructionMissingException();
@@ -151,6 +159,6 @@ class AddRecipeView
 
     public function userWantsToSubmitRecipe(): bool
     {
-        return isset($_GET["submitRecipe"]);
+        return isset($_GET[self::$submitRecipe]);
     }
 }
