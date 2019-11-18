@@ -24,7 +24,12 @@ class MainViewTest extends TestCase
 
         $viewMock->expects($this->once())->method('generateMainTitle');
 
-        $viewMock->render();
+        $mockRecipe = $this->getMockBuilder(AddRecipeView::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['generateOutput'])
+            ->getMock();
+
+        $viewMock->render($mockRecipe);
     }
     /** @test */
 

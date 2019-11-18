@@ -13,6 +13,8 @@ class MainController
 
     public function run()
     {
-        return $this->mainView->render();
+        $factory = new RecipeFactory();
+        $recipeView = new AddRecipeView($factory);
+        return $this->mainView->render($recipeView);
     }
 }

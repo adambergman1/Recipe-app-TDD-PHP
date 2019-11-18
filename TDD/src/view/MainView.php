@@ -7,7 +7,7 @@ class MainView
         return '<h1>My Cook Book</h1>';
     }
 
-    public function render()
+    public function render($view)
     {
         return '<!DOCTYPE html>
         <html lang="en">
@@ -18,6 +18,7 @@ class MainView
           <body>
             ' . $this->generateMainTitle() . '
             <div class="container">
+            ' . $view->generateOutput() . '
             </div>
            </body>
         </html>

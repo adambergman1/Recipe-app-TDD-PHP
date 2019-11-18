@@ -10,10 +10,8 @@ require_once("model/RecipeFactory.php");
 
 require_once("controller/MainController.php");
 
-// $app = new MainController();
-// echo $app->run();
+$app = new MainController();
+echo $app->run();
 
-$view = new MainView();
-$view->render();
 
 // $view->addRecipe();
