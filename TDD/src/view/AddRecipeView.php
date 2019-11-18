@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../model/Exceptions.php';
-
 class AddRecipeView
 {
     protected static $addRecipe = __CLASS__  . 'addRecipe';

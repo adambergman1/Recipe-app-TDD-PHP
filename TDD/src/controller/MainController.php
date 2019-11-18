@@ -1,7 +1,5 @@
 <?php
 
-require_once(__DIR__ . '/../view/MainView.php');
-
 class MainController
 {
     private $mainView;

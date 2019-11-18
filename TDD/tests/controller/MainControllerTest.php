@@ -2,39 +2,37 @@
 
 class MainControllerTest extends PHPUnit\Framework\TestCase
 {
-    /** @test */
-    function shouldCallOnMainViewRender()
+    protected $recipeViewMock;
+    protected $mainViewMock;
+    protected $sut;
+
+    function setUp(): void
     {
-        $recipeViewMock = $this->getMockBuilder(AddRecipeView::class)
+        $this->recipeViewMock = $this->getMockBuilder(AddRecipeView::class)
             ->disableOriginalConstructor()
+            ->setMethods(['userWantsToAddRecipe', 'renderAddRecipe'])
             ->getMock();
 
-        $mainViewMock = $this->getMockBuilder(MainView::class)
+        $this->mainViewMock = $this->getMockBuilder(MainView::class)
             ->setMethods(['render'])
             ->getMock();
 
-        $app = new MainController($mainViewMock, $recipeViewMock);
+        $this->sut = new MainController($this->mainViewMock, $this->recipeViewMock);
+    }
 
-        $mainViewMock->expects($this->once())->method('render');
-        $app->run();
+    /** @test */
+    function shouldCallOnMainViewRender()
+    {
+        $this->mainViewMock->expects($this->once())->method('render');
+        $this->sut->run();
     }
 
     /** @test */
     function shouldCallOnRenderAddRecipeWhenUserWantsToAddRecipe()
     {
-        $mainViewMock = $this->getMockBuilder(MainView::class)
-            ->getMock();
+        $this->recipeViewMock->method('userWantsToAddRecipe')->willReturn(true);
+        $this->recipeViewMock->expects($this->once())->method('renderAddRecipe');
 
-        $recipeViewMock = $this->getMockBuilder(AddRecipeView::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['userWantsToAddRecipe', 'renderAddRecipe'])
-            ->getMock();
-
-        $recipeViewMock->method('userWantsToAddRecipe')->willReturn(true);
-        $recipeViewMock->expects($this->once())->method('renderAddRecipe');
-
-        $controller = new MainController($mainViewMock, $recipeViewMock);
-
-        $controller->run();
+        $this->sut->run();
     }
 }
