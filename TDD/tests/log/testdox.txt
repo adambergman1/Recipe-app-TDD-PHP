@@ -1,7 +1,7 @@
 Main Controller
  [x] Should call on main view render
  [x] Should call on render add recipe when user wants to add recipe
- [ ] Should call on generate add recipe btn when not to add recipe
+ [x] Should call on generate add recipe btn when not to add recipe
 
 Amount
  [x] Should accept correct amount

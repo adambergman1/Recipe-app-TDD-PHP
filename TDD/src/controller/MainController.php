@@ -15,6 +15,8 @@ class MainController
     {
         if ($this->recipeView->userWantsToAddRecipe()) {
             $this->recipeView->renderAddRecipe();
+        } else {
+            $this->recipeView->generateAddRecipeBtn();
         }
 
         return $this->mainView->render($this->recipeView);
