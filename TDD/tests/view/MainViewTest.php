@@ -4,45 +4,45 @@ use PHPUnit\Framework\TestCase;
 
 class MainViewTest extends TestCase
 {
-    /** @test */
-    public function shouldGenerateMainTitle()
-    {
-        $view = new MainView();
+    private $sut;
+    private $recipeMock;
 
-        $actual = $view->generateMainTitle();
+    function setUp(): void
+    {
+        $this->sut = new MainView();
+
+        $this->recipeMock = $this->getMockBuilder(AddRecipeView::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['generateOutput'])
+            ->getMock();
+    }
+
+    /** @test */
+    function shouldGenerateMainTitle()
+    {
+        $actual = $this->sut->generateMainTitle();
         $expected = '<h1>My Cook Book</h1>';
 
         $this->assertEquals($actual, $expected);
     }
 
     /** @test */
-    public function shouldCallOnGenerateMainTitle()
+    function shouldCallOnGenerateMainTitle()
     {
-        $viewMock = $this->getMockBuilder(MainView::class)
+        $mainViewMock = $this->getMockBuilder(MainView::class)
             ->setMethods(['generateMainTitle'])
             ->getMock();
 
-        $viewMock->expects($this->once())->method('generateMainTitle');
+        $mainViewMock->expects($this->once())->method('generateMainTitle');
 
-        $mockRecipe = $this->getMockBuilder(AddRecipeView::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['generateOutput'])
-            ->getMock();
-
-        $viewMock->render($mockRecipe);
+        $mainViewMock->render($this->recipeMock);
     }
+
     /** @test */
-
-    public function shouldCallOnAddRecipeMethodGenerateOutput()
+    function shouldCallOnAddRecipeMethodGenerateOutput()
     {
-        $viewMock = $this->getMockBuilder(AddRecipeView::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['generateOutput'])
-            ->getMock();
+        $this->recipeMock->expects($this->once())->method('generateOutput');
 
-        $viewMock->expects($this->once())->method('generateOutput');
-        $mainView = new MainView();
-
-        $mainView->render($viewMock);
+        $this->sut->render($this->recipeMock);
     }
 }
