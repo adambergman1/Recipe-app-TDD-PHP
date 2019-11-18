@@ -50,6 +50,20 @@ class AddRecipeView
         return $recipe;
     }
 
+    public function addRecipeValues(): Recipe
+    {
+        $recipe = $this->createRecipe();
+        $author = $this->addAuthor();
+        $servings = $this->addServings();
+        $tag = $this->addTag();
+        $ingredient = $this->addIngredient();
+        $recipe->setAuthor($author);
+        $recipe->setServings($servings);
+        $recipe->setTagName($tag);
+        $recipe->addIngredient($ingredient);
+        return $recipe;
+    }
+
     private function getTitle(): string
     {
         if (isset($_GET["title"]) && !empty($_GET["title"])) {
