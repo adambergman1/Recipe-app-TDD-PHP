@@ -132,4 +132,25 @@ class MainViewTest extends TestCase
         $this->assertStringContainsString($expectedPotatoes, $actual);
         $this->assertStringContainsString($expectedMilk, $actual);
     }
+
+    /** @test */
+    function shouldRender2Instructions()
+    {
+        $instructionOneMock = $this->createMock(Instruction::class);
+        $instructionTwoMock = $this->createMock(Instruction::class);
+        $collectionMock = $this->createMock(InstructionsCollection::class);
+
+        $instructionOneMock->method('getInstruction')->willReturn('Set oven to 200 deg.');
+        $instructionTwoMock->method('getInstruction')->willReturn('Add milk and flour to the bucket.');
+
+        $collectionMock->method('getInstructions')->willReturn([$instructionOneMock, $instructionTwoMock]);
+
+        $actual = $this->sut->renderInstructions($collectionMock);
+
+        $expectOne = 'Set oven to 200 deg.';
+        $expectTwo = 'Add milk and flour to the bucket.';
+
+        $this->assertStringContainsString($expectOne, $actual);
+        $this->assertStringContainsString($expectTwo, $actual);
+    }
 }

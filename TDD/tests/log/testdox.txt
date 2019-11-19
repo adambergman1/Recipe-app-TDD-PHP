@@ -91,4 +91,5 @@ Main View
  [x] Should return no recipes from render recipes if collection null
  [x] Should display recipe
  [x] Should render 2 ingredients
+ [ ] Should render 2 instructions
 
