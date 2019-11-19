@@ -34,10 +34,23 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    function shouldCallOnAddRecipeValuesWhenUserWantsToAddRecipeuserWantsToSubmitRecipe()
+    function shouldCallOnAddRecipeValuesWhenUserWantsToSubmitRecipe()
     {
         $this->recipeViewMock->method('userWantsToSubmitRecipe')->willReturn(true);
         $this->recipeViewMock->expects($this->once())->method('addRecipeValues');
+
+        $this->sut->run();
+    }
+
+    /** @test */
+    function shouldCallOnAddRecipeWhenUserWantsToAddRecipe()
+    {
+        $collectionMock = $this->getMockBuilder(RecipeCollection::class)
+            ->setMethods(['addRecipe'])
+            ->getMock();
+
+        $this->recipeViewMock->method('userWantsToSubmitRecipe')->willReturn(true);
+        $collectionMock->expects($this->once())->method('addRecipe');
 
         $this->sut->run();
     }
