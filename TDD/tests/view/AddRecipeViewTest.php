@@ -10,7 +10,7 @@ class AddRecipeViewTest extends TestCase
     public function setUp(): void
     {
         $this->factoryMock = $this->getMockBuilder(RecipeFactory::class)
-            ->setMethods(['instanciateInstruction', 'instanciateRecipe', 'instanciateIngredient'])
+            ->setMethods(['instanciateInstruction', 'instanciateRecipe', 'instanciateIngredient', 'instanciateInstructionsCollection'])
             ->getMock();
 
         $this->sut = new AddRecipeView($this->factoryMock);
@@ -237,7 +237,6 @@ class AddRecipeViewTest extends TestCase
         $instruct = $this->createMock(Instruction::class);
         $this->factoryMock->method('instanciateInstruction')->willReturn($instruct);
 
-
         $this->setGETRequestTo("instruction1", "This is the first instruction");
 
         $actual = $this->sut->addInstruction();
@@ -274,6 +273,14 @@ class AddRecipeViewTest extends TestCase
 
         $ingredient = $this->createMock(Ingredient::class);
         $this->factoryMock->method('instanciateIngredient')->willReturn($ingredient);
+
+        $instruction = $this->createMock(Instruction::class);
+        $this->factoryMock->method('instanciateInstruction')->willReturn($instruction);
+        $instruction->method('getInstruction')->willReturn('This is the first instruction.');
+
+        $instructionsCollection = $this->createMock(InstructionsCollection::class);
+        $instructionsCollection->method('getInstructions')->willReturn([$instruction]);
+        $this->factoryMock->method('instanciateInstructionsCollection')->willReturn($instructionsCollection);
 
         $actual = $this->sut->addRecipeValues();
 

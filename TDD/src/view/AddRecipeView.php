@@ -71,6 +71,13 @@ class AddRecipeView
         $recipe->setServings($servings);
         $recipe->setTagName($tag);
         $recipe->addIngredient($ingredient);
+
+
+        // var_dump($this->addInstruction());
+        $instructions = $this->factory->instanciateInstructionsCollection();
+        $instructions->addInstruction($this->addInstruction());
+        $recipe->addInstructions($instructions);
+
         return $recipe;
     }
 

@@ -50,4 +50,12 @@ class RecipeFactoryTest extends TestCase
 
         $this->assertInstanceOf(Ingredient::class, $actual);
     }
+
+    /** @test */
+    public function shouldInstanciateInstructionsCollection()
+    {
+        $actual = $this->sut->instanciateInstructionsCollection();
+
+        $this->assertInstanceOf(InstructionsCollection::class, $actual);
+    }
 }

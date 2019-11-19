@@ -31,4 +31,10 @@ class RecipeFactory
         require_once("Measurement.php");
         return new Measurement($measure);
     }
+
+    public function instanciateInstructionsCollection()
+    {
+        require_once("InstructionsCollection.php");
+        return new InstructionsCollection();
+    }
 }

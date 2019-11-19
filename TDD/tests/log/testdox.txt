@@ -47,6 +47,7 @@ Recipe Factory
  [x] Should instanciate amount
  [x] Should instanciate measurement
  [x] Should instanciate ingredient
+ [x] Should instanciate instructions collection
 
 Recipe
  [x] Should set recipe title
