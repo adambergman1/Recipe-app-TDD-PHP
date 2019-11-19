@@ -73,7 +73,10 @@ class AddRecipeView
         $recipe->addIngredient($ingredient);
 
         $instructions = $this->factory->instanciateInstructionsCollection();
-        $instructions->addInstruction($this->addInstruction());
+
+        foreach ($this->getInstructions() as $instruction) {
+            $instructions->addInstruction($instruction);
+        }
 
         $recipe->addInstructions($instructions);
 
@@ -147,7 +150,7 @@ class AddRecipeView
         for ($i = 0; $i < $count; $i++) {
             $ind = $i + 1;
             $instruction = $_GET["instruction" . $ind];
-            $instr[] = $this->factory->instanciateInstruction($instruction);
+            $instr[] = $this->addInstruction($instruction, $ind);
         }
 
         return $instr;
@@ -173,10 +176,9 @@ class AddRecipeView
         }
     }
 
-    public function addInstruction(): Instruction
+    public function addInstruction($instruction, $index): Instruction
     {
-        if (isset($_GET[self::$instruction]) && !empty($_GET[self::$instruction])) {
-            $instruction = $_GET[self::$instruction];
+        if (isset($_GET["instruction$index"]) && !empty($_GET["instruction$index"])) {
             return $this->factory->instanciateInstruction($instruction);
         } else {
             throw new InstructionMissingException();

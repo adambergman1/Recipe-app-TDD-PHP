@@ -10,7 +10,12 @@ class AddRecipeViewTest extends TestCase
     public function setUp(): void
     {
         $this->factoryMock = $this->getMockBuilder(RecipeFactory::class)
-            ->setMethods(['instanciateInstruction', 'instanciateRecipe', 'instanciateIngredient', 'instanciateInstructionsCollection'])
+            ->setMethods([
+                'instanciateInstruction',
+                'instanciateRecipe',
+                'instanciateIngredient',
+                'instanciateInstructionsCollection'
+            ])
             ->getMock();
 
         $this->sut = new AddRecipeView($this->factoryMock);
@@ -53,7 +58,6 @@ class AddRecipeViewTest extends TestCase
         $actual = $this->sut->generateOutput();
 
         $this->assertStringContainsString('form method="POST', $actual);
-        // $this->expectOutputRegex('/form method="POST"/');
     }
 
     /** @test */
@@ -239,7 +243,7 @@ class AddRecipeViewTest extends TestCase
 
         $this->setGETRequestTo("instruction1", "This is the first instruction");
 
-        $actual = $this->sut->addInstruction();
+        $actual = $this->sut->addInstruction("instruction", 1);
 
         $this->assertInstanceOf(Instruction::class, $actual);
     }
@@ -250,7 +254,7 @@ class AddRecipeViewTest extends TestCase
         $this->expectException(InstructionMissingException::class);
         $this->setGETRequestTo("instruction1");
 
-        $this->sut->addInstruction();
+        $this->sut->addInstruction("instruction", 1);
     }
 
     /** @test */
@@ -290,11 +294,13 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     function shouldReturn4Instructions()
     {
-
         $this->setGETRequestTo("instruction1", "first instruction");
         $this->setGETRequestTo("instruction2", "second instruction");
         $this->setGETRequestTo("instruction3", 'third instruction');
         $this->setGETRequestTo("instruction4", 'fourth instruction');
+
+        $instruction = $this->createMock(Instruction::class);
+        $this->factoryMock->method('instanciateInstruction')->willReturn($instruction);
 
         $actual = $this->sut->getInstructions();
         $expected = 4;
