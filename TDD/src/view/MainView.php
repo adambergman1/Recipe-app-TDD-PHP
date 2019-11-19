@@ -30,7 +30,7 @@ class MainView
   public function renderRecipes($collection)
   {
     if ($collection == null) {
-      // Do something
+      return '<p>No recipes</p>';
     } else {
       return $collection;
     }
