@@ -9,7 +9,7 @@ class MainView
     return '<h1>My Cook Book</h1>';
   }
 
-  public function render($view)
+  public function render($view, $collection = null)
   {
     return '<!DOCTYPE html>
         <html lang="en">
@@ -21,9 +21,15 @@ class MainView
             ' . $this->generateMainTitle() . '
             <div class="container">
             ' . $view->generateOutput() . '
+            ' . $this->renderRecipes($collection) . '
             </div>
            </body>
         </html>
       ';
+  }
+
+  public function renderRecipes($collection)
+  {
+    return $collection;
   }
 }
