@@ -67,4 +67,37 @@ class MainViewTest extends TestCase
 
         $this->assertEquals($actual, $expected);
     }
+
+    /** @test */
+    function shouldDisplayRecipe()
+    {
+        $recipeMock = $this->createMock(Recipe::class);
+        $ingredientsMock = $this->createMock(Ingredient::class);
+        $instructionsMock = $this->createMock(Instruction::class);
+        $instructionCollectionMock = $this->createMock(InstructionsCollection::class);
+        $recipeCollectionMock = $this->createMock(RecipeCollection::class);
+
+        $ingredientsMock->method('getName')->willReturn('Potatoes');
+        $ingredientsMock->method('getAmount')->willReturn(2.0);
+        $ingredientsMock->method('getMeasurement')->willReturn('pcs');
+
+        $instructionsMock->method('getInstruction')->willReturn('This is the first instruction');
+        $instructionCollectionMock->method('getInstructions')->willReturn([$instructionsMock]);
+
+
+        $recipeMock->method('getTitle')->willReturn('Meatloaf');
+        $recipeMock->method('getAuthor')->willReturn('Per Morberg');
+        $recipeMock->method('getServings')->willReturn(2);
+        $recipeMock->method('getTagName')->willReturn('Dinner');
+        $recipeMock->method('getIngredients')->willReturn([$ingredientsMock]);
+        $recipeMock->method('getInstructions')->willReturn($instructionCollectionMock);
+
+        $recipeCollectionMock->method('getRecipes')->willReturn([$recipeMock]);
+
+        $actual = $this->sut->render($this->recipeViewMock, $recipeCollectionMock);
+
+        $expected = 'Meatloaf';
+
+        $this->assertStringContainsString($expected, $actual);
+    }
 }

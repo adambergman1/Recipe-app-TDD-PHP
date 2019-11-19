@@ -8,6 +8,7 @@ require_once 'view/AddRecipeView.php';
 
 require_once 'model/RecipeFactory.php';
 require_once 'model/Exceptions.php';
+require_once 'model/RecipeCollection.php';
 
 require_once 'controller/MainController.php';
 

@@ -32,7 +32,7 @@ class MainView
     if ($collection == null) {
       return '<p>No recipes</p>';
     } else {
-      return $collection;
+      return '';
     }
   }
 }

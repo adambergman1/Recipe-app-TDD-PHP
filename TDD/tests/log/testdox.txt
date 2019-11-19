@@ -89,4 +89,5 @@ Main View
  [x] Should call on add recipe method generate output
  [x] Should call on render recipes from render
  [x] Should return no recipes from render recipes if collection null
+ [ ] Should display recipe
 
