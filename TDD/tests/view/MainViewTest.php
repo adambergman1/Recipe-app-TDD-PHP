@@ -124,7 +124,7 @@ class MainViewTest extends TestCase
 
         $recipeMock->method('getIngredients')->willReturn([$potatoMock, $milkMock]);
 
-        $actual = $this->sut->renderIngredients($recipeMock);
+        $actual = $this->sut->renderIngredients($recipeMock->getIngredients());
 
         $expected = 'Potatoes';
 
