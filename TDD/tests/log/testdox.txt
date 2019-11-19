@@ -88,4 +88,5 @@ Main View
  [x] Should call on generate main title
  [x] Should call on add recipe method generate output
  [x] Should call on render recipes from render
+ [ ] Should return no recipes from render recipes if collection null
 

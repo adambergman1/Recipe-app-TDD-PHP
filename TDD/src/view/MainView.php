@@ -2,7 +2,6 @@
 
 class MainView
 {
-  private $recipes;
 
   public function generateMainTitle()
   {
@@ -30,6 +29,10 @@ class MainView
 
   public function renderRecipes($collection)
   {
-    return $collection;
+    if ($collection == null) {
+      // Do something
+    } else {
+      return $collection;
+    }
   }
 }

@@ -57,4 +57,14 @@ class MainViewTest extends TestCase
 
         $mainViewMock->render($this->recipeViewMock);
     }
+
+    /** @test */
+    function shouldReturnNoRecipesFromRenderRecipesIfCollectionNull()
+    {
+        $actual = $this->sut->renderRecipes(null);
+
+        $expected = '<p>No recipes</p>';
+
+        $this->assertEquals($actual, $expected);
+    }
 }
