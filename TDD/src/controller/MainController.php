@@ -19,6 +19,10 @@ class MainController
             $this->recipeView->generateAddRecipeBtn();
         }
 
+        if ($this->recipeView->userWantsToSubmitRecipe()) {
+            $this->recipeView->addRecipeValues();
+        }
+
         return $this->mainView->render($this->recipeView);
     }
 }
