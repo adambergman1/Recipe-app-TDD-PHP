@@ -1,6 +1,6 @@
 Main Controller
  [x] Should call on main view render
- [x] Should call on add recipe values when user wants to submit recipe
+ [x] Should call onget recipe when user wants to submit recipe
  [x] Should call on add recipe when user wants to add recipe
 
 Amount
@@ -83,6 +83,7 @@ Add Recipe View
  [x] Should throw exception on empty instruction
  [x] Should return true when submit recipe is set
  [x] Should return a complete recipe
+ [ ] Should return 4 instructions
 
 Main View
  [x] Should generate main title

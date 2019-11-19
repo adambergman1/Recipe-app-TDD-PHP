@@ -16,7 +16,7 @@ class MainController
     public function run()
     {
         if ($this->recipeView->userWantsToSubmitRecipe()) {
-            $recipe = $this->recipeView->addRecipeValues();
+            $recipe = $this->recipeView->getRecipe();
             $this->recipeCollection->addRecipe($recipe);
         }
 

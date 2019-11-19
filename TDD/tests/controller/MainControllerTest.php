@@ -17,7 +17,7 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
                 'renderAddRecipe',
                 'generateAddRecipeBtnForm',
                 'userWantsToSubmitRecipe',
-                'addRecipeValues'
+                'getRecipe'
             ])
             ->getMock();
 
@@ -40,10 +40,10 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    function shouldCallOnAddRecipeValuesWhenUserWantsToSubmitRecipe()
+    function shouldCallOngetRecipeWhenUserWantsToSubmitRecipe()
     {
         $this->recipeViewMock->method('userWantsToSubmitRecipe')->willReturn(true);
-        $this->recipeViewMock->expects($this->once())->method('addRecipeValues');
+        $this->recipeViewMock->expects($this->once())->method('getRecipe');
 
         $this->sut->run();
     }
@@ -55,7 +55,7 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
 
         $recipe = $this->createMock(Recipe::class);
 
-        $this->recipeViewMock->method('addRecipeValues')->willReturn($recipe);
+        $this->recipeViewMock->method('getRecipe')->willReturn($recipe);
         $this->collectionMock->expects($this->once())->method('addRecipe')->with($this->identicalTo($recipe));
 
         $this->sut->run();

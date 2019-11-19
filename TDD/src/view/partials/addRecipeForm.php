@@ -6,13 +6,13 @@
             let count = 1;
             $("#addIngredientBtn").click(() => {
                 $("#ingredient-amount" + count++).parent("div").after(
-                    '<div class="ingredient"><input placeholder="Ingredient" id="ingredient-name' +
-                    count + '"/><input placeholder="Amount" id="ingredient-amount' + count + '"/> <select><option value="dl">dl</option><option value="kg">kg</option><option value="g">g</option><option value="cl">cl</option><option value="tbsp">tbsp</option><option value="tsp">tsp</option><option value="ml">ml</option><option value="l">l</option><option value="hg">hg</option><option value="pcs">pcs</option></select></div>');
+                    '<div class="ingredient"><input placeholder="Ingredient" name="ingredient-name' + count + '" id="ingredient-name' +
+                    count + '"/><input placeholder="Amount" name="ingredient-amount' + count + '" id="ingredient-amount' + count + '"/> <select name="ingredient-measurement' + count + '"><option value="dl">dl</option><option value="kg">kg</option><option value="g">g</option><option value="cl">cl</option><option value="tbsp">tbsp</option><option value="tsp">tsp</option><option value="ml">ml</option><option value="l">l</option><option value="hg">hg</option><option value="pcs">pcs</option></select></div>');
             });
             let instructionCount = 1;
             $("#addInstructionBtn").click(() => {
                 $("#instruction" + instructionCount++).parent("div").after(
-                    '<div class="instruction"><textarea name="instruction' + instructionCount + '" id="instruction' + instructionCount + '" placeholder="Write instructions, for example: Set the oven to 200 degrees" cols="50" rows="3"></textarea></div>'
+                    '<div class="instruction"><textarea name="instruction' + instructionCount + '" name="instruction' + instructionCount + '" id="instruction' + instructionCount + '" placeholder="Write instructions, for example: Set the oven to 200 degrees" cols="50" rows="3"></textarea></div>'
                 )
             })
         })

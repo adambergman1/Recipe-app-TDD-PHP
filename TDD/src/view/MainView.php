@@ -40,7 +40,9 @@ class MainView
             $output .= '<div class="recipe-author">' . $recipe->getAuthor() . '</div>';
             $output .= '<div class="recipe-servings">' . $recipe->getServings() . '</div>';
             $output .= '<div class="recipe-tag">' . $recipe->getTagName() . '</div>';
+            $output .= '<h4 class="ingredients-title">Ingredients</h4>';
             $output .= '<div class="recipe-ingredients">' . $this->renderIngredients($recipe->getIngredients()) . '</div>';
+            $output .= '<h4 class="instructions-title">Instructions</h4>';
             $output .= '<div class="recipe-instructions">' . $this->renderInstructions($recipe->getInstructions()) . '</div>';
             $output .= "</div>";
         }

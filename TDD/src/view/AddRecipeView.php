@@ -60,7 +60,7 @@ class AddRecipeView
         return $recipe;
     }
 
-    public function addRecipeValues(): Recipe
+    public function getRecipe(): Recipe
     {
         $recipe = $this->createRecipe();
         $author = $this->addAuthor();
@@ -72,10 +72,9 @@ class AddRecipeView
         $recipe->setTagName($tag);
         $recipe->addIngredient($ingredient);
 
-
-        // var_dump($this->addInstruction());
         $instructions = $this->factory->instanciateInstructionsCollection();
         $instructions->addInstruction($this->addInstruction());
+
         $recipe->addInstructions($instructions);
 
         return $recipe;

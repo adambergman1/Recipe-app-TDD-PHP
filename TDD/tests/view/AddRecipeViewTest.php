@@ -282,9 +282,19 @@ class AddRecipeViewTest extends TestCase
         $instructionsCollection->method('getInstructions')->willReturn([$instruction]);
         $this->factoryMock->method('instanciateInstructionsCollection')->willReturn($instructionsCollection);
 
-        $actual = $this->sut->addRecipeValues();
+        $actual = $this->sut->getRecipe();
 
         $this->assertInstanceOf(Recipe::class, $actual);
+    }
+
+    /** @test */
+    function shouldReturn4Instructions()
+    {
+        $actual = $this->sut->getInstructions();
+
+        $expected = 4;
+
+        $this->assertEquals(count($actual), $expected);
     }
 
     private function setGETRequestTo(string $request, $value = null)
