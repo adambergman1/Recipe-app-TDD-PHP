@@ -90,4 +90,5 @@ Main View
  [x] Should call on render recipes from render
  [x] Should return no recipes from render recipes if collection null
  [x] Should display recipe
+ [ ] Should render 2 ingredients
 

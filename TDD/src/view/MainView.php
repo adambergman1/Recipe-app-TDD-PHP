@@ -37,7 +37,11 @@ class MainView
     foreach ($collection->getRecipes() as $recipe) {
       $output .= "<div class='recipe'>";
       $output .= '<div class="recipe-title">' . $recipe->getTitle() . '</div>';
-
+      $output .= '<div class="recipe-author">' . $recipe->getAuthor() . '</div>';
+      $output .= '<div class="recipe-servings">' . $recipe->getServings() . '</div>';
+      $output .= '<div class="recipe-tag">' . $recipe->getTagName() . '</div>';
+      // $output .= '<div class="recipe-ingredients">' . $this->renderIngredients($recipe) . '</div>';
+      // $output .= '<div class="recipe-instructions">' . $this->renderInstructions() . '</div>';
       $output .= "</div>";
     }
 

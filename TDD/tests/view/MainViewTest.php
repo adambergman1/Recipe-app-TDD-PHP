@@ -97,9 +97,37 @@ class MainViewTest extends TestCase
         $actual = $this->sut->render($this->recipeViewMock, $recipeCollectionMock);
 
         $expectedTitle = 'Meatloaf';
-        // $expectedAuthor = 'Per Morberg';
+        $expectedAuthor = 'Per Morberg';
+        $expectedServings = '2';
+        $expectedTag = 'Dinner';
 
         $this->assertStringContainsString($expectedTitle, $actual);
-        // $this->assertStringContainsString($expectedAuthor, $actual);
+        $this->assertStringContainsString($expectedAuthor, $actual);
+        $this->assertStringContainsString($expectedServings, $actual);
+        $this->assertStringContainsString($expectedTag, $actual);
+    }
+
+    /** @test */
+    function shouldRender2Ingredients()
+    {
+        $recipeMock = $this->createMock(Recipe::class);
+        $potatoMock = $this->createMock(Ingredient::class);
+        $milkMock = $this->createMock(Ingredient::class);
+
+        $potatoMock->method('getName')->willReturn('Potatoes');
+        $potatoMock->method('getAmount')->willReturn(2.0);
+        $potatoMock->method('getMeasurement')->willReturn('pcs');
+
+        $milkMock->method('getName')->willReturn('Milk');
+        $milkMock->method('getAmount')->willReturn(4.0);
+        $milkMock->method('getMeasurement')->willReturn('dl');
+
+        $recipeMock->method('getIngredients')->willReturn([$potatoMock, $milkMock]);
+
+        $actual = $this->sut->renderIngredients($recipeMock);
+
+        $expected = 'Potatoes';
+
+        $this->assertStringContainsString($expected, $actual);
     }
 }
