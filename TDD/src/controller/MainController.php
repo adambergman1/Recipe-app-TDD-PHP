@@ -20,6 +20,6 @@ class MainController
             $this->recipeCollection->addRecipe($recipe);
         }
 
-        return $this->mainView->render($this->recipeView);
+        return $this->mainView->render($this->recipeView, $this->recipeCollection);
     }
 }

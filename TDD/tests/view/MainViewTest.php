@@ -96,8 +96,10 @@ class MainViewTest extends TestCase
 
         $actual = $this->sut->render($this->recipeViewMock, $recipeCollectionMock);
 
-        $expected = 'Meatloaf';
+        $expectedTitle = 'Meatloaf';
+        // $expectedAuthor = 'Per Morberg';
 
-        $this->assertStringContainsString($expected, $actual);
+        $this->assertStringContainsString($expectedTitle, $actual);
+        // $this->assertStringContainsString($expectedAuthor, $actual);
     }
 }

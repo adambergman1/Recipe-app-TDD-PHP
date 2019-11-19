@@ -29,10 +29,18 @@ class MainView
 
   public function renderRecipes($collection)
   {
-    if ($collection == null) {
+    if ($collection == null || empty($collection->getRecipes())) {
       return '<p>No recipes</p>';
-    } else {
-      return '';
     }
+
+    $output = "";
+    foreach ($collection->getRecipes() as $recipe) {
+      $output .= "<div class='recipe'>";
+      $output .= '<div class="recipe-title">' . $recipe->getTitle() . '</div>';
+
+      $output .= "</div>";
+    }
+
+    return $output;
   }
 }
