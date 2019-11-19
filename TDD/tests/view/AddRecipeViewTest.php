@@ -280,26 +280,6 @@ class AddRecipeViewTest extends TestCase
         $this->assertInstanceOf(Recipe::class, $actual);
     }
 
-    /** @test */
-    public function shouldCallOnAddRecipeValues()
-    {
-        $this->setRecipeValues();
-
-        $mock = $this->getMockBuilder(AddRecipeView::class)
-            ->disableOriginalConstructor()
-            ->setMethods([
-                'userWantsToSubmitRecipe',
-                'addRecipeValues'
-            ])
-            ->getMock();
-
-        $mock->method('userWantsToSubmitRecipe')->willReturn(true);
-
-        $mock->expects($this->once())->method('addRecipeValues');
-
-        $mock->generateOutput();
-    }
-
     private function setGETRequestTo(string $request, $value = null)
     {
         $_GET[$request] = $value;

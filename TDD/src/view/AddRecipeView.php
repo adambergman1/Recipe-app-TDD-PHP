@@ -30,9 +30,6 @@ class AddRecipeView
             $response .= $this->generateAddRecipeBtnForm();
         }
 
-        if ($this->userWantsToSubmitRecipe()) {
-            $this->addRecipeValues();
-        }
         return $response;
     }
 

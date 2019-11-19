@@ -2,14 +2,14 @@
 
 class MainView
 {
-    public function generateMainTitle()
-    {
-        return '<h1>My Cook Book</h1>';
-    }
+  public function generateMainTitle()
+  {
+    return '<h1>My Cook Book</h1>';
+  }
 
-    public function render($view)
-    {
-        return '<!DOCTYPE html>
+  public function render($view)
+  {
+    return '<!DOCTYPE html>
         <html lang="en">
           <head>
             <meta charset="utf-8">
@@ -23,5 +23,5 @@ class MainView
            </body>
         </html>
       ';
-    }
+  }
 }

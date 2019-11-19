@@ -13,7 +13,7 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
             ->setMethods([
                 'userWantsToAddRecipe',
                 'renderAddRecipe',
-                'generateAddRecipeBtn',
+                'generateAddRecipeBtnForm',
                 'userWantsToSubmitRecipe',
                 'addRecipeValues'
             ])
@@ -30,24 +30,6 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
     function shouldCallOnMainViewRender()
     {
         $this->mainViewMock->expects($this->once())->method('render');
-        $this->sut->run();
-    }
-
-    /** @test */
-    function shouldCallOnRenderAddRecipeWhenUserWantsToAddRecipe()
-    {
-        $this->recipeViewMock->method('userWantsToAddRecipe')->willReturn(true);
-        $this->recipeViewMock->expects($this->once())->method('renderAddRecipe');
-
-        $this->sut->run();
-    }
-
-    /** @test */
-    function shouldCallOnGenerateAddRecipeBtnWhenNotToAddRecipe()
-    {
-        $this->recipeViewMock->method('userWantsToAddRecipe')->willReturn(false);
-        $this->recipeViewMock->expects($this->once())->method('generateAddRecipeBtn');
-
         $this->sut->run();
     }
 

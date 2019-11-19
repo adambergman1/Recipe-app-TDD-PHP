@@ -13,12 +13,6 @@ class MainController
 
     public function run()
     {
-        if ($this->recipeView->userWantsToAddRecipe()) {
-            $this->recipeView->renderAddRecipe();
-        } else {
-            $this->recipeView->generateAddRecipeBtn();
-        }
-
         if ($this->recipeView->userWantsToSubmitRecipe()) {
             $this->recipeView->addRecipeValues();
         }
