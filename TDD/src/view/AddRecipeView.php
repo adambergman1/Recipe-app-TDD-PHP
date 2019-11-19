@@ -134,6 +134,25 @@ class AddRecipeView
         }
     }
 
+    public function getInstructions()
+    {
+        $count = 0;
+        for ($i = 1; $i < 10; $i++) {
+            if (isset($_GET["instruction" . $i])) {
+                $count++;
+            }
+        }
+
+        $instr = array();
+        for ($i = 0; $i < $count; $i++) {
+            $ind = $i + 1;
+            $instruction = $_GET["instruction" . $ind];
+            $instr[] = $this->factory->instanciateInstruction($instruction);
+        }
+
+        return $instr;
+    }
+
     private function getIngredientAmount(): Amount
     {
         if (isset($_GET[self::$ingredientAmount]) && !empty($_GET[self::$ingredientAmount])) {

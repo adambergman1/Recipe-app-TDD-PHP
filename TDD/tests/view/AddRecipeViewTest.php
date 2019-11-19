@@ -290,8 +290,13 @@ class AddRecipeViewTest extends TestCase
     /** @test */
     function shouldReturn4Instructions()
     {
-        $actual = $this->sut->getInstructions();
 
+        $this->setGETRequestTo("instruction1", "first instruction");
+        $this->setGETRequestTo("instruction2", "second instruction");
+        $this->setGETRequestTo("instruction3", 'third instruction');
+        $this->setGETRequestTo("instruction4", 'fourth instruction');
+
+        $actual = $this->sut->getInstructions();
         $expected = 4;
 
         $this->assertEquals(count($actual), $expected);
