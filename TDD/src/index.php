@@ -14,6 +14,7 @@ require_once 'controller/MainController.php';
 $factory = new RecipeFactory();
 $mainView = new MainView();
 $recipeView = new AddRecipeView($factory);
+$recipeCollection = new RecipeCollection();
 
-$app = new MainController($mainView, $recipeView);
+$app = new MainController($mainView, $recipeView, $recipeCollection);
 echo $app->run();

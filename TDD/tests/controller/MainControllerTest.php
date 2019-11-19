@@ -4,6 +4,8 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
 {
     protected $recipeViewMock;
     protected $mainViewMock;
+    protected $collectionMock;
+
     protected $sut;
 
     function setUp(): void
@@ -23,7 +25,11 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
             ->setMethods(['render'])
             ->getMock();
 
-        $this->sut = new MainController($this->mainViewMock, $this->recipeViewMock);
+        $this->collectionMock = $this->getMockBuilder(RecipeCollection::class)
+            ->setMethods(['addRecipe'])
+            ->getMock();
+
+        $this->sut = new MainController($this->mainViewMock, $this->recipeViewMock, $this->collectionMock);
     }
 
     /** @test */
@@ -45,12 +51,8 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
     /** @test */
     function shouldCallOnAddRecipeWhenUserWantsToAddRecipe()
     {
-        $collectionMock = $this->getMockBuilder(RecipeCollection::class)
-            ->setMethods(['addRecipe'])
-            ->getMock();
-
         $this->recipeViewMock->method('userWantsToSubmitRecipe')->willReturn(true);
-        $collectionMock->expects($this->once())->method('addRecipe');
+        $this->collectionMock->expects($this->once())->method('addRecipe');
 
         $this->sut->run();
     }
