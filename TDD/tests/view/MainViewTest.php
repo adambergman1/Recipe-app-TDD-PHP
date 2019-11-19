@@ -126,8 +126,10 @@ class MainViewTest extends TestCase
 
         $actual = $this->sut->renderIngredients($recipeMock->getIngredients());
 
-        $expected = 'Potatoes';
+        $expectedPotatoes = 'Potatoes';
+        $expectedMilk = 'Milk';
 
-        $this->assertStringContainsString($expected, $actual);
+        $this->assertStringContainsString($expectedPotatoes, $actual);
+        $this->assertStringContainsString($expectedMilk, $actual);
     }
 }

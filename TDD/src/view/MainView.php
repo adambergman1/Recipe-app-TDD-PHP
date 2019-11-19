@@ -52,7 +52,11 @@ class MainView
   {
     $output = '';
     foreach ($ingredients as $ing) {
-      $output .= $ing->getName();
+      $output .= '<div class="ingredient">';
+      $output .= '<span class="ingredient-amount">' . $ing->getAmount() . '</span>';
+      $output .= '<span class="ingredient-measurement">' . $ing->getMeasurement() . '</span>';
+      $output .= '<span class="ingredient-name">' . $ing->getName() . '</span>';
+      $output .= '</div>';
     }
 
     return $output;
