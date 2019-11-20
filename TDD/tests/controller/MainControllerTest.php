@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+$_SESSION["recipes"] = array();
+
 class MainControllerTest extends PHPUnit\Framework\TestCase
 {
     protected $recipeViewMock;
@@ -63,12 +66,17 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    function shouldAddRecipesFromSession()
+    function shouldAddOneRecipeFromSession()
     {
         $this->collectionMock->method('isRecipeSessionEmpty')->willReturn(false);
+
+        $recipe = $this->createMock(Recipe::class);
+        $_SESSION["recipes"][] = $recipe;
 
         $this->collectionMock->expects($this->once())->method('addRecipe');
 
         $this->sut->run();
+
+        $_SESSION["recipes"] = array();
     }
 }

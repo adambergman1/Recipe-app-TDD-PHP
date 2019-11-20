@@ -18,6 +18,13 @@ class MainController
         if ($this->recipeView->userWantsToSubmitRecipe()) {
             $recipe = $this->recipeView->getRecipe();
             $this->recipeCollection->addRecipe($recipe);
+            // header("location: ./");
+        }
+
+        if (!$this->recipeCollection->isRecipeSessionEmpty()) {
+            foreach ($_SESSION["recipes"] as $recipe) {
+                $this->recipeCollection->addRecipe($recipe);
+            }
         }
 
         return $this->mainView->render($this->recipeView, $this->recipeCollection);
