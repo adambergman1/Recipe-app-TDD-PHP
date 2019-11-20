@@ -11,7 +11,7 @@ class Amount
 
     private function validateAmount(float $amount): void
     {
-        if ($amount >= 100) {
+        if ($amount >= 1500) {
             throw new TooLargeAmountException();
         } else if ($amount <= 0) {
             throw new TooSmallAmountException();

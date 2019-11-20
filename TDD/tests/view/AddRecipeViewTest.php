@@ -203,9 +203,9 @@ class AddRecipeViewTest extends TestCase
         $this->setGETRequestTo("ingredient-amount1", 2);
         $this->setGETRequestTo("ingredient-measurement1", "dl");
 
-        $actual = $this->sut->getIngredient();
+        $actual = $this->sut->getIngredients();
 
-        $this->assertInstanceOf(Ingredient::class, $actual);
+        $this->assertInstanceOf(Ingredient::class, $actual[0]);
     }
 
     /** @test */
@@ -217,7 +217,7 @@ class AddRecipeViewTest extends TestCase
         $this->setGETRequestTo("ingredient-amount1", 2);
         $this->setGETRequestTo("ingredient-measurement1", "dl");
 
-        $this->sut->getIngredient();
+        $this->sut->validateOnEmptyInputs(1);
     }
 
     /** @test */
@@ -229,7 +229,7 @@ class AddRecipeViewTest extends TestCase
         $this->setGETRequestTo("ingredient-amount1");
         $this->setGETRequestTo("ingredient-measurement1", "dl");
 
-        $this->sut->getIngredient();
+        $this->sut->validateOnEmptyInputs(1);
     }
 
     /** @test */
@@ -237,21 +237,11 @@ class AddRecipeViewTest extends TestCase
     {
         $this->expectException(IngredientMeasurementMissingException::class);
 
-        $ingredient = $this->createMock(Ingredient::class);
-        $this->factoryMock->method('instanciateIngredient')->willReturn($ingredient);
-
-        $amount = $this->createMock(Amount::class);
-        $this->factoryMock->method('instanciateAmount')->willReturn($amount);
-
-        $measure = $this->createMock(Measurement::class);
-        $this->factoryMock->method('instanciateMeasurement')->willReturn($measure);
-
-
         $this->setGETRequestTo("ingredient-name1", "Potatoes");
         $this->setGETRequestTo("ingredient-amount1", 2);
         $this->setGETRequestTo("ingredient-measurement1");
 
-        $this->sut->getIngredient();
+        $this->sut->validateOnEmptyInputs(1);
     }
 
     /** @test */

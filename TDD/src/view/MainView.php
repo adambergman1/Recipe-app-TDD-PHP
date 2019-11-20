@@ -75,7 +75,7 @@ class MainView
 
         foreach ($instructions->getInstructions() as $instruction) {
             $index++;
-            $output .= '<div class="instruction" id="instruction-' . $index . '">';
+            $output .= '<div class="instruction" id="instruction-' . $index . '"><span class="instruction-count">' . $index . '</span>';
             $output .= '<p class="instruction-text">' . $instruction->getInstruction() . '</p>';
             $output .= '</div>';
         }

@@ -8,9 +8,6 @@ class AddRecipeView
     private static $author = "author";
     private static $servings = "servings";
     private static $tag = "tag";
-    private static $ingredientName = "ingredient-name1";
-    private static $ingredientAmount = "ingredient-amount1";
-    private static $measurement = "ingredient-measurement1";
     private static $submitRecipe = "submitRecipe";
 
     private $factory;
@@ -65,11 +62,15 @@ class AddRecipeView
         $author = $this->getAuthor();
         $servings = $this->getServings();
         $tag = $this->getTag();
-        $ingredient = $this->getIngredient();
         $recipe->setAuthor($author);
         $recipe->setServings($servings);
         $recipe->setTagName($tag);
-        $recipe->addIngredient($ingredient);
+
+        $ingredients = $this->getIngredients();
+
+        foreach ($ingredients as $ingredient) {
+            $recipe->addIngredient($ingredient);
+        }
 
         $instructions = $this->getInstructionsToRecipe();
         $recipe->addInstructions($instructions);
@@ -113,54 +114,18 @@ class AddRecipeView
         }
     }
 
-    public function getIngredient(): Ingredient
-    {
-        $name = $this->getIngredientName();
-        $amount = $this->getIngredientAmount();
-        $measure = $this->getMeasurement();
-
-        return $this->factory->instanciateIngredient($name, $amount, $measure);
-    }
-
-    private function getIngredientName(): string
-    {
-        if (isset($_GET[self::$ingredientName]) && !empty($_GET[self::$ingredientName])) {
-            return $_GET[self::$ingredientName];
-        } else {
-            throw new IngredientNameMissingException();
-        }
-    }
-
     public function getIngredients()
     {
-        $countNames = 0;
-        $countAmounts = 0;
-        $countMeasures = 0;
-
-        for ($i = 1; $i < 10; $i++) {
-            if (isset($_GET["ingredient-name" . $i]) && !empty($_GET["ingredient-name" . $i])) {
-                $countNames++;
-            }
-        }
-
-        for ($i = 1; $i < 10; $i++) {
-            if (isset($_GET["ingredient-amount" . $i]) && !empty($_GET["ingredient-amount" . $i])) {
-                $countAmounts++;
-            }
-        }
-
-        for ($i = 1; $i < 10; $i++) {
-            if (isset($_GET["ingredient-measurement" . $i]) && !empty($_GET["ingredient-measurement" . $i])) {
-                $countMeasures++;
-            }
-        }
+        $count = $this->getIngredientCount();
+        $this->validateOnEmptyInputs($count);
 
         $ingredients = array();
 
-        for ($i = 1; $i <= $countNames; $i++) {
-            $ingredientName = $_GET["ingredient-name" . $i];
-            $ingredientAmount = $_GET["ingredient-amount" . $i];
-            $ingredientMeasure = $_GET["ingredient-measurement" . $i];
+        for ($i = 0; $i < $count; $i++) {
+            $ind = $i + 1;
+            $ingredientName = $_GET["ingredient-name" . $ind];
+            $ingredientAmount = (float) $_GET["ingredient-amount" . $ind];
+            $ingredientMeasure = $_GET["ingredient-measurement" . $ind];
 
             $amount = $this->factory->instanciateAmount($ingredientAmount);
             $measure = $this->factory->instanciateMeasurement($ingredientMeasure);
@@ -171,6 +136,37 @@ class AddRecipeView
         }
 
         return $ingredients;
+    }
+
+    private function getIngredientCount()
+    {
+        $count = 0;
+
+        foreach ($_GET as $k => $v) {
+            $names = substr($k, 0, 15);
+            if ($names == 'ingredient-name') {
+                $count++;
+            }
+        }
+        return $count;
+    }
+
+    public function validateOnEmptyInputs(int $count)
+    {
+        for ($i = 0; $i < $count; $i++) {
+            $index = $i + 1;
+            if (!isset($_GET["ingredient-name" . $index]) && empty($_GET["ingredient-name" . $index])) {
+                throw new IngredientNameMissingException();
+            }
+
+            if (!isset($_GET["ingredient-amount" . $index]) && empty($_GET["ingredient-amount" . $index])) {
+                throw new IngredientAmountMissingException();
+            }
+
+            if (!isset($_GET["ingredient-measurement" . $index]) && empty($_GET["ingredient-measurement" . $index])) {
+                throw new IngredientMeasurementMissingException();
+            }
+        }
     }
 
     public function getInstructionsToRecipe(): InstructionsCollection
@@ -201,8 +197,10 @@ class AddRecipeView
     private function getInstructionRequestsCount()
     {
         $count = 0;
-        for ($i = 1; $i < 10; $i++) {
-            if (isset($_GET["instruction" . $i]) && !empty($_GET["instruction" . $i])) {
+
+        foreach ($_GET as $k => $v) {
+            $names = substr($k, 0, 11);
+            if ($names == 'instruction') {
                 $count++;
             }
         }
@@ -215,26 +213,6 @@ class AddRecipeView
             return $this->factory->instanciateInstruction($instruction);
         } else {
             throw new InstructionMissingException();
-        }
-    }
-
-    private function getIngredientAmount(): Amount
-    {
-        if (isset($_GET[self::$ingredientAmount]) && !empty($_GET[self::$ingredientAmount])) {
-            $amount = (float) $_GET[self::$ingredientAmount];
-            return $this->factory->instanciateAmount($amount);
-        } else {
-            throw new IngredientAmountMissingException();
-        }
-    }
-
-    private function getMeasurement(): Measurement
-    {
-        if (isset($_GET[self::$measurement]) && !empty($_GET[self::$measurement])) {
-            $measure = $_GET[self::$measurement];
-            return $this->factory->instanciateMeasurement($measure);
-        } else {
-            throw new IngredientMeasurementMissingException();
         }
     }
 

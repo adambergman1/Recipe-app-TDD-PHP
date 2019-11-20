@@ -19,7 +19,7 @@ class AmountTest extends PHPUnit\Framework\TestCase
     function shouldThrowExceptionOnTooLargeAmount()
     {
         $this->expectException(TooLargeAmountException::class);
-        $input = 101;
+        $input = 1501;
         new Amount($input);
     }
 
