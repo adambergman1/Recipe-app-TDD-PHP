@@ -11,6 +11,12 @@ class RecipeCollection
 
     public function addRecipe(Recipe $toBeSaved)
     {
+        if (is_array($_SESSION["recipes"])) {
+            if (!in_array($toBeSaved, $_SESSION["recipes"])) {
+                $_SESSION["recipes"][] = $toBeSaved;
+            }
+        }
+
         $this->recipes[] = $toBeSaved;
     }
 

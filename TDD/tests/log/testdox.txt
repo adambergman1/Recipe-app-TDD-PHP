@@ -41,6 +41,7 @@ Recipe Collection
  [x] Should add recipe
  [x] Should filter recipes by tag
  [x] Should return all recipe titles
+ [x] Should return true when recipes session is empty
 
 Recipe Factory
  [x] Should instanciate instruction

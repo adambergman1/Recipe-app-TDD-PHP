@@ -74,6 +74,16 @@ class RecipeCollectionTest extends TestCase
         $this->assertEquals($actual, $expected);
     }
 
+    /** @test */
+    public function shouldReturnTrueWhenRecipesSessionIsEmpty()
+    {
+        $_SESSION["recipes"] = null;
+
+        $actual = $this->sut->isRecipeSessionEmpty();
+
+        $this->assertTrue($actual);
+    }
+
     private function getRecipeStub()
     {
         return $this->createMock(Recipe::class);

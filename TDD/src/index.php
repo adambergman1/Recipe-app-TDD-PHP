@@ -20,7 +20,7 @@ require_once 'model/InstructionsCollection.php';
 
 require_once 'controller/MainController.php';
 
-// session_start();
+session_start();
 
 $factory = new RecipeFactory();
 $mainView = new MainView();
@@ -29,3 +29,7 @@ $recipeCollection = new RecipeCollection();
 
 $app = new MainController($mainView, $recipeView, $recipeCollection);
 echo $app->run();
+
+if (!isset($_SESSION["recipes"])) {
+    $_SESSION["recipes"] = array();
+}
