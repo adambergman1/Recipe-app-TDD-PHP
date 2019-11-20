@@ -75,16 +75,16 @@ Add Recipe View
  [x] Should throw exception servings missing
  [x] Should add tag lunch
  [x] Should throw exception tag missing
- [ ] Should add ingredient
+ [x] Should add ingredient
  [x] Should throw exception on empty ingredient name
  [x] Should throw exception on empty ingredient amount
- [ ] Should throw exception on empty ingredient measurement
+ [x] Should throw exception on empty ingredient measurement
  [x] Should add instruction
  [x] Should throw exception on empty instruction
  [x] Should return true when submit recipe is set
- [ ] Should return a complete recipe
+ [x] Should return a complete recipe
  [x] Should return 4 instructions
- [ ] Should return 4 ingredients
+ [x] Should return 4 ingredients
 
 Main View
  [x] Should generate main title

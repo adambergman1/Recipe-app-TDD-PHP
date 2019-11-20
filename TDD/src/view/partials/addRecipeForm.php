@@ -46,7 +46,7 @@
     <div class="ingredient">
         <input type="text" id="ingredient-name1" name="ingredient-name1" placeholder="Ingredient" />
         <input type="text" id="ingredient-amount1" name="ingredient-amount1" placeholder="Amount" />
-        <select name="measurement" id="measurement">
+        <select name="ingredient-measurement1" id="measurement1">
             <option value="dl">dl</option>
             <option value="kg">kg</option>
             <option value="g">g</option>
