@@ -2,7 +2,7 @@
 
 class AddRecipeView
 {
-    protected static $addRecipe = __CLASS__  . 'addRecipe';
+    protected static $addRecipe = __CLASS__  . '::addRecipe';
 
     private static $title = "title";
     private static $author = "author";
@@ -11,7 +11,6 @@ class AddRecipeView
     private static $ingredientName = "ingredient-name1";
     private static $ingredientAmount = "ingredient-amount1";
     private static $measurement = "measurement";
-    private static $instruction = "instruction1";
     private static $submitRecipe = "submitRecipe";
 
     private $factory;
@@ -41,8 +40,8 @@ class AddRecipeView
     public function generateAddRecipeBtnForm(): string
     {
         return '
-        <form method="POST">
-            <input type="submit" name="' . self::$addRecipe . '" value="Add Recipe!" />
+        <form method="POST" class="add-recipe-btn-form">
+            <input class="add-recipe-btn" type="submit" name="' . self::$addRecipe . '" value="Add Recipe!" />
         </form>
         ';
     }
@@ -63,21 +62,16 @@ class AddRecipeView
     public function getRecipe(): Recipe
     {
         $recipe = $this->createRecipe();
-        $author = $this->addAuthor();
-        $servings = $this->addServings();
-        $tag = $this->addTag();
-        $ingredient = $this->addIngredient();
+        $author = $this->getAuthor();
+        $servings = $this->getServings();
+        $tag = $this->getTag();
+        $ingredient = $this->getIngredient();
         $recipe->setAuthor($author);
         $recipe->setServings($servings);
         $recipe->setTagName($tag);
         $recipe->addIngredient($ingredient);
 
-        $instructions = $this->factory->instanciateInstructionsCollection();
-
-        foreach ($this->getInstructions() as $instruction) {
-            $instructions->addInstruction($instruction);
-        }
-
+        $instructions = $this->getInstructionsToRecipe();
         $recipe->addInstructions($instructions);
 
         return $recipe;
@@ -92,7 +86,7 @@ class AddRecipeView
         }
     }
 
-    public function addAuthor(): string
+    public function getAuthor(): string
     {
         if (isset($_GET[self::$author]) && !empty($_GET[self::$author])) {
             return $_GET[self::$author];
@@ -101,7 +95,7 @@ class AddRecipeView
         }
     }
 
-    public function addServings(): int
+    public function getServings(): int
     {
         if (isset($_GET[self::$servings]) && !empty($_GET[self::$servings])) {
             return $_GET[self::$servings];
@@ -110,7 +104,7 @@ class AddRecipeView
         }
     }
 
-    public function addTag(): string
+    public function getTag(): string
     {
         if (isset($_GET[self::$tag]) && !empty($_GET[self::$tag])) {
             return $_GET[self::$tag];
@@ -119,7 +113,7 @@ class AddRecipeView
         }
     }
 
-    public function addIngredient(): Ingredient
+    public function getIngredient(): Ingredient
     {
         $name = $this->getIngredientName();
         $amount = $this->getIngredientAmount();
@@ -137,23 +131,49 @@ class AddRecipeView
         }
     }
 
+    public function getInstructionsToRecipe(): InstructionsCollection
+    {
+        $collection = $this->factory->instanciateInstructionsCollection();
+        $instructions = $this->getInstructions();
+
+        foreach ($instructions as $instruction) {
+            $collection->addInstruction($instruction);
+        }
+
+        return $collection;
+    }
+
     public function getInstructions()
+    {
+        $count = $this->getInstructionRequestsCount();
+        $instructions = array();
+
+        for ($i = 1; $i <= $count; $i++) {
+            $instruction = $_GET["instruction" . $i];
+            $instructions[] = $this->addInstruction($instruction, $i);
+        }
+
+        return $instructions;
+    }
+
+    private function getInstructionRequestsCount()
     {
         $count = 0;
         for ($i = 1; $i < 10; $i++) {
-            if (isset($_GET["instruction" . $i])) {
+            if (isset($_GET["instruction" . $i]) && !empty($_GET["instruction" . $i])) {
                 $count++;
             }
         }
+        return $count;
+    }
 
-        $instr = array();
-        for ($i = 0; $i < $count; $i++) {
-            $ind = $i + 1;
-            $instruction = $_GET["instruction" . $ind];
-            $instr[] = $this->addInstruction($instruction, $ind);
+    public function addInstruction($instruction, $index): Instruction
+    {
+        if (isset($_GET["instruction" . $index]) && !empty($_GET["instruction" . $index])) {
+            return $this->factory->instanciateInstruction($instruction);
+        } else {
+            throw new InstructionMissingException();
         }
-
-        return $instr;
     }
 
     private function getIngredientAmount(): Amount
@@ -173,15 +193,6 @@ class AddRecipeView
             return $this->factory->instanciateMeasurement($measure);
         } else {
             throw new IngredientMeasurementMissingException();
-        }
-    }
-
-    public function addInstruction($instruction, $index): Instruction
-    {
-        if (isset($_GET["instruction$index"]) && !empty($_GET["instruction$index"])) {
-            return $this->factory->instanciateInstruction($instruction);
-        } else {
-            throw new InstructionMissingException();
         }
     }
 

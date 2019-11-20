@@ -14,7 +14,9 @@ class AddRecipeViewTest extends TestCase
                 'instanciateInstruction',
                 'instanciateRecipe',
                 'instanciateIngredient',
-                'instanciateInstructionsCollection'
+                'instanciateInstructionsCollection',
+                'instanciateAmount',
+                'instanciateMeasurement'
             ])
             ->getMock();
 
@@ -130,7 +132,7 @@ class AddRecipeViewTest extends TestCase
     {
         $this->setGETRequestTo("author", "Per Morberg");
 
-        $actual = $this->sut->addAuthor();
+        $actual = $this->sut->getAuthor();
         $expected = "Per Morberg";
 
         $this->assertEquals($actual, $expected);
@@ -142,7 +144,7 @@ class AddRecipeViewTest extends TestCase
         $this->setGETRequestTo("author");
 
         $this->expectException(AuthorMissingException::class);
-        $this->sut->addAuthor();
+        $this->sut->getAuthor();
     }
 
     /** @test */
@@ -150,7 +152,7 @@ class AddRecipeViewTest extends TestCase
     {
         $this->setGETRequestTo("servings", "4");
 
-        $actual = $this->sut->addServings();
+        $actual = $this->sut->getServings();
         $expected = 4;
 
         $this->assertEquals($actual, $expected);
@@ -162,7 +164,7 @@ class AddRecipeViewTest extends TestCase
         $this->setGETRequestTo("servings");
 
         $this->expectException(ServingsMissingException::class);
-        $this->sut->addServings();
+        $this->sut->getServings();
     }
 
     /** @test */
@@ -170,7 +172,7 @@ class AddRecipeViewTest extends TestCase
     {
         $this->setGETRequestTo("tag", "Lunch");
 
-        $actual = $this->sut->addTag();
+        $actual = $this->sut->getTag();
         $expected = "Lunch";
 
         $this->assertEquals($actual, $expected);
@@ -182,7 +184,7 @@ class AddRecipeViewTest extends TestCase
         $this->setGETRequestTo("tag");
 
         $this->expectException(TagMissingException::class);
-        $this->sut->addTag();
+        $this->sut->getTag();
     }
 
     /** @test */
@@ -195,7 +197,7 @@ class AddRecipeViewTest extends TestCase
         $this->setGETRequestTo("ingredient-amount1", 2);
         $this->setGETRequestTo("measurement", "dl");
 
-        $actual = $this->sut->addIngredient();
+        $actual = $this->sut->getIngredient();
 
         $this->assertInstanceOf(Ingredient::class, $actual);
     }
@@ -209,7 +211,7 @@ class AddRecipeViewTest extends TestCase
         $this->setGETRequestTo("ingredient-amount1", 2);
         $this->setGETRequestTo("measurement", "dl");
 
-        $this->sut->addIngredient();
+        $this->sut->getIngredient();
     }
 
     /** @test */
@@ -221,7 +223,7 @@ class AddRecipeViewTest extends TestCase
         $this->setGETRequestTo("ingredient-amount1");
         $this->setGETRequestTo("measurement", "dl");
 
-        $this->sut->addIngredient();
+        $this->sut->getIngredient();
     }
 
     /** @test */
@@ -232,7 +234,7 @@ class AddRecipeViewTest extends TestCase
         $this->setGETRequestTo("ingredient-amount1", 2);
         $this->setGETRequestTo("measurement");
 
-        $this->sut->addIngredient();
+        $this->sut->getIngredient();
     }
 
     /** @test */
@@ -303,6 +305,41 @@ class AddRecipeViewTest extends TestCase
         $this->factoryMock->method('instanciateInstruction')->willReturn($instruction);
 
         $actual = $this->sut->getInstructions();
+        $expected = 4;
+
+        $this->assertEquals(count($actual), $expected);
+    }
+
+    /** @test */
+    function shouldReturn4Ingredients()
+    {
+        $this->setGETRequestTo("ingredient-name1", "Potatoes");
+        $this->setGETRequestTo("ingredient-amount1", "5.0");
+        $this->setGETRequestTo("ingredient-measurement1", "pcs");
+
+        $this->setGETRequestTo("ingredient-name2", "Paprika");
+        $this->setGETRequestTo("ingredient-amount2", "3");
+        $this->setGETRequestTo("ingredient-measurement2", "kg");
+
+        $this->setGETRequestTo("ingredient-name3", "Onion");
+        $this->setGETRequestTo("ingredient-amount3", "10");
+        $this->setGETRequestTo("ingredient-measurement3", "pcs");
+
+        $this->setGETRequestTo("ingredient-name4", "Milk");
+        $this->setGETRequestTo("ingredient-amount4", "1");
+        $this->setGETRequestTo("ingredient-measurement4", "dl");
+
+        $ingredient = $this->createMock(Ingredient::class);
+
+        $this->factoryMock->method('instanciateIngredient')->willReturn($ingredient);
+
+        $amount = $this->createMock(Amount::class);
+        $measure = $this->createMock(Measurement::class);
+
+        $this->factoryMock->method('instanciateAmount')->willReturn($amount);
+        $this->factoryMock->method('instanciateMeasurement')->willReturn($measure);
+
+        $actual = $this->sut->getIngredients();
         $expected = 4;
 
         $this->assertEquals(count($actual), $expected);
