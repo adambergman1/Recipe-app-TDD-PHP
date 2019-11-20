@@ -2,6 +2,7 @@ Main Controller
  [x] Should call on main view render
  [x] Should call onget recipe when user wants to submit recipe
  [x] Should call on add recipe when user wants to add recipe
+ [ ] Should add recipes from session
 
 Amount
  [x] Should accept correct amount

@@ -41,4 +41,9 @@ class RecipeCollection
         }
         return $titles;
     }
+
+    public function isRecipeSessionEmpty()
+    {
+        return empty($_SESSION["recipes"]);
+    }
 }

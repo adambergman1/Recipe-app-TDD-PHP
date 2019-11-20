@@ -20,6 +20,8 @@ require_once 'model/InstructionsCollection.php';
 
 require_once 'controller/MainController.php';
 
+// session_start();
+
 $factory = new RecipeFactory();
 $mainView = new MainView();
 $recipeView = new AddRecipeView($factory);

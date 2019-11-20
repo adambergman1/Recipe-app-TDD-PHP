@@ -10,6 +10,7 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
 
     function setUp(): void
     {
+
         $this->recipeViewMock = $this->getMockBuilder(AddRecipeView::class)
             ->disableOriginalConstructor()
             ->setMethods([
@@ -26,7 +27,7 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
             ->getMock();
 
         $this->collectionMock = $this->getMockBuilder(RecipeCollection::class)
-            ->setMethods(['addRecipe'])
+            ->setMethods(['addRecipe', 'isRecipeSessionEmpty'])
             ->getMock();
 
         $this->sut = new MainController($this->mainViewMock, $this->recipeViewMock, $this->collectionMock);
@@ -57,6 +58,16 @@ class MainControllerTest extends PHPUnit\Framework\TestCase
 
         $this->recipeViewMock->method('getRecipe')->willReturn($recipe);
         $this->collectionMock->expects($this->once())->method('addRecipe')->with($this->identicalTo($recipe));
+
+        $this->sut->run();
+    }
+
+    /** @test */
+    function shouldAddRecipesFromSession()
+    {
+        $this->collectionMock->method('isRecipeSessionEmpty')->willReturn(false);
+
+        $this->collectionMock->expects($this->once())->method('addRecipe');
 
         $this->sut->run();
     }
