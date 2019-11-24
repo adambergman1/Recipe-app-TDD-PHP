@@ -15,15 +15,18 @@ class MainController
 
     public function run()
     {
+        $newRecipe = null;
+
         if ($this->recipeView->userWantsToSubmitRecipe()) {
-            $recipe = $this->recipeView->getRecipe();
-            $this->recipeCollection->addRecipe($recipe);
-            // header("location: ./");
+            $newRecipe = $this->recipeView->getRecipe();
+            $this->recipeCollection->addRecipe($newRecipe);
         }
 
         if (!$this->recipeCollection->isRecipeSessionEmpty()) {
             foreach ($_SESSION["recipes"] as $recipe) {
-                $this->recipeCollection->addRecipe($recipe);
+                if ($recipe != $newRecipe) {
+                    $this->recipeCollection->addRecipe($recipe);
+                }
             }
         }
 
