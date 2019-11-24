@@ -4,6 +4,8 @@ A recipe application built with PHP (MVC) using TDD approach for the course 2DV6
 
 [PHPUnit](https://phpunit.de/) is the unit-testing framework being used. PHPUnit comes with Code coverage reporting, which has been generated for each commit.
 
+Press [here](http://wordpressutvecklare.se/projekt/recipe-php-mvc/) to see a running version of the application.
+
 ## Prerequisites
 
 Composer  
